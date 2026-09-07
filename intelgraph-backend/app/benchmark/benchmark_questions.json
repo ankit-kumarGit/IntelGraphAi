@@ -1,0 +1,252 @@
+[
+  {
+    "id": "BM-01",
+    "category": "Maintenance History",
+    "asset_tag": "P-101",
+    "question": "What is the maintenance history of P-101?",
+    "expected_answer_keywords": ["bearing", "replacement", "1023", "1189"],
+    "expected_document_ids": ["P101_Maintenance_Report_March_2024", "P101_Failure_Report_Feb_2026"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-02",
+    "category": "Failure History",
+    "asset_tag": "P-101",
+    "question": "Has P-101 experienced bearing failure before?",
+    "expected_answer_keywords": ["bearing", "seizure", "vibration", "2026"],
+    "expected_document_ids": ["P101_Failure_Report_Feb_2026", "P101_Inspection_Report_Aug_2025"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-03",
+    "category": "Components",
+    "asset_tag": "P-101",
+    "question": "What components were replaced during the 2024 overhaul of P-101?",
+    "expected_answer_keywords": ["bearing", "mechanical seal"],
+    "expected_document_ids": ["P101_Maintenance_Report_March_2024"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-04",
+    "category": "Inspection",
+    "asset_tag": "P-101",
+    "question": "What was the measured vibration velocity in the August 2025 inspection of P-101?",
+    "expected_answer_keywords": ["6.8", "vibration", "rms"],
+    "expected_document_ids": ["P101_Inspection_Report_Aug_2025"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-05",
+    "category": "OEM Specifications",
+    "asset_tag": "P-101",
+    "question": "What is the recommended radial bearing clearance for P-101?",
+    "expected_answer_keywords": ["0.05", "0.08", "clearance"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [2],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-06",
+    "category": "OEM Lubrication",
+    "asset_tag": "P-101",
+    "question": "What lubricant is approved for P-101 according to the OEM manual?",
+    "expected_answer_keywords": ["iso vg 46", "synthetic", "oil"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [3],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-07",
+    "category": "OEM Limits",
+    "asset_tag": "P-101",
+    "question": "What is the baseline vibration warning threshold for P-101?",
+    "expected_answer_keywords": ["4.5", "vibration", "warning"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [3],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-08",
+    "category": "Safety / LOTO",
+    "asset_tag": "P-101",
+    "question": "What safety precaution must be taken before opening the casing of P-101?",
+    "expected_answer_keywords": ["lockout", "loto", "isolation"],
+    "expected_document_ids": ["SOP-101_Centrifugal_Pump_Operation"],
+    "expected_pages": [2],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-09",
+    "category": "OEM Tolerances",
+    "asset_tag": "P-101",
+    "question": "What is the maximum allowable shaft runout tolerance for P-101?",
+    "expected_answer_keywords": ["0.03", "runout", "tir"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [2],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-10",
+    "category": "Maintenance Records",
+    "asset_tag": "P-101",
+    "question": "Who was the lead technician for Work Order #1023 on P-101?",
+    "expected_answer_keywords": ["vance"],
+    "expected_document_ids": ["P101_Maintenance_Report_March_2024"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-11",
+    "category": "OEM Specifications",
+    "asset_tag": "P-101",
+    "question": "What is the design flow rate of pump P-101?",
+    "expected_answer_keywords": ["180", "m3/h"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-12",
+    "category": "Incident Impact",
+    "asset_tag": "P-101",
+    "question": "What was the downtime caused by the February 2026 failure on P-101?",
+    "expected_answer_keywords": ["18.5", "hours", "downtime"],
+    "expected_document_ids": ["P101_Failure_Report_Feb_2026"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-13",
+    "category": "OEM Specifications",
+    "asset_tag": "P-101",
+    "question": "What is the drive motor power rating for P-101?",
+    "expected_answer_keywords": ["75", "kw"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-14",
+    "category": "OEM Lubrication",
+    "asset_tag": "P-101",
+    "question": "What is the recommended relubrication interval for P-101 bearings?",
+    "expected_answer_keywords": ["4,000", "months", "interval"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [3],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-15",
+    "category": "Parts",
+    "asset_tag": "P-101",
+    "question": "What part number is the drive-end bearing of P-101?",
+    "expected_answer_keywords": ["skf", "6312"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [2],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-16",
+    "category": "Parts",
+    "asset_tag": "P-101",
+    "question": "What part number is the non-drive-end bearing of P-101?",
+    "expected_answer_keywords": ["nu", "312"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [2],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-17",
+    "category": "OEM Limits",
+    "asset_tag": "P-101",
+    "question": "What is the maximum continuous bearing housing temperature limit for P-101?",
+    "expected_answer_keywords": ["82", "temperature"],
+    "expected_document_ids": ["Pump_P101_OEM_Manual"],
+    "expected_pages": [3],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-18",
+    "category": "Procedures",
+    "asset_tag": "P-101",
+    "question": "What coupling alignment tolerance is specified in SOP-101?",
+    "expected_answer_keywords": ["0.05", "misalignment"],
+    "expected_document_ids": ["SOP-101_Centrifugal_Pump_Operation"],
+    "expected_pages": [3],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-19",
+    "category": "P&ID Engineering",
+    "asset_tag": "P-101",
+    "question": "Which P&ID line connects P-101 discharge to valve V-102?",
+    "expected_answer_keywords": ["101-a", "v-102"],
+    "expected_document_ids": ["Unit2_Process_PID_Flowsheet"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-20",
+    "category": "P&ID Engineering",
+    "asset_tag": "P-101",
+    "question": "What is the tag of the standby booster pump in Unit 2?",
+    "expected_answer_keywords": ["p-102", "standby"],
+    "expected_document_ids": ["Unit2_Process_PID_Flowsheet"],
+    "expected_pages": [1],
+    "is_refusal_expected": false
+  },
+  {
+    "id": "BM-21",
+    "category": "Refusal / Boundary",
+    "asset_tag": "P-101",
+    "question": "What is the calibration frequency of pressure transmitter X-99?",
+    "expected_answer_keywords": ["could not find sufficient information"],
+    "expected_document_ids": [],
+    "expected_pages": [],
+    "is_refusal_expected": true
+  },
+  {
+    "id": "BM-22",
+    "category": "Refusal / Boundary",
+    "asset_tag": "P-101",
+    "question": "Has pump P-101 ever experienced a nuclear core coolant meltdown?",
+    "expected_answer_keywords": ["could not find sufficient information"],
+    "expected_document_ids": [],
+    "expected_pages": [],
+    "is_refusal_expected": true
+  },
+  {
+    "id": "BM-23",
+    "category": "Refusal / Boundary",
+    "asset_tag": "P-101",
+    "question": "What is the replacement schedule for the titanium submarine propeller on P-101?",
+    "expected_answer_keywords": ["could not find sufficient information"],
+    "expected_document_ids": [],
+    "expected_pages": [],
+    "is_refusal_expected": true
+  },
+  {
+    "id": "BM-24",
+    "category": "Refusal / Boundary",
+    "asset_tag": "P-999",
+    "question": "What were the inspection findings for asset P-999 in 2022?",
+    "expected_answer_keywords": ["could not find sufficient information"],
+    "expected_document_ids": [],
+    "expected_pages": [],
+    "is_refusal_expected": true
+  },
+  {
+    "id": "BM-25",
+    "category": "Refusal / Boundary",
+    "asset_tag": "P-101",
+    "question": "What is the approved grease viscosity for the superseded 1995 turbine rotor on P-101?",
+    "expected_answer_keywords": ["could not find sufficient information"],
+    "expected_document_ids": [],
+    "expected_pages": [],
+    "is_refusal_expected": true
+  }
+]

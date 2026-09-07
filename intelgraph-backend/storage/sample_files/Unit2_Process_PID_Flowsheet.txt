@@ -1,0 +1,11 @@
+========================================================================
+ENGINEERING DRAWING: P&ID FLOWSHEET - UNIT 2 FLUID HANDLING
+Drawing Ref: PID-ENG-U2-004 Rev 4 | Area: Fluid Processing
+========================================================================
+Line 101-A: Feed Suction -> P-101 (Primary Pump) -> V-102 (Discharge Control Valve)
+Line 101-B: Pressure Transmitter PT-101 -> Suction Strainer STR-101
+Line 102-A: Standby Line -> P-102 (Standby Pump) -> V-104 (Check Valve)
+Line 201-A: Overhead Gas -> C-201 (Reciprocating Compressor) -> T-201 (Separation Drum)
+Safety Loop: Pressure Safety Valve PSV-101 set at 16.5 bar to Flare Header
+Electrical Drive: Motor M-301 coupled to C-201 primary drive shaft
+Instrumentation: Temperature Transmitter TT-101, Flow Transmitter FT-202

@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/intelgraph-backend/venv/bin/python",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/intelgraph-backend"
+  ]
+}
