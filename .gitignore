@@ -1,0 +1,4 @@
+intelgraph-backend/data/
+*.log
+node_modules/
+.env
