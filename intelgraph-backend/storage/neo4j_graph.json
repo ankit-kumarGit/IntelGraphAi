@@ -1929,6 +1929,15 @@
         "asset_tag": "TEST-AG-NEW-001",
         "tenant_id": "tenant_default"
       }
+    },
+    "wo_WO-1789641711": {
+      "id": "wo_WO-1789641711",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-1789641711",
+        "asset_tag": "TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
     }
   },
   "relationships": [
@@ -5389,6 +5398,12 @@
     {
       "from": "asset_TEST_AG_NEW_001",
       "to": "wo_WO-1789639926",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "wo_WO-1789641711",
       "type": "HAS_WORK_ORDER",
       "properties": {}
     }
