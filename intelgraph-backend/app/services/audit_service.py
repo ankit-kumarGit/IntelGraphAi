@@ -1,5 +1,5 @@
 import time
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Union
 from app.database import get_db
 from app.models.audit import AuditLogEntry
 
@@ -11,7 +11,7 @@ class AuditService:
         action: str,
         target_type: str,
         target_id: str,
-        details: str
+        details: Union[str, Dict[str, Any]]
     ) -> Dict[str, Any]:
         db = get_db()
         entry = AuditLogEntry(

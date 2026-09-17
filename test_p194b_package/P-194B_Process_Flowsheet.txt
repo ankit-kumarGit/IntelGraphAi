@@ -1,0 +1,17 @@
+UNIT 2 FLUID PROCESSING TRAIN - PROCESS FLOWSHEET
+Asset Tag: P-194B
+Equipment Description: Primary Hydrocarbon Transfer & Process Pump
+Design Duty: Centrifugal Heavy-Duty Pump Model CP-194BB
+
+PIPING & INSTRUMENTATION LOOPS:
+Suction Line: Line 194-A-10 (10-inch Schedule 40 Carbon Steel)
+Discharge Line: Line 194-B-8 (8-inch Schedule 80 Carbon Steel)
+Instrumentation:
+- PT-194: Suction and Discharge Pressure Transmitters (Operating at 18.2 bar)
+- FT-194: Ultrasonic Flow Transmitter (Rated 140 m3/h)
+- TT-194: Dual RTD Bearing Temperature Sensors (Drive-End and Non-Drive-End)
+- PSV-194: Pressure Safety Relief Valve set at 18.5 bar with direct vent to flare header
+
+CONTROL & INTERLOCKS:
+Automated trip at discharge pressure > 22.0 bar or bearing temperature > 95.0 deg C.
+Standby auto-rotation scheduled bi-weekly.

@@ -53,7 +53,7 @@ export default function ReportsView({ onSelectAsset, onOpenDocViewer }) {
       <div>
         <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
           <GitBranch className="w-5 h-5 text-brand-400" />
-          <span>Root Cause Analysis (RCA) & Fleet Reliability Reports</span>
+          <span>Root Cause Analysis (RCA) & Machine Reliability Reports</span>
         </h2>
         <p className="text-xs text-slate-400 mt-0.5">
           Grounded cross-document failure pattern analysis linking historical work orders, condition monitoring, and OEM procedures
@@ -87,6 +87,8 @@ export default function ReportsView({ onSelectAsset, onOpenDocViewer }) {
               <option value="P-101">P-101 (Centrifugal Pump)</option>
               <option value="P-102">P-102 (Booster Pump)</option>
               <option value="C-201">C-201 (Compressor)</option>
+              <option value="P-203">P-203 (Secondary Injection Pump)</option>
+              <option value="P-307">P-307 (Produced Water Pump)</option>
             </select>
 
             <button
@@ -112,7 +114,7 @@ export default function ReportsView({ onSelectAsset, onOpenDocViewer }) {
             <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
               <span className="text-[10px] uppercase font-mono text-slate-400 font-semibold">Observed Problem</span>
               <h4 className="text-base font-bold text-red-400">{rcaResult.observed_problem}</h4>
-              <p className="text-slate-400 text-xs">Evaluated against asset {rcaResult.asset_tag} historical database.</p>
+              <p className="text-slate-400 text-xs">Evaluated against machine {rcaResult.asset_tag} historical database.</p>
             </div>
 
             {/* 2. Historical Evidence Chain */}
@@ -150,7 +152,7 @@ export default function ReportsView({ onSelectAsset, onOpenDocViewer }) {
                       </span>
                     </div>
                     <p className="text-slate-300 text-[11px] leading-relaxed">{c.evidence}</p>
-                    <div className="text-[10px] font-mono text-purple-400 pt-1 border-t border-slate-800">
+                    <div className="text-[10px] font-mono text-brand-400/80 pt-1 border-t border-slate-800">
                       Source: {c.source_doc}
                     </div>
                   </div>
@@ -189,28 +191,28 @@ export default function ReportsView({ onSelectAsset, onOpenDocViewer }) {
         ) : null}
       </div>
 
-      {/* SECTION 2: FLEET-WIDE CROSS-ASSET ANOMALY PATTERNS */}
+      {/* SECTION 2: FLEET-WIDE CROSS-MACHINE ANOMALY PATTERNS */}
       <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-xl">
         <div className="flex items-center justify-between border-b border-slate-800 pb-3">
           <div className="flex items-center gap-2.5">
-            <Layers className="w-5 h-5 text-cyan-400" />
+            <Layers className="w-5 h-5 text-brand-400" />
             <div>
               <h3 className="text-sm font-bold text-white">
                 Fleet-Wide Failure Intelligence & Correlation
               </h3>
               <p className="text-xs text-slate-400">
-                Identifies recurring failure modes and vibration anomalies across multiple plant assets
+                Identifies recurring failure modes and vibration anomalies across multiple plant machines
               </p>
             </div>
           </div>
-          <span className="text-xs font-mono text-brand-400">Cross-Asset Discovery</span>
+          <span className="text-xs font-mono text-brand-400">Cross-Machine Discovery</span>
         </div>
 
         <div className="space-y-3">
           {crossPatterns.map((pat, idx) => (
             <div key={idx} className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-2">
               <div className="flex items-center justify-between font-semibold">
-                <span className="text-sm text-cyan-300">{pat.pattern_title}</span>
+                <span className="text-sm text-brand-300 font-bold">{pat.pattern_title}</span>
                 <span className="font-mono text-slate-400">
                   Affected Machinery: <strong>{pat.affected_assets.join(', ')}</strong>
                 </span>

@@ -93,14 +93,14 @@ export default function TabFindings({ assetTag, findings = [], onOpenDocViewer }
                 </p>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/30 space-y-1">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-purple-300 font-semibold block">
+              <div className="p-3.5 rounded-xl bg-slate-950/70 border border-slate-800 space-y-1">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-brand-400 font-semibold block">
                   What Should Be Reviewed?
                 </span>
-                <p className="text-purple-200 leading-relaxed font-medium">
+                <p className="text-slate-200 leading-relaxed font-medium">
                   {f.recommended_action}
                 </p>
-                <div className="text-[10px] text-purple-400/80 font-mono pt-1">
+                <div className="text-[10px] text-slate-400 font-mono pt-1">
                   Governing Procedure: {f.source_procedure}
                 </div>
               </div>

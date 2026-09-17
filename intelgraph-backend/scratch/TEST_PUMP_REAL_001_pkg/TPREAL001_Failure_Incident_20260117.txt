@@ -1,0 +1,41 @@
+BHARAT REFINERY PVT LTD
+Unit 450 — Crude Distillation Unit
+EQUIPMENT FAILURE / INCIDENT REPORT & ROOT CAUSE ANALYSIS
+
+Doc No: BRPL-INC-2026-0117
+Equipment Tag: TEST-PUMP-REAL-001
+Incident Date: 17-Jan-2026
+Incident Time: 14:23 hrs
+Severity: Minor — Unplanned stop, no injury, no leak, no environmental release
+Reported By: A. Pillai, Shift Engineer (Day Shift)
+Downtime: 4 hrs 10 min (14:23 - 18:33 hrs)
+Production Impact: Minor — Standby pump TEST-PUMP-REAL-001B started manually; no unit trip.
+RCA Method: 5-Why
+
+INCIDENT DESCRIPTION
+--------------------
+At 14:23 hrs on 17-Jan-2026, pump TEST-PUMP-REAL-001 tripped on LOW FLOW interlock (FSLL-450A, setpoint 85 m3/h).
+Operating flow had been declining slowly since 11:00 hrs (from 312 m3/h to 89 m3/h over ~3 hours).
+DCS historian confirmed gradual reduction in suction pressure from 2.4 bar to 1.1 bar.
+Field operator dispatched; reported suction strainer Y-450A was heavily fouled with polymer deposits.
+Strainer pressure differential exceeded 0.45 bar (high alarm set at 0.30 bar but alarm card was suppressed — see CA-2).
+Pump itself was found intact; no mechanical damage.
+
+ROOT CAUSE ANALYSIS — 5-WHY
+-----------------------------
+Why 1: Why did the pump trip? Low flow interlock activated at 85 m3/h.
+Why 2: Why was flow low? Suction pressure dropped below cavitation threshold due to fouled suction strainer Y-450A.
+Why 3: Why was the strainer fouled? Polymer carry-over from upstream vessel V-450 during abnormal distillation conditions (cold feed event on 16-Jan-2026 night shift).
+Why 4: Why was strainer fouling not caught earlier? dP transmitter alarm was suppressed in DCS following a nuisance alarm campaign on 14-Jan-2026. Suppression was not time-limited.
+Why 5: Why was alarm suppression not time-limited? Plant alarm management procedure BRPL-PROC-AM-004 does not require a mandatory review interval for non-safety suppressed alarms.
+
+ROOT CAUSE (ASSESSED)
+---------------------
+Root Cause: Indefinitely suppressed dP alarm on suction strainer Y-450A masked progressive fouling.
+
+CORRECTIVE ACTIONS
+------------------
+CA-1: Strainer Y-450A cleaned and returned to service. — Status: Complete (17-Jan-2026)
+CA-2: dP alarm suppression on PDSH-450A restored and alarm investigated. — Status: Complete (17-Jan-2026)
+CA-3: Procedure BRPL-PROC-AM-004 revised to mandate 48-hour max suppression window for non-safety alarms. — Owner: Instrument Dept. Due: 28-Feb-2026 — Status: Open
+CA-4: Cold-feed event protocol to trigger mandatory strainer inspection within 2 hours of event. — Owner: Operations. Due: 15-Feb-2026 — Status: Open

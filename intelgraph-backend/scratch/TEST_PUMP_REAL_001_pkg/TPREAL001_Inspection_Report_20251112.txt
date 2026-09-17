@@ -1,0 +1,50 @@
+BHARAT REFINERY PVT LTD
+Unit 450 — Crude Distillation Unit
+CONDITION MONITORING INSPECTION REPORT
+
+Doc No: BRPL-INS-2025-1147
+Equipment Tag: TEST-PUMP-REAL-001
+Inspection Date: 12-Nov-2025
+Inspected By: R. Krishnamurthy, Reliability Engineer
+Inspection Type: Periodic Condition Monitoring — Vibration & Oil Analysis
+
+OPERATING CONDITION AT TIME OF INSPECTION
+------------------------------------------
+Operating Mode: Running, Duty Service
+Flow Rate at Inspection: 298 m3/h
+Discharge Pressure: 27.9 bar
+Drive-End (DE) Bearing Temperature: 67 deg C
+Non-Drive-End (NDE) Bearing Temperature: 61 deg C
+DE Vibration (Overall RMS): 2.9 mm/s
+NDE Vibration (Overall RMS): 2.3 mm/s
+
+VIBRATION SPECTRUM FINDINGS
+----------------------------
+DE Bearing Condition: GOOD — No elevated BPFO/BPFI frequencies detected.
+NDE Bearing Condition: GOOD — Spectrum clean, no defect harmonics.
+Shaft Alignment Condition: Acceptable — 1X amplitude within tolerance.
+Balance Condition: Acceptable — No elevated 1X/2X signatures.
+
+OIL ANALYSIS (Lubrication)
+---------------------------
+Grease Sample: DE Bearing
+Sample Appearance: Light amber, clean
+Metal Particles: None detected
+Recommendation: No regreasing required. Next sample at 3-month interval.
+
+MECHANICAL SEAL INSPECTION
+---------------------------
+Seal Flush Line: Clear, no blockage
+Seal Pot Level: Normal (Plan 53B reservoir at 78% capacity)
+External Leak: None observed
+Seal Face Condition: No heat-checking or scoring based on vibration/temperature proxy
+
+OVERALL INSPECTION CONDITION: GREEN — ALL PARAMETERS WITHIN NORMAL OPERATING BAND
+
+RECOMMENDATIONS
+---------------
+1. Continue current monitoring frequency (monthly vibration route).
+2. Re-lubricate DE bearing grease at next 500 operating hours or 3 months, whichever is earlier.
+3. No corrective action required at this time. Machine fit for continued service.
+
+Next Inspection Due: 12-Feb-2026

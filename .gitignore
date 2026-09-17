@@ -1,4 +1,61 @@
-intelgraph-backend/data/
-*.log
+# ==============================================================================
+# IntelGraphAI - Root Git Ignore Specification
+# ==============================================================================
+
+# Python Virtual Environments
+venv/
+.venv/
+*/venv/
+*/.venv/
+
+# Python Cache & Bytecode
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*/.pytest_cache/
+
+# Node & Frontend Build Artifacts
 node_modules/
+*/node_modules/
+dist/
+*/dist/
+dist-ssr/
+*.local
+
+# OS & Editor Artifacts
+.DS_Store
+*/.DS_Store
+*.swp
+*.swo
+*~
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Environment Configuration
 .env
+*.env.local
+!.env.example
+
+# Logs & Diagnostics
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local Databases & Runtime Storage (Host-only data)
+data/
+intelgraph-backend/data/
+storage/uploads/*
+!storage/uploads/.gitkeep
+intelgraph-backend/storage/uploads/*
+!intelgraph-backend/storage/uploads/.gitkeep
+intelgraph-backend/storage/backups/
+intelgraph-backend/storage/qdrant_db/
+intelgraph-backend/storage/faiss_index/
+acceptance_test_results.json
+storage/acceptance_test_results.json
+intelgraph-backend/storage/acceptance_test_results.json

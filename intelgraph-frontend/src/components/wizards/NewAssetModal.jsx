@@ -45,10 +45,10 @@ export default function NewAssetModal({ onClose, onAssetCreated }) {
             </div>
             <div>
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <span>Register New Asset (Use Case 2: Day-1 Knowledge)</span>
+                <span>Register New Machine</span>
               </h3>
               <p className="text-xs text-slate-400">
-                Create the machine profile and build living asset history from commissioning
+                Create the machine profile and build living machine history from commissioning
               </p>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function NewAssetModal({ onClose, onAssetCreated }) {
             </div>
             <div>
               <h3 className="text-base font-bold text-white">
-                Asset Successfully Registered!
+                Machine Successfully Registered!
               </h3>
               <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
                 Machine profile created for <strong className="text-brand-400">{createdAsset.tag}</strong>. 
@@ -84,7 +84,7 @@ export default function NewAssetModal({ onClose, onAssetCreated }) {
                 }}
                 className="px-5 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs transition-all shadow-lg shadow-brand-500/20"
               >
-                Open Asset Profile
+                Open Machine Profile
               </button>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function NewAssetModal({ onClose, onAssetCreated }) {
           <form onSubmit={handleSubmit} className="p-6 space-y-4 text-xs">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-slate-400 mb-1 font-medium">Asset Tag *</label>
+                <label className="block text-slate-400 mb-1 font-medium">Machine Tag *</label>
                 <input
                   type="text"
                   required
@@ -116,7 +116,7 @@ export default function NewAssetModal({ onClose, onAssetCreated }) {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-slate-400 mb-1 font-medium">Asset Type</label>
+                <label className="block text-slate-400 mb-1 font-medium">Machine Type</label>
                 <input
                   type="text"
                   value={formData.asset_type}
@@ -211,7 +211,7 @@ export default function NewAssetModal({ onClose, onAssetCreated }) {
                 disabled={loading}
                 className="px-5 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-xs transition-all shadow-md shadow-brand-500/20 disabled:opacity-50"
               >
-                {loading ? 'Creating...' : 'Register Asset'}
+                {loading ? 'Registering...' : 'Register Machine'}
               </button>
             </div>
           </form>

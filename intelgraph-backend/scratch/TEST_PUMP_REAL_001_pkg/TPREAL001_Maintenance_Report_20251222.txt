@@ -1,0 +1,42 @@
+BHARAT REFINERY PVT LTD
+Unit 450 — Crude Distillation Unit
+PREVENTIVE MAINTENANCE REPORT
+
+Doc No: BRPL-MNT-2025-0233
+Equipment Tag: TEST-PUMP-REAL-001
+Work Order Number: WO-TPR001-2025-0233
+Maintenance Date: 22-Dec-2025
+Performed By: S. Venkat, Senior Technician
+Supervised By: D. Mehta, Maintenance Supervisor
+
+WORK ORDER DESCRIPTION
+-----------------------
+Preventive maintenance on TEST-PUMP-REAL-001 following 3-monthly bearing relubrication interval
+(as per inspection recommendation BRPL-INS-2025-1147 and OEM Manual Section 7).
+
+TASKS PERFORMED
+---------------
+1. Drive-end (DE) bearing regreased with Shell Gadus S2 V220 (OEM-specified grease).
+   - Purged old grease: 12 g removed, appearance: light amber, no contamination.
+   - Fresh grease added: 18 g via grease nipple.
+2. Non-drive-end (NDE) bearing regreased — 9 g removed, 14 g fresh grease added.
+3. Coupling guard removed, coupling disc pack inspected — no fretting or cracking detected.
+4. Coupling guard reinstalled and bolts torqued to 35 Nm (OEM spec).
+5. Mechanical seal flush line flushed and flow confirmed at 2.8 L/min.
+6. Seal pot Plan 53B topped up to 95% capacity with Barrier Fluid ISO 46.
+7. Vibration measurement taken post-maintenance:
+   DE Vibration: 2.7 mm/s (within 3.5 mm/s alarm setpoint).
+   NDE Vibration: 2.1 mm/s.
+8. Operating parameters confirmed stable before handback to Operations.
+
+PARTS CONSUMED
+--------------
+- Shell Gadus S2 V220 grease: 45 g total
+- Barrier Fluid ISO 46: 0.8 litres
+
+OUTSTANDING OBSERVATIONS
+-------------------------
+Nil. Machine returned to service in good condition.
+
+NEXT PREVENTIVE MAINTENANCE DUE: 22-Mar-2026
+Work Order Status: Completed

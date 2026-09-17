@@ -78,8 +78,15 @@ class FaissVectorStore:
                 if idx < 0 or idx >= len(self.chunks_metadata):
                     continue
                 meta = self.chunks_metadata[idx]
-                if asset_tag and meta.get("asset_tag") and meta.get("asset_tag") != asset_tag:
-                    continue
+                if asset_tag:
+                    t_u = asset_tag.upper()
+                    meta_tag = (meta.get("asset_tag") or "").upper()
+                    primaries = [p.upper() for p in meta.get("primary_asset_tags", [])]
+                    related = [r.upper() for r in meta.get("related_asset_tags", [])]
+                    scope = meta.get("document_scope", "ASSET")
+                    is_match = (meta_tag == t_u) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
+                    if not is_match:
+                        continue
                 results.append((meta, float(score)))
                 if len(results) >= top_k:
                     break
@@ -111,6 +118,25 @@ class FaissVectorStore:
                 return True
         except Exception:
             pass
-        return False
+    def count_by_asset_tag(self, asset_tag: str) -> int:
+        tag_clean = asset_tag.upper()
+        return sum(1 for m in self.chunks_metadata if (m.get("asset_tag") or "").upper() == tag_clean)
+
+    def delete_chunks_by_asset(self, asset_tag: str) -> int:
+        tag_clean = asset_tag.upper()
+        remaining_meta = [m for m in self.chunks_metadata if (m.get("asset_tag") or "").upper() != tag_clean]
+        deleted_count = len(self.chunks_metadata) - len(remaining_meta)
+        if deleted_count == 0:
+            return 0
+        
+        self.chunks_metadata = remaining_meta
+        if remaining_meta:
+            reconstructed = [DocumentChunk(**m) for m in remaining_meta]
+            self.fit_and_index(reconstructed)
+        else:
+            self.index = faiss.IndexFlatIP(self.dimension)
+            self.is_fitted = False
+            self.save()
+        return deleted_count
 
 vector_store = FaissVectorStore()

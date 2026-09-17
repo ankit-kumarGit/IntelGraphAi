@@ -24,7 +24,7 @@ export default function InformationBadge({ type = 'verified', label, size = 'sm'
   }
 
   return (
-    <span className={`inline-flex items-center gap-1.5 font-medium rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30 ${sizeClasses}`}>
+    <span className={`inline-flex items-center gap-1.5 font-medium rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/30 ${sizeClasses}`}>
       <Sparkles className={isSm ? 'w-3 h-3' : 'w-4 h-4'} />
       {label || 'AI-Assisted Insight'}
     </span>

@@ -20,11 +20,12 @@ export default function AssetDirectory({
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [includeArchived, setIncludeArchived] = useState(false);
 
-  const loadAssets = async () => {
+  const loadAssets = async (showArchived = includeArchived) => {
     setLoading(true);
     try {
-      const data = await api.getAssets();
+      const data = await api.getAssets(showArchived);
       setAssets(data);
     } catch (err) {
       console.error('Failed to load assets:', err);
@@ -34,8 +35,15 @@ export default function AssetDirectory({
   };
 
   useEffect(() => {
-    loadAssets();
-  }, []);
+    loadAssets(includeArchived);
+  }, [includeArchived]);
+
+  const handleStatusFilterChange = (st) => {
+    setStatusFilter(st);
+    if (st === 'Archived') {
+      setIncludeArchived(true);
+    }
+  };
 
   const filteredAssets = assets.filter((a) => {
     const matchesSearch = 
@@ -48,17 +56,17 @@ export default function AssetDirectory({
 
   return (
     <div className="p-8 max-w-6xl mx-auto space-y-6">
-      {/* Header & Main Industrial Actions */}
+      {/* Header & Primary Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
         <div>
           <div className="text-xs font-mono tracking-wider uppercase text-slate-400 font-semibold mb-1">
-            Registered Machinery
+            MACHINES
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">
-            Industrial Assets Directory
+            Machines
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Central operational intelligence brain configured for each site asset
+            All machines registered at this site.
           </p>
         </div>
 
@@ -68,15 +76,15 @@ export default function AssetDirectory({
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-all shadow-sm"
           >
             <Upload className="w-3.5 h-3.5 text-brand-400" />
-            <span>Import Legacy Records</span>
+            <span>Import Documents</span>
           </button>
 
           <button
             onClick={onOpenNewAssetModal}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold shadow-lg shadow-brand-500/20 transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-xs font-semibold shadow-md shadow-brand-500/20 transition-all"
           >
             <Plus className="w-4 h-4" />
-            <span>Register New Asset</span>
+            <span>Register New Machine</span>
           </button>
         </div>
       </div>
@@ -89,19 +97,21 @@ export default function AssetDirectory({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search P-101, Compressor, pump..."
+            placeholder="Search machines..."
             className="w-full pl-9 pr-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-brand-500"
           />
         </div>
 
         <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto">
-          {['all', 'Operational', 'Maintenance Due', 'Critical'].map((st) => (
+          {['all', 'Operational', 'Maintenance Due', 'Critical', 'Archived'].map((st) => (
             <button
               key={st}
-              onClick={() => setStatusFilter(st)}
+              onClick={() => handleStatusFilterChange(st)}
               className={`px-3 py-1.5 rounded-lg capitalize text-xs font-medium whitespace-nowrap transition-all ${
                 statusFilter === st
-                  ? 'bg-brand-500/15 text-brand-400 border border-brand-500/30'
+                  ? st === 'Archived' 
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                    : 'bg-brand-500/15 text-brand-400 border border-brand-500/30'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
               }`}
             >
@@ -111,15 +121,15 @@ export default function AssetDirectory({
         </div>
       </div>
 
-      {/* Easy-to-Scan Assets List */}
+      {/* Easy-to-Scan Machines List */}
       {loading ? (
         <div className="p-16 text-center text-slate-400">
           <div className="w-8 h-8 border-2 border-brand-400 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-          Scanning machine profiles...
+          Scanning machines...
         </div>
       ) : filteredAssets.length === 0 ? (
         <div className="p-12 text-center text-slate-400 bg-slate-900/50 rounded-xl border border-slate-800">
-          No matching machinery found.
+          No matching machines found.
         </div>
       ) : (
         <div className="space-y-3">
@@ -127,13 +137,23 @@ export default function AssetDirectory({
             const isCritical = asset.status === 'Critical' || asset.criticality === 'Critical';
             const isMaintDue = asset.status === 'Maintenance Due';
 
-            // Coverage calculation: 7/8 for P-101, etc.
-            const coverageCount = asset.tag === 'P-101' ? 7 : asset.tag === 'P-102' ? 6 : asset.tag === 'C-201' ? 5 : 4;
-            const primaryIssue = asset.tag === 'P-101' 
-              ? 'Potential recurring bearing issue' 
-              : asset.tag === 'C-201' 
-              ? 'Overhaul overdue (4 days beyond interval)'
-              : 'All condition monitoring parameters verified';
+            // Coverage from actual completeness_breakdown — no hardcoded asset-specific values
+            const breakdown = asset.completeness_breakdown || [];
+            const coverageCount = breakdown.length > 0
+              ? breakdown.filter(i => i.status === 'completed').length
+              : asset.completeness_score != null
+                ? Math.round((asset.completeness_score / 100) * 8)
+                : '-';
+            const coverageTotal = breakdown.length > 0 ? breakdown.length : 8;
+
+            // Primary issue from actual data — no hardcoded P-101 strings
+            const primaryIssue = asset.open_findings_count > 0
+              ? `${asset.open_findings_count} open finding(s) require attention`
+              : asset.status === 'Maintenance Due'
+                ? 'Maintenance interval due'
+                : asset.criticality === 'Critical'
+                  ? 'Critical asset — condition monitoring active'
+                  : 'All monitored parameters within normal range';
 
             return (
               <div
@@ -152,9 +172,13 @@ export default function AssetDirectory({
                     </span>
                     <span className="flex items-center gap-1.5 text-xs">
                       <span className={`w-2 h-2 rounded-full ${
-                        asset.status === 'Operational' ? 'bg-emerald-400' : 'bg-red-400'
+                        asset.status === 'Operational' ? 'bg-emerald-400' :
+                        asset.status === 'Archived' ? 'bg-amber-400' : 'bg-red-400'
                       }`}></span>
-                      <span className={asset.status === 'Operational' ? 'text-emerald-400' : 'text-red-400 font-semibold'}>
+                      <span className={
+                        asset.status === 'Operational' ? 'text-emerald-400' :
+                        asset.status === 'Archived' ? 'text-amber-300 font-semibold' : 'text-red-400 font-semibold'
+                      }>
                         {asset.status}
                       </span>
                     </span>
@@ -172,7 +196,7 @@ export default function AssetDirectory({
                     )}
                     <span>•</span>
                     <span className="font-mono text-[11px] text-slate-400">
-                      Knowledge coverage {coverageCount}/8
+                      Knowledge coverage {coverageCount}/{coverageTotal}
                     </span>
                   </div>
                 </div>
@@ -186,7 +210,7 @@ export default function AssetDirectory({
                     }}
                     className="px-3.5 py-1.5 rounded-lg bg-slate-800 group-hover:bg-brand-500 group-hover:text-white text-slate-200 text-xs font-semibold border border-slate-700/80 group-hover:border-transparent transition-all flex items-center gap-1.5 shadow-sm"
                   >
-                    <span>Open Asset</span>
+                    <span>Open Machine</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

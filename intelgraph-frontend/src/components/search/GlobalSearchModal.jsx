@@ -87,7 +87,7 @@ export default function GlobalSearchModal({ isOpen, onClose, onSelectAsset, onOp
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search equipment tags (e.g. Pump 101, P-101), documents, components, work orders..."
+            placeholder="Search machine tags (e.g. Pump 101, P-101), documents, components, work orders..."
             className="flex-1 bg-transparent border-none text-white text-sm placeholder-slate-400 focus:outline-none"
           />
           <button
@@ -124,11 +124,11 @@ export default function GlobalSearchModal({ isOpen, onClose, onSelectAsset, onOp
         <div className="max-h-96 overflow-y-auto p-3 space-y-1 text-xs">
           {loading ? (
             <div className="py-8 text-center text-slate-400">
-              Searching hybrid knowledge index...
+              Searching knowledge index...
             </div>
           ) : results.length === 0 ? (
             <div className="py-8 text-center text-slate-400">
-              {query ? 'No matching equipment or records found.' : 'Type a query or industrial tag to begin searching.'}
+              {query ? 'No matching machines or records found.' : 'Type a query or machine tag to begin searching.'}
             </div>
           ) : (
             results.map((item, idx) => (
@@ -166,7 +166,7 @@ export default function GlobalSearchModal({ isOpen, onClose, onSelectAsset, onOp
 
         {/* Footer */}
         <div className="p-3 border-t border-slate-800 bg-slate-950 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-          <span>Search hybrid index across tags & FAISS embeddings</span>
+          <span>Search across machines, components &amp; records</span>
           <span>Press ESC to exit</span>
         </div>
       </div>

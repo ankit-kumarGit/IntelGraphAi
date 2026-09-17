@@ -12,6 +12,7 @@ from app.models.asset import AssetCreate, Component
 from app.models.maintenance import MaintenanceRecord, InspectionRecord, FailureRecord, Finding, TelemetryPoint
 from app.models.compliance import ComplianceRequirement
 from app.models.notes import HumanNote
+from app.services.neo4j_service import neo4j_graph
 
 def create_pdf(filepath: Path, title: str, pages_content: list[tuple[str, list[str]]]):
     c = canvas.Canvas(str(filepath), pagesize=letter)
@@ -227,91 +228,7 @@ def seed_database():
             "Instrumentation: Temperature Transmitter TT-101, Flow Transmitter FT-202\n"
         )
 
-    # 2. Ingest Documents into Database & FAISS
-    print("Ingesting and indexing documents...")
-    doc_service.process_and_save_document(
-        file_path=oem_pdf,
-        filename="Pump_P101_OEM_Manual.pdf",
-        asset_tag="P-101",
-        category="OEM Manual",
-        version="v2.1",
-        governance_status="Approved",
-        effective_date="2021-06-01",
-        review_date="2027-01-01"
-    )
-    doc_service.process_and_save_document(
-        file_path=sop_pdf,
-        filename="SOP-101_Centrifugal_Pump_Operation.pdf",
-        asset_tag="P-101",
-        category="SOP",
-        version="v3.0",
-        governance_status="Approved",
-        effective_date="2023-01-15",
-        review_date="2027-01-15"
-    )
-    doc_service.process_and_save_document(
-        file_path=maint_2024_pdf,
-        filename="P101_Maintenance_Report_March_2024.pdf",
-        asset_tag="P-101",
-        category="Maintenance",
-        version="v1.0",
-        governance_status="Approved",
-        effective_date="2024-03-12",
-        review_date="2028-03-12"
-    )
-    doc_service.process_and_save_document(
-        file_path=insp_2025_pdf,
-        filename="P101_Inspection_Report_Aug_2025.pdf",
-        asset_tag="P-101",
-        category="Inspection",
-        version="v1.0",
-        governance_status="Approved",
-        effective_date="2025-08-15",
-        review_date="2027-08-15"
-    )
-    doc_service.process_and_save_document(
-        file_path=fail_2026_pdf,
-        filename="P101_Failure_Report_Feb_2026.pdf",
-        asset_tag="P-101",
-        category="Incident",
-        version="v1.0",
-        governance_status="Approved",
-        effective_date="2026-02-22",
-        review_date="2028-02-22"
-    )
-    doc_service.process_and_save_document(
-        file_path=obsolete_pdf,
-        filename="P101_SOP_Obsolete_v1.0.pdf",
-        asset_tag="P-101",
-        category="SOP",
-        version="v1.0",
-        governance_status="Obsolete",
-        effective_date="2018-05-10",
-        review_date="2021-05-10"
-    )
-    doc_service.process_and_save_document(
-        file_path=p205_pdf,
-        filename="P205_Slurry_Pump_Datasheet.pdf",
-        asset_tag="P-205",
-        category="OEM Manual",
-        version="v1.0",
-        governance_status="Approved",
-        effective_date="2026-01-10",
-        review_date="2028-01-10"
-    )
-    doc_service.process_and_save_document(
-        file_path=pid_txt,
-        filename="Unit2_Process_PID_Flowsheet.txt",
-        asset_tag="P-101",
-        category="P&ID",
-        version="v4.0",
-        governance_status="Approved",
-        effective_date="2023-11-20",
-        review_date="2027-11-20",
-        is_pid=True
-    )
-
-    # 3. Seed Assets
+    # 2. Seed Assets First
     print("Seeding asset records...")
     assets_data = [
         AssetCreate(
@@ -361,6 +278,50 @@ def seed_database():
             ]
         ),
         AssetCreate(
+            tag="P-194",
+            name="Hydrocarbon Process Pump (Centrifugal)",
+            asset_type="Centrifugal Pump",
+            manufacturer="Flowserve",
+            model="CP-194",
+            serial_number="P194-2022-8841",
+            organization="Apex Industrial Energy",
+            sector="Energy & Chemicals",
+            plant="Plant A - Gulf Coast",
+            area="Unit 2 - Fluid Processing",
+            status="Operational",
+            installation_date="2022-03-15",
+            criticality="Critical",
+            description="Primary hydrocarbon transfer process pump for Unit 2 processing line.",
+            aliases=["P194", "PUMP 194", "PUMP-194", "CP-194", "TAG-P194"],
+            components=[
+                Component(id="comp_p194_de_bearing", name="Drive-End Bearing", part_number="SKF-6314-2Z", status="Operational", description="Drive-end deep groove bearing"),
+                Component(id="comp_p194_nde_bearing", name="Non-Drive-End Bearing", part_number="SKF-NU-314", status="Operational", description="Non-drive-end cylindrical roller bearing"),
+                Component(id="comp_p194_seal", name="Mechanical Seal", part_number="BURG-M7N", status="Operational", description="Cartridge mechanical seal")
+            ]
+        ),
+        AssetCreate(
+            tag="P-194B",
+            name="Cooling Water Process Pump B",
+            asset_type="Centrifugal Pump",
+            manufacturer="Flowserve",
+            model="CP-194B",
+            serial_number="P194B-2022-8842",
+            organization="Apex Industrial Energy",
+            sector="Energy & Chemicals",
+            plant="Plant A - Gulf Coast",
+            area="Unit 2 - Fluid Processing",
+            status="Operational",
+            installation_date="2022-03-15",
+            criticality="High",
+            description="Duplex cooling water auxiliary process pump B for Unit 2 fluid circuit.",
+            aliases=["P194B", "PUMP 194B", "PUMP-194B", "CP-194B"],
+            components=[
+                Component(id="comp_p194b_de_bearing", name="Drive-End Bearing", part_number="SKF-6314-2Z", status="Operational", description="Drive-end bearing"),
+                Component(id="comp_p194b_nde_bearing", name="Non-Drive-End Bearing", part_number="SKF-NU-314", status="Operational", description="Non-drive-end bearing"),
+                Component(id="comp_p194b_seal", name="Mechanical Seal", part_number="BURG-M7N", status="Operational", description="Mechanical seal")
+            ]
+        ),
+        AssetCreate(
             tag="C-201",
             name="Reciprocating Gas Compressor",
             asset_type="Compressor",
@@ -369,16 +330,16 @@ def seed_database():
             serial_number="CR-2019-1102",
             organization="Apex Industrial Energy",
             sector="Energy & Chemicals",
-            plant="Plant B - Sabine River",
-            area="Unit 1 - Gas Compression",
-            status="Maintenance Due",
-            installation_date="2019-11-05",
+            plant="Plant A - Gulf Coast",
+            area="Unit 2 - Gas Compression",
+            status="Operational",
+            installation_date="2019-11-04",
             criticality="Critical",
-            description="3-stage reciprocating compressor for hydrocarbon overhead gas.",
-            aliases=["C201", "COMP 201", "COMP-201"],
+            description="Two-stage reciprocating compressor feeding the fuel gas header.",
+            aliases=["C201", "COMPRESSOR 201", "RECIP COMPRESSOR 201"],
             components=[
-                Component(id="comp_c201_piston", name="High Pressure Piston", status="Warning"),
-                Component(id="comp_c201_valves", name="Suction Valves", status="Operational")
+                Component(id="comp_c201_valve", name="Suction Valve Assembly", status="Operational"),
+                Component(id="comp_c201_piston", name="Stage 1 Piston Rings", status="Operational")
             ]
         ),
         AssetCreate(
@@ -404,17 +365,17 @@ def seed_database():
         ),
         AssetCreate(
             tag="P-205",
-            name="Slurry Transfer Pump",
+            name="High-Pressure Slurry Booster Pump",
             asset_type="Slurry Pump",
             manufacturer="Warman Industrial",
-            model="AH-100",
-            serial_number="P205-2026-0012",
+            model="AH-200 Heavy Duty",
+            serial_number="P205-2023-5501",
             organization="Apex Industrial Energy",
             sector="Energy & Chemicals",
             plant="Plant A - Gulf Coast",
-            area="Unit 3 - Solids Handling",
+            area="Unit 2 - Fluid Processing",
             status="Operational",
-            installation_date="2026-01-10",
+            installation_date="2023-08-20",
             criticality="High",
             description="Brand-new asset registered directly in the platform to build machine history from day one.",
             aliases=["P205", "PUMP 205", "SLURRY PUMP 205"],
@@ -422,11 +383,181 @@ def seed_database():
                 Component(id="comp_p205_liner", name="High Chrome Casing Liner", status="Operational"),
                 Component(id="comp_p205_impeller", name="Slurry Impeller", status="Operational")
             ]
+        ),
+        AssetCreate(
+            tag="P-203",
+            name="Centrifugal Slurry Booster Pump",
+            asset_type="Slurry Pump",
+            manufacturer="Warman Industrial",
+            model="AH-150 Heavy",
+            serial_number="P203-2022-7712",
+            organization="Apex Industrial Energy",
+            sector="Energy & Chemicals",
+            plant="Plant A - Gulf Coast",
+            area="Unit 3 - Solids Handling",
+            status="Warning",
+            installation_date="2022-09-14",
+            criticality="High",
+            description="Booster pump operating in tandem with slurry transfer line. Historical evidence correlates elevated bearing temperature and vibration.",
+            aliases=["P203", "PUMP 203", "PUMP-203"],
+            components=[
+                Component(id="comp_p203_bearing", name="Drive-End Roller Bearing", status="Warning"),
+                Component(id="comp_p203_impeller", name="High Chrome Impeller", status="Operational")
+            ]
+        ),
+        AssetCreate(
+            tag="P-307",
+            name="Condensate Extraction Pump",
+            asset_type="Centrifugal Pump",
+            manufacturer="Flowserve",
+            model="DVSH Heavy Duty",
+            serial_number="P307-2020-3319",
+            organization="Apex Industrial Energy",
+            sector="Energy & Chemicals",
+            plant="Plant B - Sabine River",
+            area="Unit 1 - Steam & Condensate",
+            status="Operational",
+            installation_date="2020-03-22",
+            criticality="Critical",
+            description="Critical steam condensate extraction pump. Experienced bearing ball cage fatigue during turnaround.",
+            aliases=["P307", "PUMP 307", "PUMP-307"],
+            components=[
+                Component(id="comp_p307_thrust_bearing", name="Thrust Bearing Assembly", status="Operational"),
+                Component(id="comp_p307_shaft", name="Pump Shaft", status="Operational")
+            ]
         )
     ]
 
     for a in assets_data:
         asset_service.create_asset(a)
+
+    # 3. Ingest Documents into Database & FAISS
+    print("Ingesting and indexing documents...")
+    doc_service.process_and_save_document(
+        file_path=oem_pdf,
+        filename="Pump_P101_OEM_Manual.pdf",
+        asset_tag="P-101",
+        category="OEM Manual",
+        version="v2.1",
+        governance_status="Approved",
+        effective_date="2021-06-01",
+        review_date="2027-01-01",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=sop_pdf,
+        filename="SOP-101_Centrifugal_Pump_Operation.pdf",
+        asset_tag="P-101",
+        category="SOP",
+        version="v3.0",
+        governance_status="Approved",
+        effective_date="2023-01-15",
+        review_date="2027-01-15",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=maint_2024_pdf,
+        filename="P101_Maintenance_Report_March_2024.pdf",
+        asset_tag="P-101",
+        category="Maintenance",
+        version="v1.0",
+        governance_status="Approved",
+        effective_date="2024-03-12",
+        review_date="2028-03-12",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=insp_2025_pdf,
+        filename="P101_Inspection_Report_Aug_2025.pdf",
+        asset_tag="P-101",
+        category="Inspection",
+        version="v1.0",
+        governance_status="Approved",
+        effective_date="2025-08-15",
+        review_date="2027-08-15",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=fail_2026_pdf,
+        filename="P101_Failure_Report_Feb_2026.pdf",
+        asset_tag="P-101",
+        category="Incident",
+        version="v1.0",
+        governance_status="Approved",
+        effective_date="2026-02-22",
+        review_date="2028-02-22",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=obsolete_pdf,
+        filename="P101_SOP_Obsolete_v1.0.pdf",
+        asset_tag="P-101",
+        category="SOP",
+        version="v1.0",
+        governance_status="Obsolete",
+        effective_date="2018-05-10",
+        review_date="2021-05-10",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=p205_pdf,
+        filename="P205_Slurry_Pump_Datasheet.pdf",
+        asset_tag="P-205",
+        category="OEM Manual",
+        version="v1.0",
+        governance_status="Approved",
+        effective_date="2026-01-10",
+        review_date="2028-01-10",
+        create_missing_machine=True
+    )
+    doc_service.process_and_save_document(
+        file_path=pid_txt,
+        filename="Unit2_Process_PID_Flowsheet.txt",
+        asset_tag="P-101",
+        category="P&ID",
+        version="v4.0",
+        governance_status="Approved",
+        effective_date="2023-11-20",
+        review_date="2027-11-20",
+        is_pid=True,
+        create_missing_machine=True,
+        explicit_override=True
+    )
+
+    # Ingest P-194 Baseline Package (12 Files)
+    p194_pkg_dir = Path("/Users/ankitkumar/Desktop/IntelGraphAI/test_p194_package")
+    if p194_pkg_dir.exists():
+        p194_files = [
+            "P-194_Process_Flowsheet.txt",
+            "P-194_Shift_Handover.eml",
+            "P-194_Site_Upload_Package.zip",
+            "P-194_Failure_Incident_Report.pdf",
+            "P-194_Inspection_Report.pdf",
+            "P-194_Maintenance_Report.pdf",
+            "P-194_Maintenance_Schedule.xlsx",
+            "P-194_OEM_Manual.pdf",
+            "P-194_PID_Diagram.png",
+            "P-194_Scanned_Field_Checklist.png",
+            "P-194_Telemetry.csv",
+            "SOP-P194-01-Operation.pdf"
+        ]
+        for fn in p194_files:
+            fp = p194_pkg_dir / fn
+            if fp.exists():
+                cat = "Maintenance" if "Maintenance" in fn else "OEM Manual" if "OEM" in fn else "Incident" if "Failure" in fn or "Incident" in fn else "Inspection" if "Inspection" in fn or "Checklist" in fn else "SOP" if "SOP" in fn else "Telemetry" if "Telemetry" in fn else "P&ID" if "PID" in fn or "Flowsheet" in fn else "Other"
+                try:
+                    doc_service.process_and_save_document(
+                        file_path=fp,
+                        filename=fn,
+                        asset_tag="P-194",
+                        category=cat,
+                        version="v1.0",
+                        governance_status="Approved",
+                        create_missing_machine=True,
+                        explicit_override=True
+                    )
+                except Exception as ex:
+                    print(f"Notice: skipped {fn}: {ex}")
 
     # 4. Seed Maintenance Records
     print("Seeding maintenance work orders...")
@@ -471,6 +602,32 @@ def seed_database():
             hours_spent=3.0,
             findings="Grease discoloration noted.",
             status="Completed"
+        ),
+        MaintenanceRecord(
+            record_id="maint_wo_2031",
+            asset_tag="P-203",
+            work_order_number="WO-2031",
+            record_type="Corrective Repair",
+            date="2026-01-28",
+            technician="M. Vance",
+            description="Lubricant flushed and drive-end roller bearing inspected following vibration alarm.",
+            components_replaced=["Drive-End Roller Bearing"],
+            hours_spent=6.5,
+            findings="Grease emulsification and early ball fatigue spalling.",
+            status="Completed"
+        ),
+        MaintenanceRecord(
+            record_id="maint_wo_3042",
+            asset_tag="P-307",
+            work_order_number="WO-3042",
+            record_type="Preventive Overhaul",
+            date="2025-11-15",
+            technician="T. Howell",
+            description="Turnaround scheduled overhaul and thrust bearing assembly replacement.",
+            components_replaced=["Thrust Bearing Assembly"],
+            hours_spent=12.0,
+            findings="Inner race micro-pitting observed.",
+            status="Completed"
         )
     ]
     for m in maint_records:
@@ -513,6 +670,28 @@ def seed_database():
             observations="Stage 2 suction valve temperature elevated by 14°C. Valve overhaul due.",
             vibration_level_mm_s=4.1,
             result="Warning"
+        ),
+        InspectionRecord(
+            inspection_id="INSP-781",
+            asset_tag="P-203",
+            date="2026-01-20",
+            inspector="R. Jenkins",
+            inspection_type="Vibration & Thermographic Survey",
+            parameters_checked=["Bearing Vibration", "Housing Temperature"],
+            observations="Vibration elevated to 5.9 mm/s RMS on drive-end roller bearing. Housing temperature 74°C.",
+            vibration_level_mm_s=5.9,
+            result="Warning"
+        ),
+        InspectionRecord(
+            inspection_id="INSP-620",
+            asset_tag="P-307",
+            date="2025-11-10",
+            inspector="R. Jenkins",
+            inspection_type="Pre-turnaround Acoustic Survey",
+            parameters_checked=["Acoustic Demodulation", "Overall Vibration"],
+            observations="High-frequency demodulation indicates early thrust bearing ball micro-pitting.",
+            vibration_level_mm_s=4.8,
+            result="Warning"
         )
     ]
     for insp in inspections:
@@ -545,6 +724,30 @@ def seed_database():
             root_cause_hypothesis="Grease starvation.",
             corrective_action="Lubricant purged and topped up with ISO VG 46 equivalent.",
             downtime_hours=4.0
+        ),
+        FailureRecord(
+            failure_id="FAIL-2026-P203",
+            asset_tag="P-203",
+            date="2026-01-25",
+            title="Drive-End Bearing High Temperature Trip",
+            failure_mode="Bearing Overheating & High Vibration",
+            component="Drive-End Roller Bearing",
+            severity="High",
+            root_cause_hypothesis="Operating under elevated vibration and grease emulsification.",
+            corrective_action="Flushed lubrication and replaced drive-end roller bearing.",
+            downtime_hours=8.0
+        ),
+        FailureRecord(
+            failure_id="FAIL-2025-P307",
+            asset_tag="P-307",
+            date="2025-11-12",
+            title="Thrust Bearing Inner Ring Micro-Pitting",
+            failure_mode="Bearing Wear / Cage Fatigue",
+            component="Thrust Bearing Assembly",
+            severity="Medium",
+            root_cause_hypothesis="Extended service hours past relubrication threshold.",
+            corrective_action="Turnaround scheduled replacement.",
+            downtime_hours=0.0
         )
     ]
     for f in failures:
@@ -564,6 +767,32 @@ def seed_database():
             supporting_records=["WO-1023", "INSP-456", "WO-1189"],
             recommended_action="Review bearing inspection procedure and lubricant sampling frequency per SOP-101 Section 4.2.",
             source_procedure="OEM Manual XYZ-200 / SOP-101",
+            owner="Maintenance Lead"
+        ),
+        Finding(
+            finding_id="FIND-P203-01",
+            asset_tag="P-203",
+            title="Elevated Drive-End Bearing Temperature & Vibration",
+            severity="High",
+            status="Open",
+            detected_date="2026-01-26",
+            evidence_summary="INSP-781 measured 5.9 mm/s RMS (exceeding 4.5 mm/s limit) with 74°C housing temperature.",
+            supporting_records=["INSP-781", "WO-2031"],
+            recommended_action="Conduct alignment inspection and lubricant sampling per SOP-101.",
+            source_procedure="SOP-101 / Warman AH Manual",
+            owner="Reliability Lead"
+        ),
+        Finding(
+            finding_id="FIND-P307-01",
+            asset_tag="P-307",
+            title="Post-Overhaul Vibration Spectrum Baseline Required",
+            severity="Medium",
+            status="Open",
+            detected_date="2026-02-01",
+            evidence_summary="Turnaround overhaul completed in WO-3042; post-overhaul 90-day baseline vibration check due.",
+            supporting_records=["WO-3042"],
+            recommended_action="Schedule routine acoustic demodulation survey.",
+            source_procedure="ISO 10816-3 Standard",
             owner="Maintenance Lead"
         )
     ]
@@ -638,6 +867,36 @@ def seed_database():
             description="Annual 5-point calibration certificate for suction and discharge pressure instrumentation.",
             required_evidence_type="Calibration Certificate",
             frequency_days=365
+        ),
+        ComplianceRequirement(
+            req_id="OISD-STD-119",
+            title="Periodic Vibration Baseline & Dynamic Seal Inspection (OISD-119)",
+            regulatory_body="OISD (Oil Industry Safety Directorate)",
+            requirement_type="OISD Rotating Equipment",
+            target_asset_types=["Centrifugal Pump", "Compressor", "Slurry Pump"],
+            description="Mandatory periodic overall vibration survey and mechanical seal leak monitoring for hydrocarbon rotating machinery under OISD Standard 119 Clause 6.2.",
+            required_evidence_type="Condition Monitoring Survey & Seal Leak Log",
+            frequency_days=180
+        ),
+        ComplianceRequirement(
+            req_id="PESO-SMPV-2016",
+            title="Statutory Hydrostatic Casing Pressure Integrity Test (PESO)",
+            regulatory_body="PESO (Petroleum & Explosives Safety Organisation)",
+            requirement_type="PESO Statutory Pressure Safety",
+            target_asset_types=["Centrifugal Pump", "Compressor"],
+            description="Statutory periodic hydrostatic casing integrity test and pressure safety device calibration records under Petroleum & Explosives Safety Organisation rules.",
+            required_evidence_type="Statutory Hydrostatic Pressure Test Certificate",
+            frequency_days=1825
+        ),
+        ComplianceRequirement(
+            req_id="FACTORIES-ACT-SEC21",
+            title="Machinery Physical Guarding & Emergency Stop Interlocks (The Factories Act, 1948 - Sec 21)",
+            regulatory_body="The Factories Act, 1948 (Section 21)",
+            requirement_type="Factories Act Machinery Guarding",
+            target_asset_types=["All"],
+            description="Statutory mandate under Section 21: every dangerous rotating part, pump-motor drive coupling, and exposed shaft shall be securely fenced with substantial safeguards and interlock checks.",
+            required_evidence_type="Machinery Guarding Inspection Sign-Off & Interlock Record",
+            frequency_days=365
         )
     ]
     for cr in compliance_reqs:
@@ -673,7 +932,116 @@ def seed_database():
     for user, role, act, t_type, t_id, det in audit_events:
         audit_service.log_event(user=user, role=role, action=act, target_type=t_type, target_id=t_id, details=det)
 
-    print("Seed complete! Synthetic assets, documents, FAISS index, and operational records ready.")
+    # 12. Populate Neo4j Knowledge Graph with Complete Industrial Ontology
+    print("Populating Neo4j Knowledge Graph ontology & relationships...")
+    populate_neo4j_knowledge_graph(db)
+
+    print("Seed complete! Synthetic assets, documents, FAISS index, Qdrant store, Neo4j graph, and operational records ready.")
+
+def populate_neo4j_knowledge_graph(db):
+    # 1. Assets & Components
+    assets = list(db.assets.find())
+    for a in assets:
+        a_id = f"asset_{a['tag'].replace('-', '_')}"
+        neo4j_graph.add_node(a_id, "Asset", {
+            "tag": a["tag"],
+            "name": a.get("name"),
+            "status": a.get("status"),
+            "criticality": a.get("criticality"),
+            "manufacturer": a.get("manufacturer"),
+            "plant": a.get("plant"),
+            "area": a.get("area")
+        })
+        for c in a.get("components", []):
+            cid = f"comp_{c.get('id', c.get('name')).replace('-', '_')}"
+            neo4j_graph.add_node(cid, "Component", c)
+            neo4j_graph.add_relationship(a_id, cid, "HAS_COMPONENT")
+
+    # 2. Documents
+    docs = list(db.documents.find())
+    for d in docs:
+        did = f"doc_{d['document_id']}"
+        neo4j_graph.add_node(did, "Document", {
+            "document_id": d["document_id"],
+            "title": d.get("title"),
+            "category": d.get("category"),
+            "version": d.get("version"),
+            "governance_status": d.get("governance_status")
+        })
+        if d.get("asset_tag"):
+            a_id = f"asset_{d['asset_tag'].replace('-', '_')}"
+            neo4j_graph.add_relationship(a_id, did, "DOCUMENTED_BY")
+
+    # 3. Maintenance Records
+    maints = list(db.maintenance_records.find())
+    for m in maints:
+        mid = f"maint_{m['record_id']}"
+        neo4j_graph.add_node(mid, "MaintenanceRecord", {
+            "record_id": m["record_id"],
+            "work_order_number": m.get("work_order_number"),
+            "date": m.get("date"),
+            "description": m.get("description"),
+            "status": m.get("status")
+        })
+        a_id = f"asset_{m['asset_tag'].replace('-', '_')}"
+        neo4j_graph.add_relationship(a_id, mid, "HAS_MAINTENANCE")
+
+    # 4. Inspections
+    insps = list(db.inspection_records.find())
+    for insp in insps:
+        iid = f"insp_{insp['inspection_id']}"
+        neo4j_graph.add_node(iid, "Inspection", {
+            "inspection_id": insp["inspection_id"],
+            "date": insp.get("date"),
+            "vibration_level_mm_s": insp.get("vibration_level_mm_s"),
+            "result": insp.get("result")
+        })
+        a_id = f"asset_{insp['asset_tag'].replace('-', '_')}"
+        neo4j_graph.add_relationship(a_id, iid, "HAS_INSPECTION")
+
+    # 5. Failures
+    fails = list(db.failures.find())
+    for f in fails:
+        fid = f"fail_{f['failure_id']}"
+        neo4j_graph.add_node(fid, "Failure", {
+            "failure_id": f["failure_id"],
+            "title": f.get("title"),
+            "failure_mode": f.get("failure_mode"),
+            "severity": f.get("severity"),
+            "date": f.get("date")
+        })
+        a_id = f"asset_{f['asset_tag'].replace('-', '_')}"
+        neo4j_graph.add_relationship(a_id, fid, "HAD_FAILURE")
+
+    # 6. Compliance Requirements
+    reqs = list(db.compliance_requirements.find())
+    for cr in reqs:
+        rid = f"req_{cr['req_id'].replace('-', '_')}"
+        neo4j_graph.add_node(rid, "ComplianceRequirement", {
+            "req_id": cr["req_id"],
+            "title": cr.get("title"),
+            "regulatory_body": cr.get("regulatory_body")
+        })
+        # Link to P-101, P-102, P-203, P-307
+        for tag in ["P_101", "P_102", "P_203", "P_307"]:
+            neo4j_graph.add_relationship(f"asset_{tag}", rid, "SUBJECT_TO")
+
+    # 7. Cross-Asset Discovery Edges (Section 30 & 31)
+    neo4j_graph.add_relationship("asset_P_101", "asset_P_203", "SIMILAR_FAILURE", {
+        "common_component": "Drive-End Bearing",
+        "pattern": "Elevated Vibration & High Temperature",
+        "confidence": "High"
+    })
+    neo4j_graph.add_relationship("asset_P_101", "asset_P_307", "SIMILAR_FAILURE", {
+        "common_component": "Bearing Assembly",
+        "pattern": "Bearing Fatigue Spalling & Pitting",
+        "confidence": "High"
+    })
+    neo4j_graph.add_relationship("asset_P_203", "asset_P_307", "SIMILAR_FAILURE", {
+        "common_component": "Bearing Assembly",
+        "pattern": "Operating Past 4,000h Relubrication Limit",
+        "confidence": "Medium"
+    })
 
 if __name__ == "__main__":
     seed_database()

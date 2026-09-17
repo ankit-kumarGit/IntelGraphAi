@@ -1,4 +1,4 @@
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from app.models.document import DocumentChunk
 
 class DocumentChunker:
@@ -11,10 +11,17 @@ class DocumentChunker:
         governance_status: str,
         pages: List[Dict[str, Any]],
         chunk_size: int = 350,
-        chunk_overlap: int = 50
+        chunk_overlap: int = 50,
+        tenant_id: Optional[str] = "tenant_default",
+        document_scope: str = "ASSET",
+        primary_asset_tags: Optional[List[str]] = None,
+        related_asset_tags: Optional[List[str]] = None,
+        record_date: Optional[str] = None
     ) -> List[DocumentChunk]:
         chunks = []
         chunk_counter = 1
+        p_tags = primary_asset_tags or ([asset_tag] if asset_tag else [])
+        r_tags = related_asset_tags or []
 
         for p in pages:
             page_num = p.get("page", 1)
@@ -31,12 +38,17 @@ class DocumentChunker:
                         chunk_id=f"{document_id}_chk_{chunk_counter:03d}",
                         document_id=document_id,
                         asset_tag=asset_tag,
+                        document_scope=document_scope,
+                        primary_asset_tags=p_tags,
+                        related_asset_tags=r_tags,
                         page_number=page_num,
                         section_title=section,
                         content=text,
+                        record_date=record_date,
                         category=category,
                         version=version,
-                        governance_status=governance_status
+                        governance_status=governance_status,
+                        tenant_id=tenant_id
                     )
                 )
                 chunk_counter += 1
@@ -51,12 +63,17 @@ class DocumentChunker:
                             chunk_id=f"{document_id}_chk_{chunk_counter:03d}",
                             document_id=document_id,
                             asset_tag=asset_tag,
+                            document_scope=document_scope,
+                            primary_asset_tags=p_tags,
+                            related_asset_tags=r_tags,
                             page_number=page_num,
                             section_title=section,
                             content=chunk_text,
+                            record_date=record_date,
                             category=category,
                             version=version,
-                            governance_status=governance_status
+                            governance_status=governance_status,
+                            tenant_id=tenant_id
                         )
                     )
                     chunk_counter += 1

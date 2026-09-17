@@ -1,0 +1,24 @@
+From: Marcus Vance <m.vance@industrialops.example.com>
+To: reliability-team@industrialops.example.com, shift-lead@industrialops.example.com
+Subject: Shift Handover - P-194B Pump Operations and Vibration Monitoring
+Date: Wed, 11 Mar 2026 06:45:00 -0600
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+
+Team,
+
+Here is the operational handover summary for the Unit 2 Process Train:
+
+1. Centrifugal Process Pump P-194B has been running continuously overnight at steady throughput (138 m3/h).
+2. Drive-End bearing temperature was logged at 68.0 deg C, which is well within normal operating envelope.
+3. Vibration survey performed at 04:00 showed 2.2 mm/s RMS, demonstrating stable hydrodynamic performance.
+4. Lube oil level was checked and topped up with approved ISO VG 46 mineral turbine oil (approx 250 ml added).
+5. Discharge pressure transmitter PT-194 holds steady at 18.2 bar.
+6. Mechanical seal BURG-M7N barrier pressure is nominal with zero weepage.
+
+Day shift: Please continue routine walkdown and monitor TT-194 during peak afternoon ambient temperature.
+
+Regards,
+Marcus Vance
+Senior Operations & Reliability Lead
+Unit 2 Fluid Processing

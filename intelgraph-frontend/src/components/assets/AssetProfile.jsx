@@ -14,7 +14,8 @@ import {
   Calendar, 
   Send,
   ExternalLink,
-  ChevronRight
+  ChevronRight,
+  Settings
 } from 'lucide-react';
 import { api } from '../../services/api';
 import TabOverview from './TabOverview';
@@ -24,6 +25,7 @@ import TabTelemetry from './TabTelemetry';
 import TabFindings from './TabFindings';
 import TabDocuments from './TabDocuments';
 import TabNotes from './TabNotes';
+import ManageMachineModal from './ManageMachineModal';
 import EvidenceDrawer from '../common/EvidenceDrawer';
 
 export default function AssetProfile({ 
@@ -39,6 +41,7 @@ export default function AssetProfile({
   const [maintenanceData, setMaintenanceData] = useState(null);
   const [notes, setNotes] = useState([]);
   const [auditLogs, setAuditLogs] = useState([]);
+  const [manageModalOpen, setManageModalOpen] = useState(false);
 
   // Evidence Drawer State
   const [evidenceDrawerOpen, setEvidenceDrawerOpen] = useState(false);
@@ -131,54 +134,101 @@ export default function AssetProfile({
     { id: 'activity', label: 'Audit Log', icon: History },
   ];
 
-  const coverageCount = asset.tag === 'P-101' ? 7 : 5;
+  // Coverage count derived from actual completeness_breakdown — NOT hardcoded
+  const completenessBreakdown = asset.completeness_breakdown || [];
+  const coverageCount = completenessBreakdown.filter(i => i.status === 'completed').length;
+  const coverageTotal = completenessBreakdown.length || 8;
 
   return (
     <div className="p-8 max-w-6xl mx-auto space-y-6">
-      {/* 1. MASTER ASSET HEADER (Section 8: Calm, Precise, Scannable) */}
-      <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="font-mono text-sm font-bold text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded border border-brand-500/20">
-                {asset.tag}
-              </span>
-              <span className="text-slate-400 text-xs">• {asset.manufacturer} {asset.model}</span>
-              <span className="text-slate-400 text-xs">• {asset.plant} / {asset.area}</span>
+      {/* 1. MACHINE IDENTITY HEADER */}
+      <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-xl">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="space-y-1">
+            <div className="font-mono text-sm font-bold text-brand-400">
+              {asset.tag}
             </div>
-            <h1 className="text-xl font-bold text-white tracking-tight">
+            <h1 className="text-2xl font-bold text-white tracking-tight">
               {asset.name}
             </h1>
+            <div className="flex items-center gap-2 pt-0.5">
+              <span className={`flex items-center gap-1.5 text-xs font-semibold ${
+                asset.status === 'Operational' ? 'text-emerald-400' : 'text-red-400'
+              }`}>
+                <span className={`w-2 h-2 rounded-full ${
+                  asset.status === 'Operational' ? 'bg-emerald-400' : 'bg-red-400'
+                }`}></span>
+                {asset.status}
+              </span>
+              <span className="text-slate-600">•</span>
+              <span className="text-slate-400 text-xs">{asset.manufacturer} {asset.model}</span>
+              <span className="text-slate-600">•</span>
+              <span className="text-slate-400 text-xs">{asset.plant} / {asset.area}</span>
+            </div>
           </div>
 
-          {/* Core Health Signals */}
-          <div className="flex flex-wrap items-center gap-3 text-xs">
-            {/* Operational State */}
-            <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-semibold flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-              {asset.status}
-            </span>
-
-            {/* Finding Count */}
+          {/* Machine Profile Signals */}
+          <div className="flex flex-wrap items-center gap-2 text-xs">
             {asset.open_findings_count > 0 && (
-              <span className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-semibold flex items-center gap-1.5">
+              <span className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-medium flex items-center gap-1.5">
                 <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
                 <span>{asset.open_findings_count} Finding</span>
               </span>
             )}
 
-            {/* Knowledge Coverage: 7/8 */}
             <span className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 font-mono">
-              <strong className="text-brand-400">{coverageCount}/8</strong> Knowledge Areas
+              <strong className="text-brand-400">{coverageCount}/{coverageTotal}</strong> Knowledge Areas
             </span>
 
-            {/* Next Maintenance */}
             <span className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-slate-400" />
-              <span>Next Maint: <strong className="text-slate-200">12 Sep 2026</strong></span>
+              <span>Next Maint: <strong className="text-slate-200">
+                {maintenanceData?.next_maintenance
+                  ? maintenanceData.next_maintenance
+                  : maintenanceData?.last_maintenance
+                    ? 'Schedule pending'
+                    : 'Not scheduled'}
+              </strong></span>
             </span>
+
+            <button
+              onClick={() => setManageModalOpen(true)}
+              className="px-3 py-1 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 hover:text-white font-medium flex items-center gap-1.5 transition shadow-sm"
+              title="Manage Machine Lifecycle (Edit, Archive, Restore, Delete)"
+            >
+              <Settings className="w-3.5 h-3.5 text-brand-400" />
+              <span>Manage Machine</span>
+            </button>
           </div>
         </div>
+
+        {/* Archived Banner Notice */}
+        {asset.status === 'Archived' && (
+          <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />
+              <div>
+                <h4 className="text-sm font-bold text-amber-300">Machine is in Archived State</h4>
+                <p className="text-xs text-amber-200/80">
+                  This asset is preserved for historical reference and statutory compliance. It does not appear in active operational queues.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={async () => {
+                try {
+                  await api.restoreMachine(asset.tag);
+                  loadAssetData();
+                } catch (e) {
+                  alert('Failed to restore: ' + e.message);
+                }
+              }}
+              className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shrink-0 transition"
+            >
+              Restore Machine
+            </button>
+          </div>
+        )}
 
         {/* 8 Lightweight Tabs Strip */}
         <div className="flex items-center gap-1.5 overflow-x-auto border-t border-slate-800 pt-3">
@@ -280,7 +330,9 @@ export default function AssetProfile({
                   <span className="font-semibold text-brand-400">{log.action}</span>
                   <span className="text-slate-400">{log.timestamp}</span>
                 </div>
-                <p className="text-slate-200">{log.details}</p>
+                <p className="text-slate-200 break-words">
+                  {typeof log.details === 'object' ? (log.details?.note || log.details?.reason || JSON.stringify(log.details)) : log.details}
+                </p>
                 <div className="text-[10px] text-slate-400 font-mono pt-1">
                   Actor: {log.user} ({log.role}) • Target: {log.target_type} [{log.target_id}]
                 </div>
@@ -291,11 +343,11 @@ export default function AssetProfile({
       )}
 
       {/* 3. GROUNDED DECISION-SUPPORT ASSISTANT (Structured Answers) */}
-      <div className="p-5 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-brand-500/25 space-y-4 shadow-xl">
+      <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 shadow-xl">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-purple-400" />
-            <h3 className="font-bold text-sm text-white">Ask Grounded Knowledge Assistant About {asset.tag}</h3>
+            <Sparkles className="w-4 h-4 text-brand-400" />
+            <h3 className="font-bold text-sm text-white">Ask IntelGraph AI About {asset.tag}</h3>
           </div>
           <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
             <CheckCircle2 className="w-3.5 h-3.5" />
@@ -303,13 +355,13 @@ export default function AssetProfile({
           </span>
         </div>
 
-        {/* Question Chips */}
+        {/* Question Chips — dynamic per asset.tag, no hardcoded machine references */}
         <div className="flex flex-wrap items-center gap-2">
           {[
-            'What is the maintenance history of P-101?',
-            'Has P-101 experienced bearing failure before?',
-            'What is the recommended radial bearing clearance?',
-            'What lubricant is approved for P-101?'
+            `What is the maintenance history of ${asset.tag}?`,
+            `Has ${asset.tag} experienced any bearing failures?`,
+            `What is the recommended lubrication specification for ${asset.tag}?`,
+            `What are the key findings from the last inspection of ${asset.tag}?`
           ].map((prompt, i) => (
             <button
               key={i}
@@ -357,7 +409,7 @@ export default function AssetProfile({
                 Structured Operational Decision Support
               </span>
               <span className="text-[10px] text-slate-400 font-mono">
-                {chatResponse.confidence} Confidence • {chatResponse.query_latency_ms}ms
+                {chatResponse.confidence} Confidence • Grounded
               </span>
             </div>
 
@@ -396,6 +448,20 @@ export default function AssetProfile({
         onClose={() => setEvidenceDrawerOpen(false)}
         evidenceData={selectedEvidence}
         onOpenDocViewer={onOpenDocViewer}
+      />
+
+      {/* Manage Machine Lifecycle Modal */}
+      <ManageMachineModal
+        isOpen={manageModalOpen}
+        onClose={() => setManageModalOpen(false)}
+        asset={asset}
+        currentRole={currentRole}
+        onMachineUpdated={(updated) => {
+          setAsset(updated);
+        }}
+        onMachineDeleted={() => {
+          if (onBack) onBack();
+        }}
       />
     </div>
   );

@@ -293,7 +293,7 @@ export default function SettingsView({ currentRole, setCurrentRole }) {
 
                 <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                   <span className="text-slate-400 text-[11px]">Retrieval Accuracy</span>
-                  <div className="text-2xl font-bold font-mono text-cyan-400">
+                  <div className="text-2xl font-bold font-mono text-brand-400">
                     {benchmarkResult.retrieval_accuracy_pct}%
                   </div>
                   <div className="text-[10px] text-slate-400">Top chunk ground truth</div>
@@ -301,7 +301,7 @@ export default function SettingsView({ currentRole, setCurrentRole }) {
 
                 <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
                   <span className="text-slate-400 text-[11px]">Citation Precision</span>
-                  <div className="text-2xl font-bold font-mono text-purple-400">
+                  <div className="text-2xl font-bold font-mono text-emerald-400">
                     {benchmarkResult.citation_accuracy_pct}%
                   </div>
                   <div className="text-[10px] text-slate-400">Exact page & doc cited</div>
@@ -312,16 +312,16 @@ export default function SettingsView({ currentRole, setCurrentRole }) {
                   <div className="text-2xl font-bold font-mono text-brand-400">
                     {benchmarkResult.refusal_accuracy_pct}%
                   </div>
-                  <div className="text-[10px] text-slate-400">Zero hallucinations</div>
+                  <div className="text-[10px] text-slate-400">Grounded in Verified Records</div>
                 </div>
 
                 <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-1">
-                  <span className="text-slate-400 text-[11px]">Speedup vs Manual</span>
+                  <span className="text-slate-400 text-[11px]">Pipeline Latency</span>
                   <div className="text-2xl font-bold font-mono text-amber-400">
-                    {Math.round(benchmarkResult.platform_speedup_factor).toLocaleString()}x
+                    {benchmarkResult.avg_latency_ms} ms
                   </div>
                   <div className="text-[10px] text-slate-400">
-                    {benchmarkResult.avg_latency_ms}ms avg latency
+                    Knowledge retrieval & local processing
                   </div>
                 </div>
               </div>

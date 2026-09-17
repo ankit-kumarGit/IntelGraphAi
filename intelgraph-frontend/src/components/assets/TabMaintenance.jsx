@@ -33,6 +33,10 @@ export default function TabMaintenance({ assetTag, maintenanceData }) {
     setEvidenceDrawerOpen(true);
   };
 
+  // Derive next maintenance from API data — NOT hardcoded
+  const nextMaintenance = maintenanceData?.next_maintenance || null;
+  const lastMaintenance = maintenanceData?.last_maintenance || null;
+
   return (
     <div className="space-y-6">
       {/* 1. NEXT MAINTENANCE CARD */}
@@ -43,12 +47,20 @@ export default function TabMaintenance({ assetTag, maintenanceData }) {
           </span>
           <div className="text-base font-bold text-white mt-0.5 flex items-center gap-2">
             <Calendar className="w-4 h-4 text-brand-400" />
-            <span>12 Sep 2026 (Semi-Annual Bearing & Alignment Service)</span>
+            <span>
+              {nextMaintenance
+                ? nextMaintenance
+                : lastMaintenance
+                  ? 'Schedule pending — refer to PM calendar'
+                  : 'Not scheduled'}
+            </span>
           </div>
         </div>
-        <span className="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-brand-400 border border-slate-700">
-          In 7 Days
-        </span>
+        {nextMaintenance && (
+          <span className="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-brand-400 border border-slate-700">
+            Scheduled
+          </span>
+        )}
       </div>
 
       {/* 2. RECURRING PATTERNS ALERT */}

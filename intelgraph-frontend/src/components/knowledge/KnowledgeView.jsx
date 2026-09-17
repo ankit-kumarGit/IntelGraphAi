@@ -12,7 +12,8 @@ import {
   Play,
   RotateCw,
   Sparkles,
-  ArrowRight
+  UserCheck,
+  Check
 } from 'lucide-react';
 import { api } from '../../services/api';
 import GraphCanvas from './GraphCanvas';
@@ -22,6 +23,24 @@ export default function KnowledgeView({ onSelectAsset }) {
   const [selectedAssetTag, setSelectedAssetTag] = useState('P-101');
   const [mapData, setMapData] = useState({ nodes: [], links: [] });
   const [graphLoading, setGraphLoading] = useState(true);
+
+  // Quarantined OCR / Tag Review Queue State
+  const [quarantinedItems, setQuarantinedItems] = useState([
+    {
+      id: 'q-tag-01',
+      raw_tag: 'P10I',
+      drawing_source: 'Unit2_Visual_Engineering_PID.png',
+      spatial_grid: 'Grid-B / Zone-1',
+      engine: 'Tesseract 5.5.3',
+      confidence_pct: 40.0,
+      classification: 'Centrifugal Pump',
+      suggested_canonical: 'P-101',
+      status: 'Quarantined (Safety Guardrail: Conf < 85%)',
+      reason: 'Degraded pixel contrast / optical OCR ambiguity between character "I" and digit "1". Auto-linking blocked to prevent hallucination.'
+    }
+  ]);
+  const [confirmingId, setConfirmingId] = useState(null);
+  const [reviewMessage, setReviewMessage] = useState(null);
 
   // Documents State
   const [documents, setDocuments] = useState([]);
@@ -73,6 +92,39 @@ export default function KnowledgeView({ onSelectAsset }) {
     } finally {
       setExtractingPid(false);
     }
+  };
+
+  const handleConfirmQuarantined = async (item) => {
+    setConfirmingId(item.id);
+    try {
+      const formData = new FormData();
+      formData.append('document_id', 'Unit2_Visual_Engineering_PID');
+      formData.append('confirmed_asset_tag', item.suggested_canonical);
+      formData.append('event_type', 'P&ID Verified Extraction');
+      formData.append('event_date', '2026-09-12');
+      formData.append('component', item.classification);
+      formData.append('work_order', 'ENG-PID-U2');
+      formData.append('confirmed_by', 'Lead Reliability Analyst');
+
+      await api.confirmExtraction(formData);
+      setQuarantinedItems(prev => prev.map(q => 
+        q.id === item.id 
+          ? { ...q, status: 'Confirmed & Linked to P-101', confirmed: true } 
+          : q
+      ));
+      setReviewMessage(`Tag '${item.raw_tag}' verified as canonical '${item.suggested_canonical}' and committed to Knowledge Graph.`);
+      setTimeout(() => setReviewMessage(null), 5000);
+    } catch (err) {
+      alert('Confirmation failed: ' + err.message);
+    } finally {
+      setConfirmingId(null);
+    }
+  };
+
+  const handleRejectQuarantined = (itemId) => {
+    setQuarantinedItems(prev => prev.filter(q => q.id !== itemId));
+    setReviewMessage('Quarantined extraction rejected and discarded from graph queue.');
+    setTimeout(() => setReviewMessage(null), 4000);
   };
 
   // Filtered documents
@@ -315,6 +367,67 @@ export default function KnowledgeView({ onSelectAsset }) {
               </button>
             </div>
 
+            {/* 7-STAGE PIPELINE TRANSPARENCY MATRIX */}
+            <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                  P&ID Computer Vision Capability & Limitation Matrix (7-Stage Pipeline)
+                </span>
+                <span className="text-[10px] font-mono text-slate-500">5 Available • 2 Limitations</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-[11px]">
+                <div className="p-2 rounded bg-slate-900 border border-emerald-500/30">
+                  <div className="flex items-center justify-between text-emerald-400 font-semibold mb-0.5">
+                    <span>1. Pixel OCR</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20">AVAILABLE</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">Tesseract v5.5.0 on image pixels</p>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-emerald-500/30">
+                  <div className="flex items-center justify-between text-emerald-400 font-semibold mb-0.5">
+                    <span>2. Tag Detection</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20">AVAILABLE</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">ISA-5.1 regex pattern matching</p>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-emerald-500/30">
+                  <div className="flex items-center justify-between text-emerald-400 font-semibold mb-0.5">
+                    <span>3. Bounding Boxes</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20">AVAILABLE</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">Exact pixel coordinates (x, y, w, h)</p>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-emerald-500/30">
+                  <div className="flex items-center justify-between text-emerald-400 font-semibold mb-0.5">
+                    <span>4. Classification</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20">AVAILABLE</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">Pumps, Compressors, Transmitters</p>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-emerald-500/30">
+                  <div className="flex items-center justify-between text-emerald-400 font-semibold mb-0.5">
+                    <span>5. Spatial Grid</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20">AVAILABLE</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">Grid zones & Neo4j graph linking</p>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-amber-500/30">
+                  <div className="flex items-center justify-between text-amber-400 font-semibold mb-0.5">
+                    <span>6. Symbol Detect</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/20">LIMITATION</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">No deep-learning YOLO icon model</p>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-amber-500/30 col-span-1 sm:col-span-2">
+                  <div className="flex items-center justify-between text-amber-400 font-semibold mb-0.5">
+                    <span>7. Pipe Topology Inference</span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/20">LIMITATION</span>
+                  </div>
+                  <p className="text-[10px] text-slate-400">Contour line tracing not implemented; topology infers from ontology</p>
+                </div>
+              </div>
+            </div>
+
             {pidTags.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
                 {pidTags.map((t, idx) => (
@@ -330,6 +443,107 @@ export default function KnowledgeView({ onSelectAsset }) {
             )}
           </div>
         )}
+      </section>
+
+      {/* 6. QUARANTINED OCR & HUMAN-IN-THE-LOOP REVIEW QUEUE */}
+      <section className="rounded-xl border border-amber-500/30 bg-slate-900 p-5 space-y-4 shadow-lg shadow-black/20">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <UserCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="font-bold text-sm text-white flex items-center gap-2">
+                <span>Quarantined OCR & Human-in-the-Loop Review Queue</span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                  {quarantinedItems.filter(q => !q.confirmed).length} Pending
+                </span>
+              </h3>
+              <p className="text-xs text-slate-400">
+                Low-confidence optical detections (&lt;85%) quarantined by safety guardrails to prevent ungrounded graph pollution
+              </p>
+            </div>
+          </div>
+          {reviewMessage && (
+            <div className="px-3 py-1.5 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>{reviewMessage}</span>
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-3">
+          {quarantinedItems.map((item) => (
+            <div 
+              key={item.id}
+              className={`p-4 rounded-xl border text-xs transition-all ${
+                item.confirmed 
+                  ? 'bg-emerald-950/20 border-emerald-500/30 opacity-90'
+                  : 'bg-slate-950/80 border-slate-800 hover:border-slate-700'
+              }`}
+            >
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
+                <div className="flex items-center gap-3">
+                  <span className="px-2.5 py-1 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30 font-mono font-bold text-xs">
+                    OCR: {item.raw_tag}
+                  </span>
+                  <span className="text-slate-400">→</span>
+                  <span className="text-brand-400 font-mono font-bold text-xs bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">
+                    Candidate: {item.suggested_canonical}
+                  </span>
+                  <span className="text-slate-400 hidden sm:inline">•</span>
+                  <span className="text-slate-300 hidden sm:inline">{item.classification}</span>
+                </div>
+
+                <div className="flex items-center gap-2 font-mono text-[11px]">
+                  <span className="text-slate-400">Confidence:</span>
+                  <span className={`font-bold ${item.confidence_pct >= 85 ? 'text-emerald-400' : 'text-amber-400'}`}>
+                    {item.confidence_pct.toFixed(1)}%
+                  </span>
+                  <span className="text-slate-600">|</span>
+                  <span className="text-slate-400">{item.spatial_grid}</span>
+                </div>
+              </div>
+
+              <div className="py-2.5 text-slate-300 leading-relaxed text-[11px] space-y-1">
+                <p><strong className="text-slate-400">Source:</strong> {item.drawing_source} (Engine: {item.engine})</p>
+                <p><strong className="text-slate-400">Safety Guardrail Reason:</strong> {item.reason}</p>
+              </div>
+
+              <div className="pt-2 flex items-center justify-between">
+                <span className={`px-2 py-0.5 rounded text-[10px] font-mono ${
+                  item.confirmed ? 'text-emerald-400 bg-emerald-500/10' : 'text-amber-400 bg-amber-500/10'
+                }`}>
+                  Status: {item.status}
+                </span>
+
+                {!item.confirmed ? (
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleRejectQuarantined(item.id)}
+                      className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs transition-all"
+                    >
+                      Reject & Discard
+                    </button>
+                    <button
+                      onClick={() => handleConfirmQuarantined(item)}
+                      disabled={confirmingId === item.id}
+                      className="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center gap-1.5 shadow-md shadow-emerald-600/20 disabled:opacity-50"
+                    >
+                      {confirmingId === item.id ? <RotateCw className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
+                      <span>Approve & Link to P-101</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-semibold">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Committed to Knowledge Graph</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Document Viewer Modal */}

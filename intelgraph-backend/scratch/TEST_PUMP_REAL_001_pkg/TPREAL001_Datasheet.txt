@@ -1,0 +1,52 @@
+EQUIPMENT TECHNICAL DATASHEET
+====================================
+Equipment Tag: TEST-PUMP-REAL-001
+Equipment Name: High-Efficiency Hydrocarbon Feed Pump
+Plant: Bharat Refinery Pvt Ltd — Unit 450 Crude Distillation Unit
+Document No: BRPL-DS-2025-0921
+Revision: R2
+
+DESIGN PARAMETERS
+-----------------
+Equipment Type: Centrifugal Pump (API 610, 11th Edition)
+Maximum Operating Pressure: 29.47 bar
+Design Pressure: 33.00 bar
+Maximum Operating Temperature: 245 deg C
+Design Temperature: 270 deg C
+Design Flow Rate: 312 m3/h
+Rated Head: 178 m
+Driver Type: Electric Motor — 160 kW, 2975 rpm
+Impeller Diameter: 387 mm
+Casing Material: Carbon Steel A216 WCB
+Impeller Material: 316 Stainless Steel
+Shaft Seal: Mechanical Seal (Plan 53B)
+Drive-End Bearing: SKF 6326-C3
+Non-Drive-End Bearing: SKF 6218-C3
+
+MANUFACTURER DETAILS
+--------------------
+Manufacturer: Bharat Pump Works Ltd
+Model Number: BPWL-CFP-450-XHD
+Serial Number: BPWL-2025-SN-78341
+Year of Manufacture: 2025
+Country of Origin: India
+
+INSTALLATION & COMMISSIONING
+-----------------------------
+Installation Date: 14-Mar-2025
+Commissioning Date: 02-Apr-2025
+Operating Hours at Commissioning: 0
+
+CONNECTED COMPONENTS
+--------------------
+Connected Component: SEAL-POT-TPR001
+Component Type: Seal Pot (Plan 53B Reservoir)
+Component Condition: Nominal
+
+Connected Component: COUPLING-TPR001
+Component Type: Flexible Disc Coupling
+Component Condition: Nominal
+
+Connected Component: MOTOR-TPR001
+Component Type: Electric Drive Motor
+Component Condition: Nominal

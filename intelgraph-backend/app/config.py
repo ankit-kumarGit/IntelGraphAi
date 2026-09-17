@@ -19,6 +19,8 @@ class Settings:
     LLM_PROVIDER: str = os.getenv("LLM_PROVIDER", "local")  # local | gemini | openai
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
     GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    DEFAULT_TENANT_ID: str = os.getenv("DEFAULT_TENANT_ID", "tenant_default")
+    REQUIRE_MANUAL_APPROVAL_BEFORE_AI: bool = os.getenv("REQUIRE_MANUAL_APPROVAL_BEFORE_AI", "false").lower() in ["true", "1"]
     EMBEDDING_DIM: int = 256
 
 settings = Settings()

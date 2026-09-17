@@ -18,7 +18,7 @@ class EntityResolutionService:
         """
         clean_input = re.sub(r"[^\w\s-]", "", raw_input).strip().upper()
         
-        # Direct exact match
+        # Direct exact match against known aliases
         for canonical, aliases in cls.KNOWN_TAG_ALIASES.items():
             if clean_input == canonical:
                 return {
@@ -35,17 +35,44 @@ class EntityResolutionService:
                     "requires_confirmation": False
                 }
 
-        # Substring / fuzzy heuristic
+        # Check dynamic MongoDB assets if available
+        try:
+            from app.database import get_db
+            db = get_db()
+            if db is not None:
+                asset_doc = db.assets.find_one({
+                    "$or": [
+                        {"tag": clean_input},
+                        {"tag": clean_input.replace(" ", "-")},
+                        {"tag": clean_input.replace("_", "-")}
+                    ]
+                })
+                if asset_doc:
+                    return {
+                        "canonical_tag": asset_doc["tag"],
+                        "confidence": 1.0,
+                        "match_type": "database_exact",
+                        "requires_confirmation": False
+                    }
+        except Exception:
+            pass
+
+        # Substring / fuzzy heuristic ONLY when suffix matches exactly
         for canonical, aliases in cls.KNOWN_TAG_ALIASES.items():
-            core_digits = re.findall(r"\d+", canonical)
-            input_digits = re.findall(r"\d+", clean_input)
-            if core_digits and input_digits and core_digits[0] == input_digits[0]:
-                return {
-                    "canonical_tag": canonical,
-                    "confidence": 0.82,
-                    "match_type": "heuristic_digits",
-                    "requires_confirmation": True
-                }
+            # Check prefix and suffix
+            canon_m = re.match(r"^([A-Z]+)-?(\d+)([A-Z]?)$", canonical)
+            input_m = re.match(r"^([A-Z]+)-?(\d+)([A-Z]?)$", clean_input)
+            if canon_m and input_m:
+                # Require prefix, digits, AND suffix to match
+                if (canon_m.group(1) == input_m.group(1) and 
+                    canon_m.group(2) == input_m.group(2) and 
+                    canon_m.group(3) == input_m.group(3)):
+                    return {
+                        "canonical_tag": canonical,
+                        "confidence": 0.90,
+                        "match_type": "normalized_exact",
+                        "requires_confirmation": False
+                    }
 
         # Fallback
         return {

@@ -1,0 +1,46 @@
+BHARAT PUMP WORKS LTD
+INSTALLATION, OPERATION & MAINTENANCE MANUAL
+
+Document Reference: BPWL-IOM-TPR001-HD-R2
+Equipment: High-Efficiency Hydrocarbon Feed Pump
+Model: BPWL-CFP-450-XHD
+Applicable Equipment Tag: TEST-PUMP-REAL-001
+
+CHAPTER 1 — GENERAL DESCRIPTION
+---------------------------------
+The BPWL-CFP-450-XHD is a single-stage, between-bearings centrifugal pump designed to API 610 (11th Edition), Type BB2. It is intended for continuous duty in hydrocarbon process services up to 270 deg C.
+
+CHAPTER 2 — TECHNICAL SPECIFICATIONS
+--------------------------------------
+Maximum Allowable Working Pressure (MAWP): 33.0 bar g
+Maximum Continuous Operating Pressure: 29.47 bar g
+Minimum Continuous Flow (MCF): 90 m3/h — Do NOT operate below MCF without bypass recirculation open.
+Maximum Suction Pressure: 6.0 bar g
+Suction Strainer: Temporary strainer to be removed after 200 operating hours of commissioning flush.
+Shaft Speed: 2975 rpm (nominal)
+Bearing Lubrication: Shell Gadus S2 V220 grease, OEM-specified only. Do NOT mix greases.
+DE Bearing Grease Quantity: 18 g per regreasing
+NDE Bearing Grease Quantity: 14 g per regreasing
+Regreasing Interval: Every 500 operating hours or 3 months, whichever is earlier.
+Mechanical Seal: John Crane Type 2800 Tandem, Plan 53B
+Seal Pot Barrier Fluid: ISO 46 mineral oil
+Seal Pot Minimum Level: 65% (low level alarm at 60%)
+Maximum Bearing Temperature (DE): 85 deg C (alarm at 80 deg C)
+Maximum Bearing Temperature (NDE): 82 deg C (alarm at 78 deg C)
+Maximum Vibration (Overall RMS): 3.5 mm/s alarm, 5.0 mm/s trip
+
+CHAPTER 3 — STARTUP PROCEDURE (SUMMARY)
+-----------------------------------------
+1. Confirm suction valve fully open and discharge valve cracked.
+2. Confirm seal pot level > 65%.
+3. Start motor. Observe bearing temperatures and vibration for first 10 minutes.
+4. Gradually open discharge valve to design flow.
+5. Confirm minimum flow bypass is open if process flow < 90 m3/h.
+
+CHAPTER 4 — MAINTENANCE SCHEDULE
+----------------------------------
+Interval        Task
+500 hr / 3 mo   Bearing relubrication (both ends)
+1000 hr / 6 mo  Coupling inspection; mechanical seal flush line inspection
+2000 hr / 12 mo Vibration spectrum analysis with specialist instrument
+5000 hr / 24 mo Overhaul: impeller wear-ring clearance check, shaft runout measurement

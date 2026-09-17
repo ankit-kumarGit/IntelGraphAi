@@ -79,7 +79,7 @@ export default function TabTelemetry({ assetTag }) {
     unit = 'bar';
     threshold = 16.5;
     thresholdLabel = 'PSV Relief Setting: 16.5 bar';
-    lineColor = '#a855f7';
+    lineColor = '#0ea5e9';
   }
 
   const values = points.map(p => p[metricKey]);
@@ -101,16 +101,16 @@ export default function TabTelemetry({ assetTag }) {
 
   return (
     <div className="space-y-6">
-      {/* Synthetic Demo Data Label Banner (Rule #37) */}
-      <div className="p-3 rounded-xl bg-cyan-950/25 border border-cyan-500/30 flex items-center justify-between text-xs text-cyan-300">
+      {/* Synthetic Demo Data Label Banner */}
+      <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between text-xs text-slate-300">
         <div className="flex items-center gap-2">
-          <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+          <Info className="w-4 h-4 text-brand-400 shrink-0" />
           <span>
-            <strong>[Synthetic Demo Data]</strong> — Correlated with verified maintenance work orders and inspection reports.
+            <strong className="text-white">[Demonstration Dataset]</strong> — Correlated with verified maintenance work orders and inspection reports.
           </span>
         </div>
-        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">
-          Synthetic Demo Data
+        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">
+          Demo Baseline
         </span>
       </div>
 
@@ -121,7 +121,7 @@ export default function TabTelemetry({ assetTag }) {
           onClick={() => setActiveMetric('vibration')}
           className={`p-4 rounded-xl border text-left transition-all ${
             activeMetric === 'vibration' 
-              ? 'bg-slate-900 border-brand-400 ring-2 ring-brand-500/20' 
+              ? 'bg-slate-900 border-brand-500 ring-2 ring-brand-500/20' 
               : 'bg-slate-900/70 border-slate-800 hover:border-slate-700'
           }`}
         >
@@ -143,7 +143,7 @@ export default function TabTelemetry({ assetTag }) {
           onClick={() => setActiveMetric('temperature')}
           className={`p-4 rounded-xl border text-left transition-all ${
             activeMetric === 'temperature' 
-              ? 'bg-slate-900 border-amber-400 ring-2 ring-amber-500/20' 
+              ? 'bg-slate-900 border-amber-500 ring-2 ring-amber-500/20' 
               : 'bg-slate-900/70 border-slate-800 hover:border-slate-700'
           }`}
         >
@@ -164,13 +164,13 @@ export default function TabTelemetry({ assetTag }) {
           onClick={() => setActiveMetric('pressure')}
           className={`p-4 rounded-xl border text-left transition-all ${
             activeMetric === 'pressure' 
-              ? 'bg-slate-900 border-purple-400 ring-2 ring-purple-500/20' 
+              ? 'bg-slate-900 border-brand-500 ring-2 ring-brand-500/20' 
               : 'bg-slate-900/70 border-slate-800 hover:border-slate-700'
           }`}
         >
           <div className="flex items-center justify-between text-xs text-slate-400">
             <span>Discharge Pressure</span>
-            <Gauge className="w-4 h-4 text-purple-400" />
+            <Gauge className="w-4 h-4 text-brand-400" />
           </div>
           <div className="text-2xl font-bold font-mono text-white tracking-tight mt-1">
             {latest.discharge_pressure_bar} <span className="text-xs text-slate-400">bar</span>
@@ -184,7 +184,7 @@ export default function TabTelemetry({ assetTag }) {
         <div className="p-4 rounded-xl bg-slate-900 border border-slate-800">
           <div className="flex items-center justify-between text-xs text-slate-400">
             <span>Cumulative Running Hours</span>
-            <Clock className="w-4 h-4 text-cyan-400" />
+            <Clock className="w-4 h-4 text-brand-400" />
           </div>
           <div className="text-2xl font-bold font-mono text-white tracking-tight mt-1">
             {latest.operating_hours.toLocaleString()} <span className="text-xs text-slate-400">hrs</span>
@@ -279,19 +279,24 @@ export default function TabTelemetry({ assetTag }) {
           </svg>
         </div>
 
-        {/* Historical Event Markers Legend */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1 text-xs">
+        {/* Dynamic Telemetry Metric Summary */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1 text-xs font-mono">
           <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
-            <span className="text-amber-400 font-bold block">2025 Warning Spike (6.8 mm/s)</span>
-            <span className="text-[11px] text-slate-400">Condition Analyst logged INSP-456 warning</span>
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">Observed Peak</span>
+            <span className="text-amber-400 font-bold text-sm">{maxVal} {unit}</span>
+            <span className="text-[11px] text-slate-500 block mt-0.5">Maximum reading recorded</span>
           </div>
           <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
-            <span className="text-red-400 font-bold block">2026 Seizure Trip (12.4 mm/s)</span>
-            <span className="text-[11px] text-slate-400">Emergency shutdown & WO-1189 repair window</span>
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">Mean Condition Level</span>
+            <span className="text-brand-400 font-bold text-sm">{(points.reduce((acc, p) => acc + (p[metricKey] || 0), 0) / (points.length || 1)).toFixed(2)} {unit}</span>
+            <span className="text-[11px] text-slate-500 block mt-0.5">Average across {points.length} samples</span>
           </div>
           <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800">
-            <span className="text-emerald-400 font-bold block">2026 Post-Repair Recovery (2.2 mm/s)</span>
-            <span className="text-[11px] text-slate-400">New SKF 6312 installed & aligned</span>
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">Condition Status</span>
+            <span className={`${latest[metricKey] > threshold ? 'text-red-400' : 'text-emerald-400'} font-bold text-sm`}>
+              {latest[metricKey] > threshold ? 'Exceeds Normal Limit' : 'Within Normal Limits'}
+            </span>
+            <span className="text-[11px] text-slate-500 block mt-0.5">Limit: {threshold} {unit}</span>
           </div>
         </div>
       </div>

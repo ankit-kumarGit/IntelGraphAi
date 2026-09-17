@@ -1,5 +1,24 @@
-from typing import Optional, List
+from enum import Enum
+from typing import Optional, List, Dict, Any
 from pydantic import BaseModel, Field
+
+class DependencyType(str, Enum):
+    STANDALONE = "STANDALONE"
+    CONTEXT_DEPENDENT = "CONTEXT_DEPENDENT"
+    GREETING = "GREETING"
+    HYBRID = "HYBRID"
+    CROSS_ASSET = "CROSS_ASSET"
+
+class ConversationState(BaseModel):
+    active_topic: Optional[str] = None
+    active_asset: Optional[str] = None
+    mentioned_assets: List[str] = Field(default_factory=list)
+    last_intent: Optional[str] = None
+    last_scope: Optional[str] = None
+    entities: List[str] = Field(default_factory=list)
+    referents: Dict[str, str] = Field(default_factory=dict)
+    last_answer_subject: Optional[str] = None
+    context_confidence: float = 1.0
 
 class Citation(BaseModel):
     document_name: str
@@ -14,12 +33,21 @@ class Citation(BaseModel):
 class ChatRequest(BaseModel):
     query: str
     asset_tag: Optional[str] = None
-    user_role: str = "Maintenance Engineer"  # Maintenance Engineer | Quality / Compliance User | Plant Manager
+    context_asset_tag: Optional[str] = None  # non-authoritative: currently selected UI machine, for pronoun resolution only
+    tenant_id: Optional[str] = None
+    user_role: str = "Maintenance Engineer"
     trusted_sources_only: bool = True
+    conversation_history: List[dict] = Field(default_factory=list)
+    scope_filter: str = "Auto"  # Auto | Current Asset | Selected Asset | Plant | Organization | General Knowledge
+    active_asset_context: Optional[dict] = None
 
 class ChatResponse(BaseModel):
     answer: str
-    confidence: str = "High"  # High | Medium | Low
+    scope: str = "GENERAL"  # GENERAL | CUSTOMER | HYBRID | CROSS_ASSET | MAINTENANCE | RCA | COMPLIANCE | UNSUPPORTED
+    response_format: str = "CONVERSATIONAL"  # CONVERSATIONAL | CUSTOMER_GROUNDED | HYBRID_ASSESSMENT | RCA_INVESTIGATION | COMPLIANCE_REVIEW | REFUSAL
+    dependency_type: str = "STANDALONE"
+    resolved_query: Optional[str] = None
+    confidence: Optional[str] = None  # High | Medium | Low | None (None for General queries)
     evidence_summary: List[str] = Field(default_factory=list)
     citations: List[Citation] = Field(default_factory=list)
     safety_disclaimer: str = (
@@ -28,6 +56,9 @@ class ChatResponse(BaseModel):
     )
     refused: bool = False
     query_latency_ms: float = 0.0
+    agent_name: str = "IntelGraph AI"
+    traversal_hops: Optional[List[dict]] = Field(default_factory=list)
+    latency_breakdown: Optional[dict] = Field(default_factory=dict)
 
 class BenchmarkQuestion(BaseModel):
     id: str

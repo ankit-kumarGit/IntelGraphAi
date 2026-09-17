@@ -77,12 +77,24 @@ class AssetService:
         return (min(total_score, 100), items)
 
     @staticmethod
-    def get_all_assets() -> List[Dict[str, Any]]:
+    def get_all_assets(include_archived: bool = False, status: Optional[str] = None, tenant_id: Optional[str] = None) -> List[Dict[str, Any]]:
         db = get_db()
         if db is None:
             return []
         
-        assets_cursor = db.assets.find({})
+        query = {}
+        if tenant_id:
+            if tenant_id == "tenant_default":
+                query["$or"] = [{"tenant_id": "tenant_default"}, {"tenant_id": {"$exists": False}}]
+            else:
+                query["tenant_id"] = tenant_id
+
+        if status:
+            query["status"] = status
+        elif not include_archived:
+            query["status"] = {"$ne": "Archived"}
+
+        assets_cursor = db.assets.find(query)
         result = []
         for a in assets_cursor:
             a["_id"] = str(a.get("_id", ""))
@@ -95,12 +107,30 @@ class AssetService:
         return result
 
     @staticmethod
-    def get_asset(tag: str) -> Optional[Dict[str, Any]]:
+    def update_asset(tag: str, update_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        db = get_db()
+        if db is None:
+            return None
+        clean_tag = tag.upper()
+        # Protect immutable tag
+        safe_data = dict(update_data)
+        safe_data.pop("tag", None)
+        safe_data.pop("_id", None)
+        res = db.assets.update_one({"tag": clean_tag}, {"$set": safe_data})
+        if res.matched_count == 0:
+            return None
+        return AssetService.get_asset(clean_tag)
+
+    @staticmethod
+    def get_asset(tag: str, tenant_id: Optional[str] = None) -> Optional[Dict[str, Any]]:
         db = get_db()
         if db is None:
             return None
         
-        asset = db.assets.find_one({"tag": tag.upper()})
+        query = {"tag": tag.upper()}
+        if tenant_id:
+            query["tenant_id"] = tenant_id
+        asset = db.assets.find_one(query)
         if not asset:
             return None
         
@@ -121,6 +151,8 @@ class AssetService:
         asset_dict = data.model_dump()
         asset_dict["tag"] = asset_dict["tag"].upper().strip()
         asset_dict["completeness_score"] = 15  # Day-1 baseline for new machine
+        if not asset_dict.get("tenant_id"):
+            asset_dict["tenant_id"] = "tenant_default"
         
         db.assets.update_one({"tag": asset_dict["tag"]}, {"$set": asset_dict}, upsert=True)
         return AssetService.get_asset(asset_dict["tag"])
@@ -131,7 +163,7 @@ class AssetService:
         hierarchy = {}
 
         for a in assets:
-            org = a.get("organization", "Apex Industrial Energy")
+            org = a.get("organization", "Industrial Operations & Infrastructure")
             sec = a.get("sector", "Energy & Chemicals")
             plt = a.get("plant", "Plant A - Gulf Coast")
             ara = a.get("area", "Unit 2 - Fluid Processing")

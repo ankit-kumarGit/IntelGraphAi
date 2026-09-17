@@ -33,6 +33,7 @@ class AssetBase(BaseModel):
     installation_date: Optional[str] = None
     criticality: str = "High"  # High | Medium | Low
     description: Optional[str] = None
+    tenant_id: Optional[str] = "tenant_default"
     aliases: List[str] = Field(default_factory=list)
 
 class AssetCreate(AssetBase):

@@ -1,0 +1,4 @@
+ENGINEERING DRAWING: P&ID UNIT 2 FLOWSHEET
+Line 101: Suction Feed -> P-101 (Water Pump) -> PT-101 (Pressure Transmitter) -> XV-102 (Isolation Valve)
+Line 102: Secondary Loop -> P-102 (Booster Pump) -> V-104 (Check Valve)
+Line 201: Gas Compression -> C-201 (Gas Compressor) -> T-201 (Drum)

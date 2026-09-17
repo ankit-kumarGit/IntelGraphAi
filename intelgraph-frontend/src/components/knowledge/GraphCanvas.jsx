@@ -83,9 +83,9 @@ function ModuleHubNode({ data, selected }) {
       label: 'Components Module'
     },
     document: {
-      border: 'border-purple-500/50',
-      badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
-      iconColor: 'text-purple-400',
+      border: 'border-brand-500/40',
+      badge: 'bg-brand-500/15 text-brand-300 border-brand-500/30',
+      iconColor: 'text-brand-400',
       label: 'Documents & SOPs'
     },
     maintenance: {
@@ -172,18 +172,18 @@ function EntityCustomNode({ data, selected }) {
       dot: 'bg-cyan-400'
     },
     document: {
-      border: 'border-purple-500/50',
+      border: 'border-brand-500/40',
       bg: 'bg-slate-900/95',
-      badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
-      text: 'text-purple-200',
-      dot: 'bg-purple-400'
+      badge: 'bg-brand-500/15 text-brand-300 border-brand-500/30',
+      text: 'text-slate-200',
+      dot: 'bg-brand-400'
     },
     procedure: {
-      border: 'border-purple-500/50',
+      border: 'border-brand-500/40',
       bg: 'bg-slate-900/95',
-      badge: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
-      text: 'text-purple-200',
-      dot: 'bg-purple-400'
+      badge: 'bg-brand-500/15 text-brand-300 border-brand-500/30',
+      text: 'text-slate-200',
+      dot: 'bg-brand-400'
     },
     maintenance: {
       border: 'border-blue-500/50',
@@ -576,7 +576,7 @@ export default function GraphCanvas({
             onClick={handleToggleExpandAll}
             className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-300 hover:text-white border border-slate-700/80 font-mono text-[11px] font-medium transition-all flex items-center gap-1.5"
           >
-            {allCollapsed ? <Folder className="w-3.5 h-3.5 text-brand-400" /> : <FolderOpen className="w-3.5 h-3.5 text-purple-400" />}
+            {allCollapsed ? <Folder className="w-3.5 h-3.5 text-brand-400" /> : <FolderOpen className="w-3.5 h-3.5 text-brand-400" />}
             <span>{allCollapsed ? 'Expand All' : 'Collapse All (Default)'}</span>
           </button>
         )}
@@ -605,7 +605,7 @@ export default function GraphCanvas({
               className="!bg-slate-900 !border-slate-800 !rounded-lg overflow-hidden" 
               nodeColor={(n) => {
                 if (n.type === 'centralAsset') return '#0284c7';
-                if (n.type === 'moduleHub') return '#8b5cf6';
+                if (n.type === 'moduleHub') return '#0284c7';
                 if (n.data?.type === 'failure') return '#ef4444';
                 if (n.data?.type === 'inspection') return '#10b981';
                 return '#64748b';

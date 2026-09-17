@@ -93,10 +93,10 @@ class BenchmarkRunner:
                 })
 
         avg_latency = round(sum(latencies) / len(latencies), 2) if latencies else 0.0
-        # Manual search estimate: 180 seconds per question
+        # Manual search illustrative estimate (not displayed in production UI without empirical baseline)
         manual_time_per_q_s = 180.0
         platform_time_per_q_s = (avg_latency / 1000.0)
-        speedup = round(manual_time_per_q_s / platform_time_per_q_s, 1) if platform_time_per_q_s > 0 else 500.0
+        speedup = round(manual_time_per_q_s / platform_time_per_q_s, 1) if platform_time_per_q_s > 0 else 0.0
 
         ans_acc = round((passed_count / total) * 100, 1)
         ret_acc = round((correct_retrievals / total_factual_questions * 100), 1) if total_factual_questions > 0 else 100.0
@@ -121,13 +121,18 @@ if __name__ == "__main__":
     db_manager.connect()
     from app.rag.vector_store import vector_store
     vector_store.load()
+    from app.rag.qdrant_store import qdrant_store
+    if qdrant_store.get_points_count() == 0 and vector_store.chunks_metadata:
+        from app.models.document import DocumentChunk
+        doc_chunks = [DocumentChunk(**m) for m in vector_store.chunks_metadata]
+        qdrant_store.fit_and_index(doc_chunks)
     res = BenchmarkRunner.run_benchmark()
     print("================ BENCHMARK REPORT ================")
-    print(f"Total Questions Evaluated : {res.total_questions}")
-    print(f"Overall Passed Count      : {res.passed_count}/{res.total_questions} ({res.answer_accuracy_pct}%)")
-    print(f"Retrieval Accuracy        : {res.retrieval_accuracy_pct}%")
-    print(f"Citation Precision        : {res.citation_accuracy_pct}%")
-    print(f"Refusal Protection Rate   : {res.refusal_accuracy_pct}% (100% on unrecorded queries)")
-    print(f"Average Answer Latency    : {res.avg_latency_ms} ms")
-    print(f"Efficiency Speedup Factor : {res.platform_speedup_factor}x faster than manual folder search")
+    print(f"Total Questions Evaluated           : {res.total_questions}")
+    print(f"Overall Passed Count                : {res.passed_count}/{res.total_questions} ({res.answer_accuracy_pct}%)")
+    print(f"Retrieval Accuracy                  : {res.retrieval_accuracy_pct}%")
+    print(f"Citation Precision                  : {res.citation_accuracy_pct}%")
+    print(f"Refusal Protection Rate             : {res.refusal_accuracy_pct}% (100% on unrecorded queries)")
+    print(f"Average Retrieval/Processing Latency: {res.avg_latency_ms} ms")
+    print(f"Evaluation Mode                     : Local GraphRAG & In-Process Synthesis Engine")
     print("==================================================")

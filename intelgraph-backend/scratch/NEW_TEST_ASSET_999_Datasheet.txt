@@ -1,0 +1,7 @@
+EQUIPMENT SPECIFICATION & COMMISSIONING DATASHEET
+Equipment Tag: NEW-TEST-ASSET-999
+Equipment Name: High Pressure Feed Pump
+Maximum Operating Pressure: 13.73 bar
+Design Flow Rate: 165 m3/h
+Manufacturer: Advanced Thermal Dynamics
+Operating Temperature Limit: 185 deg C

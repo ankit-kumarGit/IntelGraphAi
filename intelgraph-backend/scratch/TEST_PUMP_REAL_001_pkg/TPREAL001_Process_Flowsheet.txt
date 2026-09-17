@@ -1,0 +1,31 @@
+BHARAT REFINERY PVT LTD
+Unit 450 — Crude Distillation Unit
+PROCESS FLOW DESCRIPTION — HYDROCARBON FEED PUMP CIRCUIT
+
+Document No: BRPL-PFD-UNT450-011
+Equipment Tag: TEST-PUMP-REAL-001
+Revision: R1
+
+PROCESS DESCRIPTION
+--------------------
+TEST-PUMP-REAL-001 is the duty hydrocarbon feed pump in Unit 450 Crude Distillation Unit (CDU).
+It transfers desalted crude oil from the desalter drum D-450 to the crude preheat train (exchangers E-450A through E-450F)
+before entry into the atmospheric distillation column T-450.
+
+CIRCUIT SUMMARY
+---------------
+Source: Desalter Drum D-450 — Operating Pressure 1.8–2.6 bar, Temperature 135–155 deg C
+Pump: TEST-PUMP-REAL-001 — Centrifugal, rated 312 m3/h at 178 m head
+Destination: Preheat Train Inlet — Target Pressure 27–28 bar at 312 m3/h
+
+KEY ASSOCIATED INSTRUMENTS
+---------------------------
+FSLL-450A  — Low-Low Flow Interlock (trip at 85 m3/h)
+PDSH-450A  — Suction Strainer High dP Alarm (alarm at 0.30 bar, suppressed on 14-Jan-2026 — see BRPL-INC-2026-0117)
+TE-450-DE  — DE Bearing Temperature Transmitter (alarm 80 deg C, trip 85 deg C)
+TE-450-NDE — NDE Bearing Temperature Transmitter (alarm 78 deg C, trip 82 deg C)
+HV-450A    — Suction Block Valve
+HV-450B    — Discharge Block Valve
+BRPL-MFV-450A — Minimum Flow Bypass Valve (set at 90 m3/h recirculation)
+
+STANDBY PUMP: TEST-PUMP-REAL-001B (identical duty standby in auto-start arrangement)

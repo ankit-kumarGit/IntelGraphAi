@@ -1,0 +1,36 @@
+BHARAT REFINERY PVT LTD
+Unit 450 — Crude Distillation Unit
+FIELD INSPECTION CHECKLIST
+
+Checklist Reference: BRPL-CHK-TPR001-2026-0122
+Equipment Tag: TEST-PUMP-REAL-001
+Date of Inspection: 22-Jan-2026
+Inspection Performed By: M. Fernandez, Field Operator
+Shift: Night Shift — 22:00 hrs
+
+VISUAL FIELD INSPECTION RESULTS
+--------------------------------
+[X] Pump body: No visible leaks, external paint intact
+[X] Mechanical seal drain: Dry — no weepage observed
+[X] Coupling guard: Secured in place, no damage
+[X] Suction strainer dP indicator: 0.09 bar — NORMAL
+[X] Seal pot sight glass: Level at 78% — NORMAL
+[X] Motor cooling fan: Operating, no unusual noise
+[X] Anchor bolts: All tight, no loose fasteners observed
+
+DE VIBRATION (Hand-Held Route, 01:07 hrs)
+------------------------------------------
+DE Bearing Overall RMS: 3.31 mm/s — AMBER (Above 2.9 mm/s baseline, below 3.5 mm/s alarm)
+NDE Bearing Overall RMS: 2.26 mm/s — GREEN (within normal range)
+
+NOTE: DE vibration reading of 3.31 mm/s at 01:07 hrs on 22-Jan-2026 confirms the rising trend reported
+in night shift handover. Reliability Engineer R. Krishnamurthy notified at 01:15 hrs as per handover instruction.
+Further off-route check scheduled at 05:00 hrs.
+
+OPERATOR COMMENTS
+-----------------
+No abnormal noise audible from bearing housing at time of check.
+Slight increase in DE vibration confirmed by instrument — escalation logged.
+Machine remains in service. No emergency stop required.
+
+Signature: M. Fernandez — Field Operator — 01:15 hrs 22-Jan-2026

@@ -1,0 +1,36 @@
+From: Rajesh Nair, Shift Engineer (Day Shift) <r.nair@bharatrefinery.in>
+To: Pradeep Kumar, Shift Engineer (Night Shift) <p.kumar@bharatrefinery.in>
+Cc: Dinesh Mehta, Maintenance Supervisor <d.mehta@bharatrefinery.in>
+Date: Mon, 20 Jan 2026 21:55:00 +0530
+Subject: Shift Handover — Unit 450 — Day Shift 20-Jan-2026 — TEST-PUMP-REAL-001 Elevated Vibration Observation
+
+Night Shift — Unit 450 Handover Notes
+
+Shift: Day Shift — 06:00 to 22:00 hrs — 20-Jan-2026
+
+UNIT STATUS AT HANDOVER:
+Unit 450 CDU operating normally. Feed rate 295 m3/h, target 312 m3/h.
+
+TEST-PUMP-REAL-001 — ACTION REQUIRED
+--------------------------------------
+At 17:30 hrs, DE vibration on TEST-PUMP-REAL-001 was observed at 3.1 mm/s during routine operator round.
+Previous reading on morning route (08:00 hrs) was 2.6 mm/s. Step-change of approximately 0.5 mm/s over 9 hours.
+NDE vibration remains stable at 2.2 mm/s.
+
+This is below the 3.5 mm/s alarm setpoint but above the 2.9 mm/s baseline from the Nov-2025 inspection.
+Reliability Engineer R. Krishnamurthy has been notified by phone at 18:15 hrs — he has requested off-route
+vibration check at 01:00 hrs (night shift) and again at 05:00 hrs.
+
+Please conduct these off-route checks on time and log readings in the DCS historian.
+If vibration exceeds 3.5 mm/s at either check, escalate immediately to Reliability and Maintenance on-call.
+
+ADDITIONAL NOTES:
+- Suction strainer dP confirmed clean at 0.08 bar (well below 0.30 bar alarm).
+- Seal pot level: 80%, normal range.
+- No process deviations. Column pressures and temperatures within normal band.
+- Cold feed risk is LOW tonight — upstream heat exchanger E-450 is operating normally.
+
+Safe shift,
+Rajesh Nair
+Day Shift Engineer — Unit 450
+Bharat Refinery Pvt Ltd

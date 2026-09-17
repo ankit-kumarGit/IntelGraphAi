@@ -112,7 +112,7 @@ export default function EvidenceDrawer({ isOpen, onClose, evidenceData, onOpenDo
             <CheckCircle2 className="w-3.5 h-3.5" />
             <span>Strict Operational Grounding</span>
           </span>
-          <span>Zero Hallucinated Facts</span>
+          <span>Grounded in Verified Records</span>
         </div>
       </div>
     </div>

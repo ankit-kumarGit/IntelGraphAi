@@ -1,0 +1,5 @@
+Date,AssetTag,Vibration_RMS_mm_s,Bearing_Temp_C,Status
+2025-08-15,P-101,6.8,71.0,Warning
+2026-02-21,P-101,9.2,88.0,High Alert
+2026-02-22,P-101,12.4,94.0,Trip Failure
+2026-02-23,P-101,2.2,51.0,Post-Repair Normal

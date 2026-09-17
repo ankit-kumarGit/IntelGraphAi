@@ -1,0 +1,25 @@
+Equipment Tag: TEST-FINAL-001
+Equipment Type: Centrifugal Pump
+Maximum Operating Pressure: 44.44 bar
+Connected Component: TEST-COMP-FINAL-001
+Component Type: Drive-End Bearing
+Component Condition: Normal
+
+FAILURE INCIDENT REPORT - TEST-FINAL-001
+
+This report documents a vibration anomaly observed on TEST-FINAL-001 (Centrifugal Pump)
+installed at Plant A - Gulf Coast, Unit 3 - Solids Handling.
+
+The Drive-End Bearing (TEST-COMP-FINAL-001) showed elevated vibration of 5.1 mm/s RMS
+during the 2026-09-17 condition monitoring inspection.
+
+Maximum Operating Pressure (design rated): 44.44 bar
+Operating Speed: 1480 RPM
+Motor Rating: 37 kW
+Flow Rate: 38 m3/h
+
+Root Cause: Inadequate lubrication due to clogged lube line.
+Corrective Action: Lube line flushed. Bearing replacement scheduled.
+Work Order: WO-TESTFINAL-001
+Technician: Test Engineer
+Date: 2026-09-17

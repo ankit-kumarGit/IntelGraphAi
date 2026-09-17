@@ -1,0 +1,34 @@
+From: operator.lead@gulfcoast-refinery.com
+To: shift-handover@gulfcoast-refinery.com
+Subject: Shift Handover Log — Unit 2 USER-TEST-001 Operational Status
+Date: Wed, 02 Sep 2026 06:30:00 -0500
+Message-ID: <shift-log-20260902-USER-TEST-001@refinery.internal>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+SHIFT HANDOVER LOGBOOK RECORD — UNIT 2
+==================================================
+Date / Time: September 2, 2026 — 06:30 AM Shift Change
+Lead Operator: Frank Reynolds (Day Shift Lead)
+Relieving Operator: Sarah Jenkins (Night Shift Lead)
+
+PRIMARY ASSET STATUS: USER-TEST-001
+Equipment: User Test Pump (Centrifugal Process Pump)
+Current Operating Mode: Continuous Duty (Automated Cascade Control)
+
+1. PROCESS PARAMETERS:
+- Operating Speed: 2,950 RPM
+- Suction Pressure: 2.3 bar
+- Discharge Pressure: 18.4 bar
+- Flow Rate: 144.5 m3/h
+
+2. CONDITION MONITORING:
+- Bearing Drive-End Temp: 62.8 C (Normal, threshold is 75 C)
+- Vibration RMS: 1.48 mm/s (Smooth, ISO Class I acceptable)
+- Mechanical Seal Flush: Plan 11 active, zero gland leakage noted
+
+3. SHIFT ACTIVITIES & REMARKS:
+- Pump USER-TEST-001 completed 24-hour post-overhaul run under WO-8812.
+- All operating parameters remain within OEM Model UT-100 specifications.
+- No active alarms or process interlocks tripped during shift.
+- Handing over custody to Sarah Jenkins.

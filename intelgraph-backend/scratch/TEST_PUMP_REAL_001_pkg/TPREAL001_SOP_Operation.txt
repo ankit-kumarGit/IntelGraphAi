@@ -1,0 +1,55 @@
+BHARAT REFINERY PVT LTD
+STANDARD OPERATING PROCEDURE
+
+SOP Reference: BRPL-SOP-UNT450-002
+Title: Startup, Normal Operation & Shutdown — Hydrocarbon Feed Pump TEST-PUMP-REAL-001
+Revision: Rev 3
+Applicable Equipment: TEST-PUMP-REAL-001
+
+1. PURPOSE
+----------
+This procedure defines the startup, normal operation, and emergency shutdown steps for pump TEST-PUMP-REAL-001
+in Unit 450 CDU crude preheat train service.
+
+2. OPERATING LIMITS
+--------------------
+Minimum Operating Flow: 90 m3/h (minimum continuous flow — do not operate below without bypass)
+Maximum Operating Pressure: 29.47 bar
+Maximum Bearing Temperature: 85 deg C (DE), 82 deg C (NDE)
+Maximum Vibration: 5.0 mm/s RMS (trip setpoint)
+Normal Discharge Pressure Range: 25–28 bar
+Normal Suction Pressure Range: 1.8–2.6 bar
+Seal Pot Minimum Level: 65% (low alarm 60%, trip at 55%)
+
+3. CRITICAL SAFETY PRECAUTIONS
+--------------------------------
+- Do not start pump with discharge valve fully closed.
+- Do not operate below minimum continuous flow (MCF) of 90 m3/h without minimum flow bypass BRPL-MFV-450A open.
+- If bearing temperature exceeds 80 deg C, increase monitoring frequency. Trip at 85 deg C.
+- If vibration exceeds 3.5 mm/s, escalate to Reliability Engineer immediately.
+
+4. STARTUP PROCEDURE
+---------------------
+Step 1: Check suction strainer dP — must be < 0.20 bar before startup. If > 0.20 bar, clean strainer.
+Step 2: Confirm seal pot level > 65%.
+Step 3: Open suction valve (HV-450A) fully. Crack discharge valve (HV-450B) open 10%.
+Step 4: Confirm minimum flow bypass (BRPL-MFV-450A) is open.
+Step 5: Start motor from MCC panel or DCS.
+Step 6: Gradually open discharge valve to achieve required flow 312 m3/h.
+Step 7: Close minimum flow bypass once flow confirmed > 100 m3/h.
+Step 8: Log startup time, initial pressure and temperature readings in the shift log.
+
+5. EMERGENCY SHUTDOWN
+----------------------
+On any of:
+- DE/NDE bearing temperature > 85 / 82 deg C
+- Vibration > 5.0 mm/s
+- Seal pot level < 55%
+- Process LOW-LOW flow interlock (FSLL-450A) activation
+
+Immediate Actions:
+1. Initiate standby pump start (automatic or manual).
+2. Confirm standby pump has taken over duty.
+3. Isolate TEST-PUMP-REAL-001 from suction and discharge.
+4. Notify Maintenance and Reliability.
+5. Complete Shift Log entry with timestamp and reason.

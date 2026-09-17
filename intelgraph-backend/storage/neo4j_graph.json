@@ -1,0 +1,5396 @@
+{
+  "nodes": {
+    "asset_P_102": {
+      "id": "asset_P_102",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-102",
+        "name": "Centrifugal Booster Pump (Standby)",
+        "status": "Operational",
+        "criticality": "High",
+        "manufacturer": "FlowServe",
+        "plant": "Plant A - Gulf Coast",
+        "area": "Unit 2 - Fluid Processing"
+      }
+    },
+    "comp_comp_p102_bearing": {
+      "id": "comp_comp_p102_bearing",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p102_bearing",
+        "name": "Thrust Bearing Set",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "comp_comp_p102_motor": {
+      "id": "comp_comp_p102_motor",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p102_motor",
+        "name": "75kW Motor",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "asset_C_201": {
+      "id": "asset_C_201",
+      "label": "Asset",
+      "properties": {
+        "tag": "C-201",
+        "name": "Reciprocating Gas Compressor",
+        "status": "Operational",
+        "criticality": "Critical",
+        "manufacturer": "Dresser-Rand",
+        "plant": "Plant A - Gulf Coast",
+        "area": "Unit 2 - Gas Compression"
+      }
+    },
+    "comp_comp_c201_piston": {
+      "id": "comp_comp_c201_piston",
+      "label": "Component",
+      "properties": {
+        "id": "comp_c201_piston",
+        "name": "Stage 1 Piston Rings",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "comp_comp_c201_valves": {
+      "id": "comp_comp_c201_valves",
+      "label": "Component",
+      "properties": {
+        "id": "comp_c201_valves",
+        "name": "Suction Valves",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "asset_M_301": {
+      "id": "asset_M_301",
+      "label": "Asset",
+      "properties": {
+        "tag": "M-301",
+        "name": "Main Drive Induction Motor 350kW",
+        "status": "Operational",
+        "criticality": "Medium",
+        "manufacturer": "Siemens",
+        "plant": "Plant A - Gulf Coast",
+        "area": "Unit 1 - Primary Utilities"
+      }
+    },
+    "comp_comp_m301_stator": {
+      "id": "comp_comp_m301_stator",
+      "label": "Component",
+      "properties": {
+        "id": "comp_m301_stator",
+        "name": "Stator Winding",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "comp_comp_m301_rotor": {
+      "id": "comp_comp_m301_rotor",
+      "label": "Component",
+      "properties": {
+        "id": "comp_m301_rotor",
+        "name": "Squirrel Cage Rotor",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "asset_P_205": {
+      "id": "asset_P_205",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-205",
+        "name": "High-Pressure Slurry Booster Pump",
+        "status": "Operational",
+        "criticality": "High",
+        "manufacturer": "Warman Industrial",
+        "plant": "Plant A - Gulf Coast",
+        "area": "Unit 2 - Fluid Processing"
+      }
+    },
+    "comp_comp_p205_liner": {
+      "id": "comp_comp_p205_liner",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p205_liner",
+        "name": "High Chrome Casing Liner",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "comp_comp_p205_impeller": {
+      "id": "comp_comp_p205_impeller",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p205_impeller",
+        "name": "Slurry Impeller",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "asset_P_203": {
+      "id": "asset_P_203",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-203",
+        "name": "Centrifugal Slurry Booster Pump",
+        "status": "Warning",
+        "criticality": "High",
+        "manufacturer": "Warman Industrial",
+        "plant": "Plant A - Gulf Coast",
+        "area": "Unit 3 - Solids Handling"
+      }
+    },
+    "comp_comp_p203_bearing": {
+      "id": "comp_comp_p203_bearing",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p203_bearing",
+        "name": "Drive-End Roller Bearing",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Warning",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "comp_comp_p203_impeller": {
+      "id": "comp_comp_p203_impeller",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p203_impeller",
+        "name": "High Chrome Impeller",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "asset_P_307": {
+      "id": "asset_P_307",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-307",
+        "name": "Condensate Extraction Pump",
+        "status": "Operational",
+        "criticality": "Critical",
+        "manufacturer": "Flowserve",
+        "plant": "Plant B - Sabine River",
+        "area": "Unit 1 - Steam & Condensate"
+      }
+    },
+    "comp_comp_p307_thrust_bearing": {
+      "id": "comp_comp_p307_thrust_bearing",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p307_thrust_bearing",
+        "name": "Thrust Bearing Assembly",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "comp_comp_p307_shaft": {
+      "id": "comp_comp_p307_shaft",
+      "label": "Component",
+      "properties": {
+        "id": "comp_p307_shaft",
+        "name": "Pump Shaft",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "doc_P205_Slurry_Pump_Datasheet": {
+      "id": "doc_P205_Slurry_Pump_Datasheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "P205_Slurry_Pump_Datasheet",
+        "title": "P205 Slurry Pump Datasheet",
+        "category": "OEM Manual",
+        "version": "v1.0",
+        "governance_status": "Approved"
+      }
+    },
+    "doc_Unit2_Process_PID_Flowsheet": {
+      "id": "doc_Unit2_Process_PID_Flowsheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "Unit2_Process_PID_Flowsheet",
+        "title": "Unit2 Process PID Flowsheet",
+        "category": "Engineering",
+        "version": "v1.0",
+        "governance_status": "Approved"
+      }
+    },
+    "maint_maint_wo_2041": {
+      "id": "maint_maint_wo_2041",
+      "label": "MaintenanceRecord",
+      "properties": {
+        "record_id": "maint_wo_2041",
+        "work_order_number": "WO-2041",
+        "date": "2025-11-04",
+        "description": "Lubricant replenishment and seal flush check.",
+        "status": "Completed"
+      }
+    },
+    "maint_maint_wo_2031": {
+      "id": "maint_maint_wo_2031",
+      "label": "MaintenanceRecord",
+      "properties": {
+        "record_id": "maint_wo_2031",
+        "work_order_number": "WO-2031",
+        "date": "2026-01-28",
+        "description": "Lubricant flushed and drive-end roller bearing inspected following vibration alarm.",
+        "status": "Completed"
+      }
+    },
+    "maint_maint_wo_3042": {
+      "id": "maint_maint_wo_3042",
+      "label": "MaintenanceRecord",
+      "properties": {
+        "record_id": "maint_wo_3042",
+        "work_order_number": "WO-3042",
+        "date": "2025-11-15",
+        "description": "Turnaround scheduled overhaul and thrust bearing assembly replacement.",
+        "status": "Completed"
+      }
+    },
+    "insp_INSP-501": {
+      "id": "insp_INSP-501",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-501",
+        "date": "2026-01-14",
+        "vibration_level_mm_s": 4.1,
+        "result": "Warning"
+      }
+    },
+    "insp_INSP-781": {
+      "id": "insp_INSP-781",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-781",
+        "date": "2026-01-20",
+        "vibration_level_mm_s": 5.9,
+        "result": "Warning"
+      }
+    },
+    "insp_INSP-620": {
+      "id": "insp_INSP-620",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-620",
+        "date": "2025-11-10",
+        "vibration_level_mm_s": 4.8,
+        "result": "Warning"
+      }
+    },
+    "fail_FAIL-2025-10": {
+      "id": "fail_FAIL-2025-10",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-2025-10",
+        "title": "Bearing Overheating Alarm",
+        "failure_mode": "High Bearing Temperature",
+        "severity": "Medium",
+        "date": "2025-10-18"
+      }
+    },
+    "fail_FAIL-2026-P203": {
+      "id": "fail_FAIL-2026-P203",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-2026-P203",
+        "title": "Drive-End Bearing High Temperature Trip",
+        "failure_mode": "Bearing Overheating & High Vibration",
+        "severity": "High",
+        "date": "2026-01-25"
+      }
+    },
+    "fail_FAIL-2025-P307": {
+      "id": "fail_FAIL-2025-P307",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-2025-P307",
+        "title": "Thrust Bearing Inner Ring Micro-Pitting",
+        "failure_mode": "Bearing Wear / Cage Fatigue",
+        "severity": "Medium",
+        "date": "2025-11-12"
+      }
+    },
+    "req_API_610_VIB": {
+      "id": "req_API_610_VIB",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "API-610-VIB",
+        "title": "Annual Vibration Baseline Survey (API 610)",
+        "regulatory_body": "API 610 / ISO 10816"
+      }
+    },
+    "req_ISO_14224_REL": {
+      "id": "req_ISO_14224_REL",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "ISO-14224-REL",
+        "title": "Reliability-Centered Maintenance Overhaul Logging",
+        "regulatory_body": "ISO 14224"
+      }
+    },
+    "req_OSHA_1910_LOTO": {
+      "id": "req_OSHA_1910_LOTO",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "OSHA-1910-LOTO",
+        "title": "Lockout/Tagout (LOTO) Energy Isolation Standard",
+        "regulatory_body": "OSHA 1910.147"
+      }
+    },
+    "req_ISA_S51_CALIB": {
+      "id": "req_ISA_S51_CALIB",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "ISA-S51-CALIB",
+        "title": "Pressure Transmitter Annual Calibration Certificate",
+        "regulatory_body": "ISA / IEC 61508"
+      }
+    },
+    "req_OISD_STD_119": {
+      "id": "req_OISD_STD_119",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "OISD-STD-119",
+        "title": "Periodic Vibration Baseline & Dynamic Seal Inspection (OISD-119)",
+        "regulatory_body": "OISD (Oil Industry Safety Directorate)"
+      }
+    },
+    "req_PESO_SMPV_2016": {
+      "id": "req_PESO_SMPV_2016",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "PESO-SMPV-2016",
+        "title": "Statutory Hydrostatic Casing Pressure Integrity Test (PESO)",
+        "regulatory_body": "PESO (Petroleum & Explosives Safety Organisation)"
+      }
+    },
+    "req_FACTORIES_ACT_SEC21": {
+      "id": "req_FACTORIES_ACT_SEC21",
+      "label": "ComplianceRequirement",
+      "properties": {
+        "req_id": "FACTORIES-ACT-SEC21",
+        "title": "Machinery Physical Guarding & Emergency Stop Interlocks (The Factories Act, 1948 - Sec 21)",
+        "regulatory_body": "The Factories Act, 1948 (Section 21)"
+      }
+    },
+    "tag_P_101": {
+      "id": "tag_P_101",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "P-101",
+        "type": "Pump",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_V_102": {
+      "id": "tag_V_102",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "V-102",
+        "type": "Control Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_PT_101": {
+      "id": "tag_PT_101",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "PT-101",
+        "type": "Pressure Transmitter",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_P_102": {
+      "id": "tag_P_102",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "P-102",
+        "type": "Pump",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_V_104": {
+      "id": "tag_V_104",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "V-104",
+        "type": "Control Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_C_201": {
+      "id": "tag_C_201",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "C-201",
+        "type": "Compressor",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_T_201": {
+      "id": "tag_T_201",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "T-201",
+        "type": "Tank / Vessel",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_PSV_101": {
+      "id": "tag_PSV_101",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "PSV-101",
+        "type": "Pressure Safety Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_M_301": {
+      "id": "tag_M_301",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "M-301",
+        "type": "Motor",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_TT_101": {
+      "id": "tag_TT_101",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "TT-101",
+        "type": "Temperature Transmitter",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_FT_202": {
+      "id": "tag_FT_202",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "FT-202",
+        "type": "Flow Transmitter",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_Unit2_Visual_Engineering_PID": {
+      "id": "doc_Unit2_Visual_Engineering_PID",
+      "label": "Document",
+      "properties": {
+        "document_id": "Unit2_Visual_Engineering_PID",
+        "title": "Unit2 Visual Engineering PID",
+        "category": "Engineering",
+        "version": "v1.0",
+        "governance_status": "Approved"
+      }
+    },
+    "tag_P_194": {
+      "id": "tag_P_194",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "P-194",
+        "type": "Pump",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_PT_194": {
+      "id": "tag_PT_194",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "PT-194",
+        "type": "Pressure Transmitter",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_PID_Diagram": {
+      "id": "doc_P-194_PID_Diagram",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_PID_Diagram",
+        "title": "P-194 PID Diagram",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_Scanned_Field_Checklist": {
+      "id": "doc_P-194_Scanned_Field_Checklist",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_Scanned_Field_Checklist",
+        "title": "P-194 Scanned Field Checklist",
+        "category": "Field Checklist",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "concept_Centrifugal_Pump": {
+      "id": "concept_Centrifugal_Pump",
+      "label": "OntologyConcept",
+      "properties": {
+        "name": "Centrifugal Pump",
+        "is_global": true
+      }
+    },
+    "asset_DELETE-TEST-RBAC-002": {
+      "id": "asset_DELETE-TEST-RBAC-002",
+      "label": "Asset",
+      "properties": {
+        "tag": "DELETE-TEST-RBAC-002",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_MACHINE-TENANT-B-001": {
+      "id": "asset_MACHINE-TENANT-B-001",
+      "label": "Asset",
+      "properties": {
+        "tag": "MACHINE-TENANT-B-001",
+        "tenant_id": "tenant_b"
+      }
+    },
+    "tag_T_200": {
+      "id": "tag_T_200",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "T-200",
+        "type": "Tank / Vessel",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_V_194A": {
+      "id": "tag_V_194A",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "V-194A",
+        "type": "Control Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_V_194B": {
+      "id": "tag_V_194B",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "V-194B",
+        "type": "Control Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_P_194B": {
+      "id": "tag_P_194B",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "P-194B",
+        "type": "Pump",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194B_P-194_PID_Diagram": {
+      "id": "doc_P-194B_P-194_PID_Diagram",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194B_P-194_PID_Diagram",
+        "title": "P-194 PID Diagram",
+        "category": "Other",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194B_P-194_Scanned_Field_Checklist": {
+      "id": "doc_P-194B_P-194_Scanned_Field_Checklist",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194B_P-194_Scanned_Field_Checklist",
+        "title": "P-194 Scanned Field Checklist",
+        "category": "Operations & Shift Logs",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_USER-TEST-OCR-001_user_test_ocr_001_scanned_spec": {
+      "id": "doc_USER-TEST-OCR-001_user_test_ocr_001_scanned_spec",
+      "label": "Document",
+      "properties": {
+        "document_id": "USER-TEST-OCR-001_user_test_ocr_001_scanned_spec",
+        "title": "user test ocr 001 scanned spec",
+        "category": "Specification",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_TT_881": {
+      "id": "tag_TT_881",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "TT-881",
+        "type": "Temperature Transmitter",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-205_P205_Slurry_Pump_Datasheet": {
+      "id": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-205_P205_Slurry_Pump_Datasheet",
+        "title": "P205 Slurry Pump Datasheet",
+        "category": "OEM Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Unit2_Process_PID_Flowsheet": {
+      "id": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Unit2_Process_PID_Flowsheet",
+        "title": "Unit2 Process PID Flowsheet",
+        "category": "Engineering",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_Process_Flowsheet": {
+      "id": "doc_P-194_Process_Flowsheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_Process_Flowsheet",
+        "title": "P-194 Process Flowsheet",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_comp_c201_valve": {
+      "id": "comp_comp_c201_valve",
+      "label": "Component",
+      "properties": {
+        "id": "comp_c201_valve",
+        "name": "Suction Valve Assembly",
+        "component_type": "Mechanical",
+        "part_number": null,
+        "serial_number": null,
+        "status": "Operational",
+        "installed_date": null,
+        "description": null
+      }
+    },
+    "doc_T-200_P-194_Process_Flowsheet": {
+      "id": "doc_T-200_P-194_Process_Flowsheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "T-200_P-194_Process_Flowsheet",
+        "title": "P-194 Process Flowsheet",
+        "category": "Operations & Shift Logs",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_V-194A_P-194_PID_Diagram": {
+      "id": "doc_V-194A_P-194_PID_Diagram",
+      "label": "Document",
+      "properties": {
+        "document_id": "V-194A_P-194_PID_Diagram",
+        "title": "P-194 PID Diagram",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_E_201": {
+      "id": "asset_E_201",
+      "label": "Asset",
+      "properties": {
+        "tag": "E-201",
+        "name": "E-201 Heat Exchanger",
+        "asset_type": "Heat Exchanger",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_E_202": {
+      "id": "asset_E_202",
+      "label": "Asset",
+      "properties": {
+        "tag": "E-202",
+        "name": "E-202 Heat Exchanger",
+        "asset_type": "Heat Exchanger",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_E_203": {
+      "id": "asset_E_203",
+      "label": "Asset",
+      "properties": {
+        "tag": "E-203",
+        "name": "E-203 Heat Exchanger",
+        "asset_type": "Heat Exchanger",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_E_204": {
+      "id": "asset_E_204",
+      "label": "Asset",
+      "properties": {
+        "tag": "E-204",
+        "name": "E-204 Heat Exchanger",
+        "asset_type": "Heat Exchanger",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_E_205": {
+      "id": "asset_E_205",
+      "label": "Asset",
+      "properties": {
+        "tag": "E-205",
+        "name": "E-205 Heat Exchanger",
+        "asset_type": "Heat Exchanger",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_E_206": {
+      "id": "asset_E_206",
+      "label": "Asset",
+      "properties": {
+        "tag": "E-206",
+        "name": "E-206 Heat Exchanger",
+        "asset_type": "Heat Exchanger",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_V_194A": {
+      "id": "comp_V_194A",
+      "label": "Component",
+      "properties": {
+        "tag": "V-194A",
+        "name": "V-194A Isolation Valve",
+        "type": "Valve",
+        "system": "Unit 200 Cooling Water System",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_V_194B": {
+      "id": "comp_V_194B",
+      "label": "Component",
+      "properties": {
+        "tag": "V-194B",
+        "name": "V-194B Isolation Valve",
+        "type": "Valve",
+        "system": "Unit 200 Cooling Water System",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_T_990": {
+      "id": "asset_T_990",
+      "label": "Asset",
+      "properties": {
+        "tag": "T-990",
+        "name": "T-990 Process Column / Vessel",
+        "asset_type": "Process Tower",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_T-990_test_turbine_t990_sop": {
+      "id": "doc_T-990_test_turbine_t990_sop",
+      "label": "Document",
+      "properties": {
+        "document_id": "T-990_test_turbine_t990_sop",
+        "title": "test turbine t990 sop",
+        "category": "Standard Operating Procedure",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Failure_Incident_Report_P-101_20260728": {
+      "id": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Failure_Incident_Report_P-101_20260728",
+        "title": "Failure Incident Report P-101 20260728",
+        "category": "Failure / Incident Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Inspection_Report_P-101_20260820": {
+      "id": "doc_P-101_Inspection_Report_P-101_20260820",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Inspection_Report_P-101_20260820",
+        "title": "Inspection Report P-101 20260820",
+        "category": "Condition Monitoring / NDT",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Maintenance_Report_P-101_20260815": {
+      "id": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Maintenance_Report_P-101_20260815",
+        "title": "Maintenance Report P-101 20260815",
+        "category": "Maintenance Report / WO",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Maintenance_Schedule_P-101": {
+      "id": "doc_P-101_Maintenance_Schedule_P-101",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Maintenance_Schedule_P-101",
+        "title": "Maintenance Schedule P-101",
+        "category": "Maintenance Report / WO",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_PI_101": {
+      "id": "comp_PI_101",
+      "label": "Component",
+      "properties": {
+        "tag": "PI-101",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_OEM_Manual_CentrifugalPump_P-101": {
+      "id": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_OEM_Manual_CentrifugalPump_P-101",
+        "title": "OEM Manual CentrifugalPump P-101",
+        "category": "Maintenance Report / WO",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Documentation_Bundle": {
+      "id": "doc_P-101_Documentation_Bundle",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Documentation_Bundle",
+        "title": "P-101 Documentation Bundle",
+        "category": "Maintenance Report / WO",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_PID_CoolingWaterSystem_P-101": {
+      "id": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_PID_CoolingWaterSystem_P-101",
+        "title": "PID CoolingWaterSystem P-101",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "tag_P_101B": {
+      "id": "tag_P_101B",
+      "label": "EquipmentTag",
+      "properties": {
+        "tag": "P-101B",
+        "type": "Pump",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Process_Flowsheet_CWS-100": {
+      "id": "doc_P-101_Process_Flowsheet_CWS-100",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Process_Flowsheet_CWS-100",
+        "title": "Process Flowsheet CWS-100",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_CV_101": {
+      "id": "comp_CV_101",
+      "label": "Component",
+      "properties": {
+        "tag": "CV-101",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TI_102": {
+      "id": "comp_TI_102",
+      "label": "Component",
+      "properties": {
+        "tag": "TI-102",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Scanned_Inspection_Checklist_P-101": {
+      "id": "doc_P-101_Scanned_Inspection_Checklist_P-101",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Scanned_Inspection_Checklist_P-101",
+        "title": "Scanned Inspection Checklist P-101",
+        "category": "Condition Monitoring / NDT",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_ShiftHandover_P-101_20260810": {
+      "id": "doc_P-101_ShiftHandover_P-101_20260810",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_ShiftHandover_P-101_20260810",
+        "title": "ShiftHandover P-101 20260810",
+        "category": "Operations & Shift Logs",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_SOP_P-101_Startup_Shutdown": {
+      "id": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_SOP_P-101_Startup_Shutdown",
+        "title": "SOP P-101 Startup Shutdown",
+        "category": "Operations & Shift Logs",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_PUMP_001": {
+      "id": "asset_TEST_PUMP_001",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-PUMP-001",
+        "name": "TEST-PUMP-001 Industrial Equipment",
+        "asset_type": "Process Machine",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-001_TEST_PUMP_001": {
+      "id": "doc_TEST-PUMP-001_TEST_PUMP_001",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-001_TEST_PUMP_001",
+        "title": "TEST PUMP 001",
+        "category": "OEM Technical Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-001_TEST_PUMP_001_Inspection": {
+      "id": "doc_TEST-PUMP-001_TEST_PUMP_001_Inspection",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-001_TEST_PUMP_001_Inspection",
+        "title": "TEST PUMP 001 Inspection",
+        "category": "Condition Monitoring / NDT",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "insp_INSP-TESTPUMP001": {
+      "id": "insp_INSP-TESTPUMP001",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-TESTPUMP001",
+        "asset_tag": "TEST-PUMP-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_INSP-001": {
+      "id": "wo_INSP-001",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "INSP-001",
+        "asset_tag": "TEST-PUMP-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-001_TEST_PUMP_001_Component": {
+      "id": "doc_TEST-PUMP-001_TEST_PUMP_001_Component",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-001_TEST_PUMP_001_Component",
+        "title": "TEST PUMP 001 Component",
+        "category": "Other / Needs Review",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TEST_COMP_947": {
+      "id": "comp_TEST_COMP_947",
+      "label": "Component",
+      "properties": {
+        "id": "comp_TEST_COMP_947",
+        "tag": "TEST-COMP-947",
+        "name": "Drive-End Bearing",
+        "component_type": "Drive-End Bearing",
+        "condition": "Normal",
+        "status": "Operational",
+        "source_document_id": "TEST-PUMP-001_TEST_PUMP_001_Component",
+        "tenant_id": "tenant_default",
+        "asset_tag": "TEST-PUMP-001"
+      }
+    },
+    "wo_INSP-947": {
+      "id": "wo_INSP-947",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "INSP-947",
+        "asset_tag": "TEST-PUMP-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_PT_194": {
+      "id": "comp_PT_194",
+      "label": "Component",
+      "properties": {
+        "tag": "PT-194",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_FT_194": {
+      "id": "comp_FT_194",
+      "label": "Component",
+      "properties": {
+        "tag": "FT-194",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TT_194": {
+      "id": "comp_TT_194",
+      "label": "Component",
+      "properties": {
+        "tag": "TT-194",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_PSV_194": {
+      "id": "comp_PSV_194",
+      "label": "Component",
+      "properties": {
+        "tag": "PSV-194",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_Shift_Handover": {
+      "id": "doc_P-194_Shift_Handover",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_Shift_Handover",
+        "title": "P-194 Shift Handover",
+        "category": "Shift Handover",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO-9412": {
+      "id": "wo_WO-9412",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-9412",
+        "asset_tag": "TEST-PUMP-REAL-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_Inspection_Report": {
+      "id": "doc_P-194_Inspection_Report",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_Inspection_Report",
+        "title": "P-194 Inspection Report",
+        "category": "Inspection Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_Maintenance_Schedule": {
+      "id": "doc_P-194_Maintenance_Schedule",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_Maintenance_Schedule",
+        "title": "P-194 Maintenance Schedule",
+        "category": "Maintenance Schedule",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_SOP-P194-01-Operation": {
+      "id": "doc_P-194_SOP-P194-01-Operation",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_SOP-P194-01-Operation",
+        "title": "SOP-P194-01-Operation",
+        "category": "Standard Operating Procedure",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_V_194": {
+      "id": "comp_V_194",
+      "label": "Component",
+      "properties": {
+        "tag": "V-194",
+        "type": "Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_P_101": {
+      "id": "asset_P_101",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-101",
+        "name": "P-101 Cooling Water Circulation Pump",
+        "asset_type": "Centrifugal Pump",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "insp_INSP-P101": {
+      "id": "insp_INSP-P101",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-P101",
+        "asset_tag": "P-101",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO-88213": {
+      "id": "wo_WO-88213",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-88213",
+        "asset_tag": "P-101",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Telemetry_P-101_Aug2026": {
+      "id": "doc_P-101_Telemetry_P-101_Aug2026",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Telemetry_P-101_Aug2026",
+        "title": "Telemetry P-101 Aug2026",
+        "category": "Sensor Telemetry & Time Series",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_P_194B": {
+      "id": "asset_P_194B",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-194B",
+        "name": "P-194B Cooling Water Process Pump",
+        "asset_type": "Centrifugal Pump",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "insp_INSP_P194B": {
+      "id": "insp_INSP_P194B",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-P194B",
+        "asset_tag": "P-194B",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO_2026_04417": {
+      "id": "wo_WO_2026_04417",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-2026-04417",
+        "asset_tag": "P-194B",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_unit2_package": {
+      "id": "doc_P-101_unit2_package",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_unit2_package",
+        "title": "unit2 package",
+        "category": "Archive Package",
+        "version": "v1.0-archive",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_NEW_TEST_ASSET_999": {
+      "id": "asset_NEW_TEST_ASSET_999",
+      "label": "Asset",
+      "properties": {
+        "tag": "NEW-TEST-ASSET-999",
+        "name": "NEW-TEST-ASSET-999 Industrial Equipment",
+        "asset_type": "Process Machine",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_NEW-TEST-ASSET-999_NEW_TEST_ASSET_999_Datasheet": {
+      "id": "doc_NEW-TEST-ASSET-999_NEW_TEST_ASSET_999_Datasheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "NEW-TEST-ASSET-999_NEW_TEST_ASSET_999_Datasheet",
+        "title": "NEW TEST ASSET 999 Datasheet",
+        "category": "OEM Technical Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_PUMP_REAL_001": {
+      "id": "asset_TEST_PUMP_REAL_001",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-PUMP-REAL-001",
+        "name": "TEST-PUMP-REAL-001 Industrial Equipment",
+        "asset_type": "Process Machine",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "title": "TPREAL001 Datasheet",
+        "category": "OEM Technical Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_SEAL_POT_TPR001": {
+      "id": "comp_SEAL_POT_TPR001",
+      "label": "Component",
+      "properties": {
+        "id": "comp_SEAL_POT_TPR001",
+        "tag": "SEAL-POT-TPR001",
+        "name": "Seal Pot (Plan 53B Reservoir)",
+        "component_type": "Seal Pot (Plan 53B Reservoir)",
+        "condition": "Nominal",
+        "status": "Needs Review",
+        "source_document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "tenant_id": "tenant_default",
+        "asset_tag": "TEST-PUMP-REAL-001"
+      }
+    },
+    "comp_COUPLING_TPR001": {
+      "id": "comp_COUPLING_TPR001",
+      "label": "Component",
+      "properties": {
+        "id": "comp_COUPLING_TPR001",
+        "tag": "COUPLING-TPR001",
+        "name": "Seal Pot (Plan 53B Reservoir)",
+        "component_type": "Seal Pot (Plan 53B Reservoir)",
+        "condition": "Nominal",
+        "status": "Needs Review",
+        "source_document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "tenant_id": "tenant_default",
+        "asset_tag": "TEST-PUMP-REAL-001"
+      }
+    },
+    "comp_MOTOR_TPR001": {
+      "id": "comp_MOTOR_TPR001",
+      "label": "Component",
+      "properties": {
+        "id": "comp_MOTOR_TPR001",
+        "tag": "MOTOR-TPR001",
+        "name": "Seal Pot (Plan 53B Reservoir)",
+        "component_type": "Seal Pot (Plan 53B Reservoir)",
+        "condition": "Nominal",
+        "status": "Needs Review",
+        "source_document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "tenant_id": "tenant_default",
+        "asset_tag": "TEST-PUMP-REAL-001"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112",
+        "title": "TPREAL001 Inspection Report 20251112",
+        "category": "Condition Monitoring / NDT",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "insp_INSP-TESTPUMPREAL001": {
+      "id": "insp_INSP-TESTPUMPREAL001",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-TESTPUMPREAL001",
+        "asset_tag": "TEST-PUMP-REAL-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+        "title": "TPREAL001 Maintenance Report 20251222",
+        "category": "Preventive Maintenance",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+        "title": "TPREAL001 Failure Incident 20260117",
+        "category": "Failure & Incident Reports",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_V_450": {
+      "id": "comp_V_450",
+      "label": "Component",
+      "properties": {
+        "tag": "V-450",
+        "type": "Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "fail_FAIL-TESTPUMPREAL001": {
+      "id": "fail_FAIL-TESTPUMPREAL001",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-TESTPUMPREAL001",
+        "title": "Incident TEST-PUMP-REAL-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_OEM_Manual": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_OEM_Manual",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_OEM_Manual",
+        "title": "TPREAL001 OEM Manual",
+        "category": "OEM Technical Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_INSPECTION\n2000": {
+      "id": "wo_INSPECTION\n2000",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "INSPECTION\n2000",
+        "asset_tag": "TEST-PUMP-REAL-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+        "title": "TPREAL001 SOP Operation",
+        "category": "SOPs & Work Instructions",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_Field_Checklist_20260122": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_Field_Checklist_20260122",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_Field_Checklist_20260122",
+        "title": "TPREAL001 Field Checklist 20260122",
+        "category": "Condition Monitoring / NDT",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet": {
+      "id": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+        "title": "TPREAL001 Process Flowsheet",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TE_450": {
+      "id": "comp_TE_450",
+      "label": "Component",
+      "properties": {
+        "tag": "TE-450",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_P_194": {
+      "id": "asset_P_194",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-194",
+        "name": "P-194 Cooling Water Circulation Pump",
+        "asset_type": "Centrifugal Pump",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-194_PID_CoolingWaterSystem_P-101": {
+      "id": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-194_PID_CoolingWaterSystem_P-101",
+        "title": "PID CoolingWaterSystem P-101",
+        "category": "Engineering Drawing / P&ID",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Pump_P101_OEM_Manual": {
+      "id": "doc_P-101_Pump_P101_OEM_Manual",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Pump_P101_OEM_Manual",
+        "title": "Pump P101 OEM Manual",
+        "category": "OEM Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_P101_Lubrication_Procedure": {
+      "id": "doc_P-101_P101_Lubrication_Procedure",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_P101_Lubrication_Procedure",
+        "title": "P101 Lubrication Procedure",
+        "category": "SOP",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Vibration_Monitoring_Log": {
+      "id": "doc_P-101_Vibration_Monitoring_Log",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Vibration_Monitoring_Log",
+        "title": "Vibration Monitoring Log",
+        "category": "Inspection",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_V_102": {
+      "id": "comp_V_102",
+      "label": "Component",
+      "properties": {
+        "tag": "V-102",
+        "type": "Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_PT_101": {
+      "id": "comp_PT_101",
+      "label": "Component",
+      "properties": {
+        "tag": "PT-101",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_V_104": {
+      "id": "comp_V_104",
+      "label": "Component",
+      "properties": {
+        "tag": "V-104",
+        "type": "Valve",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_PSV_101": {
+      "id": "comp_PSV_101",
+      "label": "Component",
+      "properties": {
+        "tag": "PSV-101",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TT_101": {
+      "id": "comp_TT_101",
+      "label": "Component",
+      "properties": {
+        "tag": "TT-101",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_FT_202": {
+      "id": "comp_FT_202",
+      "label": "Component",
+      "properties": {
+        "tag": "FT-202",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Scanned_Inspection_P101_Aug2025": {
+      "id": "doc_P-101_Scanned_Inspection_P101_Aug2025",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Scanned_Inspection_P101_Aug2025",
+        "title": "Scanned Inspection P101 Aug2025",
+        "category": "Inspection",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_INSP-456": {
+      "id": "wo_INSP-456",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "INSP-456",
+        "asset_tag": "P-101",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_P-101_Unit2_Visual_Engineering_PID": {
+      "id": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "label": "Document",
+      "properties": {
+        "document_id": "P-101_Unit2_Visual_Engineering_PID",
+        "title": "Unit2 Visual Engineering PID",
+        "category": "Engineering",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "SYSTEM",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_F_01": {
+      "id": "asset_F_01",
+      "label": "Asset",
+      "properties": {
+        "tag": "F-01",
+        "name": "F-01 Asset",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_F-01_1736421689_bf2c01e78c6a523ee694": {
+      "id": "doc_F-01_1736421689_bf2c01e78c6a523ee694",
+      "label": "Document",
+      "properties": {
+        "document_id": "F-01_1736421689_bf2c01e78c6a523ee694",
+        "title": "1736421689 bf2c01e78c6a523ee694",
+        "category": "Failure / Incident Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "fail_FAIL-F01": {
+      "id": "fail_FAIL-F01",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-F01",
+        "title": "Incident F-01",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_FINAL_001": {
+      "id": "asset_TEST_FINAL_001",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-FINAL-001",
+        "name": "TEST-FINAL-001 Asset",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-FINAL-001_failure_report": {
+      "id": "doc_TEST-FINAL-001_failure_report",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-FINAL-001_failure_report",
+        "title": "TEST-FINAL-001 failure report",
+        "category": "Failure / Incident Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TEST_COMP_FINAL_001": {
+      "id": "comp_TEST_COMP_FINAL_001",
+      "label": "Component",
+      "properties": {
+        "id": "comp_TEST_COMP_FINAL_001",
+        "tag": "TEST-COMP-FINAL-001",
+        "name": "Drive-End Bearing",
+        "component_type": "Drive-End Bearing",
+        "condition": "Normal",
+        "status": "Operational",
+        "source_document_id": "TEST-FINAL-001_failure_report",
+        "tenant_id": "tenant_default",
+        "asset_tag": "TEST-FINAL-001"
+      }
+    },
+    "fail_FAIL-TESTFINAL001": {
+      "id": "fail_FAIL-TESTFINAL001",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-TESTFINAL001",
+        "title": "Incident TEST-FINAL-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_AG_NEW_001": {
+      "id": "asset_TEST_AG_NEW_001",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-AG-NEW-001",
+        "name": "TEST-AG-NEW-001 Asset",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-AG-NEW-001_test_failure_report": {
+      "id": "doc_TEST-AG-NEW-001_test_failure_report",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-AG-NEW-001_test_failure_report",
+        "title": "test failure report",
+        "category": "Failure / Incident Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_TEST_BRG_001": {
+      "id": "comp_TEST_BRG_001",
+      "label": "Component",
+      "properties": {
+        "id": "comp_TEST_BRG_001",
+        "tag": "TEST-BRG-001",
+        "name": "Drive-End Bearing",
+        "component_type": "Drive-End Bearing",
+        "condition": "Normal",
+        "status": "Operational",
+        "source_document_id": "TEST-AG-NEW-001_graph_test",
+        "tenant_id": "tenant_default",
+        "asset_tag": "TEST-AG-NEW-001"
+      }
+    },
+    "fail_FAIL-TESTAGNEW001": {
+      "id": "fail_FAIL-TESTAGNEW001",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-TESTAGNEW001",
+        "title": "Incident TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-AG-NEW-001_test_new_machine": {
+      "id": "doc_TEST-AG-NEW-001_test_new_machine",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-AG-NEW-001_test_new_machine",
+        "title": "test new machine",
+        "category": "OEM Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO-1789639818": {
+      "id": "wo_WO-1789639818",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-1789639818",
+        "asset_tag": "TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-AG-NEW-001_graph_test": {
+      "id": "doc_TEST-AG-NEW-001_graph_test",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-AG-NEW-001_graph_test",
+        "title": "graph test",
+        "category": "Failure / Incident Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_AG_NEW_002": {
+      "id": "asset_TEST_AG_NEW_002",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-AG-NEW-002",
+        "name": "TEST-AG-NEW-002 Asset",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-AG-NEW-002_new_asset_doc": {
+      "id": "doc_TEST-AG-NEW-002_new_asset_doc",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-AG-NEW-002_new_asset_doc",
+        "title": "new asset doc",
+        "category": "Failure / Incident Report",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "fail_FAIL-TESTAGNEW002": {
+      "id": "fail_FAIL-TESTAGNEW002",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-TESTAGNEW002",
+        "title": "Incident TEST-AG-NEW-002",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_AG_NEW_003": {
+      "id": "asset_TEST_AG_NEW_003",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-AG-NEW-003",
+        "name": "TEST-AG-NEW-003 Asset",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-AG-NEW-003_nameerror_test": {
+      "id": "doc_TEST-AG-NEW-003_nameerror_test",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-AG-NEW-003_nameerror_test",
+        "title": "nameerror test",
+        "category": "OEM Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO-1789639926": {
+      "id": "wo_WO-1789639926",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-1789639926",
+        "asset_tag": "TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
+    }
+  },
+  "relationships": [
+    {
+      "from": "asset_P_102",
+      "to": "comp_comp_p102_bearing",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "comp_comp_p102_motor",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_C_201",
+      "to": "comp_comp_c201_piston",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_C_201",
+      "to": "comp_comp_c201_valves",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_301",
+      "to": "comp_comp_m301_stator",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_301",
+      "to": "comp_comp_m301_rotor",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_205",
+      "to": "comp_comp_p205_liner",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_205",
+      "to": "comp_comp_p205_impeller",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "comp_comp_p203_bearing",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "comp_comp_p203_impeller",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "comp_comp_p307_thrust_bearing",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "comp_comp_p307_shaft",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_205",
+      "to": "doc_P205_Slurry_Pump_Datasheet",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "maint_maint_wo_2041",
+      "type": "HAS_MAINTENANCE",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "maint_maint_wo_2031",
+      "type": "HAS_MAINTENANCE",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "maint_maint_wo_3042",
+      "type": "HAS_MAINTENANCE",
+      "properties": {}
+    },
+    {
+      "from": "asset_C_201",
+      "to": "insp_INSP-501",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "insp_INSP-781",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "insp_INSP-620",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "fail_FAIL-2025-10",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "fail_FAIL-2026-P203",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "fail_FAIL-2025-P307",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_API_610_VIB",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_API_610_VIB",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_API_610_VIB",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_ISO_14224_REL",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_ISO_14224_REL",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_ISO_14224_REL",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_OSHA_1910_LOTO",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_OSHA_1910_LOTO",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_OSHA_1910_LOTO",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_ISA_S51_CALIB",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_ISA_S51_CALIB",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_ISA_S51_CALIB",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "asset_P_307",
+      "type": "SIMILAR_FAILURE",
+      "properties": {
+        "common_component": "Bearing Assembly",
+        "pattern": "Operating Past 4,000h Relubrication Limit",
+        "confidence": "Medium"
+      }
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_OISD_STD_119",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_OISD_STD_119",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_OISD_STD_119",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_PESO_SMPV_2016",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_PESO_SMPV_2016",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_PESO_SMPV_2016",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "req_FACTORIES_ACT_SEC21",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_203",
+      "to": "req_FACTORIES_ACT_SEC21",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_307",
+      "to": "req_FACTORIES_ACT_SEC21",
+      "type": "SUBJECT_TO",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_V_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_PT_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_P_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_V_104",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_C_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_T_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_PSV_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_M_301",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_TT_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Process_PID_Flowsheet",
+      "to": "tag_FT_202",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_P_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_V_104",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_M_301",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_TT_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_C_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_V_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_PSV_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_Unit2_Visual_Engineering_PID",
+      "to": "tag_T_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_205",
+      "to": "doc_P205_Slurry_Pump_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "tag_P_194",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Scanned_Field_Checklist",
+      "to": "tag_P_194",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Scanned_Field_Checklist",
+      "to": "tag_PT_194",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "tag_T_200",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "tag_V_194A",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "tag_V_194B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Scanned_Field_Checklist",
+      "to": "tag_P_194B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194B_P-194_PID_Diagram",
+      "to": "tag_T_200",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194B_P-194_PID_Diagram",
+      "to": "tag_V_194A",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194B_P-194_PID_Diagram",
+      "to": "tag_V_194B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194B_P-194_Scanned_Field_Checklist",
+      "to": "tag_P_194B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_USER-TEST-OCR-001_user_test_ocr_001_scanned_spec",
+      "to": "tag_TT_881",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_205",
+      "to": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_V_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_PT_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_P_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_V_104",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_C_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_T_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_PSV_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_M_301",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_TT_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "tag_FT_202",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_C_201",
+      "to": "comp_comp_c201_valve",
+      "type": "HAS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_205",
+      "to": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "type": "DOCUMENTED_BY",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "tag_T_200",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "tag_V_194A",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "tag_V_194B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_201",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_E_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_202",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_E_202",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_203",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_E_203",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_204",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_E_204",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_205",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_E_205",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_206",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_E_206",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_201",
+      "to": "doc_T-200_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-200_P-194_Process_Flowsheet",
+      "to": "asset_E_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_202",
+      "to": "doc_T-200_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-200_P-194_Process_Flowsheet",
+      "to": "asset_E_202",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_203",
+      "to": "doc_T-200_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-200_P-194_Process_Flowsheet",
+      "to": "asset_E_203",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_204",
+      "to": "doc_T-200_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-200_P-194_Process_Flowsheet",
+      "to": "asset_E_204",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_205",
+      "to": "doc_T-200_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-200_P-194_Process_Flowsheet",
+      "to": "asset_E_205",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_206",
+      "to": "doc_T-200_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-200_P-194_Process_Flowsheet",
+      "to": "asset_E_206",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_201",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_E_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_202",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_E_202",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_203",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_E_203",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_204",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_E_204",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_205",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_E_205",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_206",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_E_206",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "comp_V_194A",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "comp_V_194B",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_201",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_E_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_202",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_E_202",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_203",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_E_203",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_204",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_E_204",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_205",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_E_205",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_206",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_E_206",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "comp_V_194A",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "comp_V_194B",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_990",
+      "to": "doc_T-990_test_turbine_t990_sop",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_T-990_test_turbine_t990_sop",
+      "to": "asset_T_990",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_FIR_2026",
+      "to": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "to": "asset_FIR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_IR_2026",
+      "to": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "to": "asset_IR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_RCA_2026",
+      "to": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Failure_Incident_Report_P-101_20260728",
+      "to": "asset_RCA_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_IR_2026",
+      "to": "doc_P-101_Inspection_Report_P-101_20260820",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Inspection_Report_P-101_20260820",
+      "to": "asset_IR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_Inspection_Report_P-101_20260820",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Inspection_Report_P-101_20260820",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_MR_2026",
+      "to": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "to": "asset_MR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CON_GRS_0012",
+      "to": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "to": "asset_CON_GRS_0012",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CON_RAG_0002",
+      "to": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Report_P-101_20260815",
+      "to": "asset_CON_RAG_0002",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_MR_2026",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_MR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_IR_2026",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_IR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FIR_2026",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_FIR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_101",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_M_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_101B",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_M_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SV_101",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_SV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_DV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FI_101",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_FI_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_STR_101",
+      "to": "doc_P-101_Maintenance_Schedule_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "asset_STR_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Maintenance_Schedule_P-101",
+      "to": "comp_PI_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_HF_CP_4X3",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_HF_CP_4X3",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HFE_OM_4X3200",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_HFE_OM_4X3200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HF_4X3200",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_HF_4X3200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SFT_4140",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_SFT_4140",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SLV_316",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_SLV_316",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_JC_1648",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_JC_1648",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_WR_410",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_WR_410",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_WRI_410",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_WRI_410",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HF_COUP_150",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_HF_COUP_150",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_MR_2026",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_MR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_IR_2026",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_IR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FIR_2026",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_FIR_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_101",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_M_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_101B",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_M_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SV_101",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_SV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_DV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FI_101",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_FI_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_STR_101",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_STR_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101B",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_DV_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CON_GRS_0012",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_CON_GRS_0012",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CON_RAG_0002",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_CON_RAG_0002",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_RCA_2026",
+      "to": "doc_P-101_Documentation_Bundle",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "asset_RCA_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Documentation_Bundle",
+      "to": "comp_PI_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_1018",
+      "to": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_1018",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "to": "tag_P_101B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CT_01",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_CT_01",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HX_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_HX_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_RCL_200",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_RCL_200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_S_01",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_S_01",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_STR_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_STR_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_S_02",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_S_02",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SV_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_SV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_S_03",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_S_03",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_DV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_S_04",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_S_04",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_S_05",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_S_05",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_S_06",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_S_06",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SV_101B",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_SV_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101B",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_DV_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FI_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_FI_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_PIT_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_PIT_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_INT_CWS_01",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_INT_CWS_01",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_INT_CWS_02",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_INT_CWS_02",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_INT_CWS_03",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_INT_CWS_03",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HFE_OM_4X3200",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_HFE_OM_4X3200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "comp_CV_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "comp_PI_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "comp_TI_102",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Scanned_Inspection_Checklist_P-101",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-101_ShiftHandover_P-101_20260810",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_ShiftHandover_P-101_20260810",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FI_101",
+      "to": "doc_P-101_ShiftHandover_P-101_20260810",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "asset_FI_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CTF_01A",
+      "to": "doc_P-101_ShiftHandover_P-101_20260810",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "asset_CTF_01A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CTF_01B",
+      "to": "doc_P-101_ShiftHandover_P-101_20260810",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "asset_CTF_01B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "comp_PI_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "comp_TI_102",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SV_101",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_SV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_DV_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FI_101",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_FI_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_DV_101B",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_DV_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "comp_PI_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "doc_TEST-PUMP-001_TEST_PUMP_001",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001",
+      "to": "asset_TEST_PUMP_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_BRG_947",
+      "to": "doc_TEST-PUMP-001_TEST_PUMP_001",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001",
+      "to": "asset_TEST_BRG_947",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "doc_TEST-PUMP-001_TEST_PUMP_001_Inspection",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001_Inspection",
+      "to": "asset_TEST_PUMP_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_BRG_947",
+      "to": "doc_TEST-PUMP-001_TEST_PUMP_001_Inspection",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001_Inspection",
+      "to": "asset_TEST_BRG_947",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "insp_INSP-TESTPUMP001",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "wo_INSP-001",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "doc_TEST-PUMP-001_TEST_PUMP_001_Component",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001_Component",
+      "to": "asset_TEST_PUMP_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_COMP_947",
+      "to": "doc_TEST-PUMP-001_TEST_PUMP_001_Component",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001_Component",
+      "to": "asset_TEST_COMP_947",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "comp_TEST_COMP_947",
+      "type": "HAS_COMPONENT",
+      "properties": {
+        "source_document_id": "TEST-PUMP-001_TEST_PUMP_001_Component",
+        "condition": "Normal"
+      }
+    },
+    {
+      "from": "doc_TEST-PUMP-001_TEST_PUMP_001_Component",
+      "to": "comp_TEST_COMP_947",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "TEST-COMP-947",
+        "component_type": "Drive-End Bearing"
+      }
+    },
+    {
+      "from": "asset_TEST_PUMP_001",
+      "to": "wo_INSP-947",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_A_10",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_A_10",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_B_8",
+      "to": "doc_P-194_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "asset_B_8",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "comp_PT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "comp_FT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "comp_TT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Process_Flowsheet",
+      "to": "comp_PSV_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Shift_Handover",
+      "to": "comp_PT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Shift_Handover",
+      "to": "comp_TT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Inspection_Report",
+      "to": "comp_PSV_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Maintenance_Schedule",
+      "to": "comp_PSV_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Scanned_Field_Checklist",
+      "to": "comp_PT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_SOP-P194-01-Operation",
+      "to": "comp_PT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_SOP-P194-01-Operation",
+      "to": "comp_V_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_SOP-P194-01-Operation",
+      "to": "comp_FT_194",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Process_Flowsheet_CWS-100",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Process_Flowsheet_CWS-100",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Scanned_Inspection_Checklist_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Scanned_Inspection_Checklist_P-101",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "insp_INSP-P101",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_ShiftHandover_P-101_20260810",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_ShiftHandover_P-101_20260810",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "wo_WO-88213",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_SOP_P-101_Startup_Shutdown",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Telemetry_P-101_Aug2026",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Telemetry_P-101_Aug2026",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "insp_INSP_P194B",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "wo_WO_2026_04417",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_unit2_package",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_unit2_package",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_NEW_TEST_ASSET_999",
+      "to": "doc_NEW-TEST-ASSET-999_NEW_TEST_ASSET_999_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_NEW-TEST-ASSET-999_NEW_TEST_ASSET_999_Datasheet",
+      "to": "asset_NEW_TEST_ASSET_999",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_DS_2025",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "asset_BRPL_DS_2025",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_BPWL_CFP_450",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "asset_BPWL_CFP_450",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_BPWL_2025",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "asset_BPWL_2025",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_SN_78341",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "asset_SN_78341",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "comp_SEAL_POT_TPR001",
+      "type": "HAS_COMPONENT",
+      "properties": {
+        "source_document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "condition": "Nominal"
+      }
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "comp_SEAL_POT_TPR001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "SEAL-POT-TPR001",
+        "component_type": "Seal Pot (Plan 53B Reservoir)"
+      }
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "comp_COUPLING_TPR001",
+      "type": "HAS_COMPONENT",
+      "properties": {
+        "source_document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "condition": "Nominal"
+      }
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "comp_COUPLING_TPR001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "COUPLING-TPR001",
+        "component_type": "Seal Pot (Plan 53B Reservoir)"
+      }
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "comp_MOTOR_TPR001",
+      "type": "HAS_COMPONENT",
+      "properties": {
+        "source_document_id": "TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+        "condition": "Nominal"
+      }
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Datasheet",
+      "to": "comp_MOTOR_TPR001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "MOTOR-TPR001",
+        "component_type": "Seal Pot (Plan 53B Reservoir)"
+      }
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_INS_2025",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Inspection_Report_20251112",
+      "to": "asset_BRPL_INS_2025",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "insp_INSP-TESTPUMPREAL001",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_MNT_2025",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "to": "asset_BRPL_MNT_2025",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_INS_2025",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Maintenance_Report_20251222",
+      "to": "asset_BRPL_INS_2025",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "wo_WO-9412",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_INC_2026",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_BRPL_INC_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001B",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_TEST_PUMP_REAL_001B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FSLL_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_FSLL_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_Y_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_Y_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CA_2",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_CA_2",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CA_1",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_CA_1",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_PDSH_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_PDSH_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CA_3",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_CA_3",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_CA_4",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "asset_CA_4",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Failure_Incident_20260117",
+      "to": "comp_V_450",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "fail_FAIL-TESTPUMPREAL001",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_OEM_Manual",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_OEM_Manual",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_BPWL_CFP_450",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_OEM_Manual",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_OEM_Manual",
+      "to": "asset_BPWL_CFP_450",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "wo_INSPECTION\n2000",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_MFV_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "to": "asset_BRPL_MFV_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HV_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "to": "asset_HV_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HV_450B",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "to": "asset_HV_450B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FSLL_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_SOP_Operation",
+      "to": "asset_FSLL_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Field_Checklist_20260122",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Field_Checklist_20260122",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_TEST_PUMP_REAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_D_450",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_D_450",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_450F",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_450F",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_450",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_T_450",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_FSLL_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_FSLL_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_PDSH_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_PDSH_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_INC_2026",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_BRPL_INC_2026",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HV_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_HV_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_HV_450B",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_HV_450B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_BRPL_MFV_450A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_BRPL_MFV_450A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_PUMP_REAL_001B",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_TEST_PUMP_REAL_001B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "comp_TE_450",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_OEM_Manual_CentrifugalPump_P-101",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194",
+      "to": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_194",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_CWS_100",
+      "to": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "asset_CWS_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101B",
+      "to": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_101B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_1018",
+      "to": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "asset_P_1018",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_CoolingWaterSystem_P-101",
+      "to": "tag_P_101B",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Pump_P101_OEM_Manual",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Pump_P101_OEM_Manual",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_XYZ_200",
+      "to": "doc_P-101_Pump_P101_OEM_Manual",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Pump_P101_OEM_Manual",
+      "to": "asset_XYZ_200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_P101_Lubrication_Procedure",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_P101_Lubrication_Procedure",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Vibration_Monitoring_Log",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Vibration_Monitoring_Log",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_STR_101",
+      "to": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "asset_STR_101",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "asset_P_102",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_C_201",
+      "to": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "asset_C_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_201",
+      "to": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "asset_T_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_301",
+      "to": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "asset_M_301",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "comp_V_102",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "comp_PT_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "comp_V_104",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "comp_PSV_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "comp_TT_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Process_PID_Flowsheet",
+      "to": "comp_FT_202",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Scanned_Inspection_P101_Aug2025",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Scanned_Inspection_P101_Aug2025",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "wo_INSP-456",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_101",
+      "to": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "asset_P_101",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_102",
+      "to": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "asset_P_102",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_M_301",
+      "to": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "asset_M_301",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_C_201",
+      "to": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "asset_C_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_201",
+      "to": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "asset_T_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "comp_V_104",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "comp_TT_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "comp_V_102",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "comp_PSV_101",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_P_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_P_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_V_104",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_M_301",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_TT_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_C_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_V_102",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_PSV_101",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-101_Unit2_Visual_Engineering_PID",
+      "to": "tag_T_201",
+      "type": "CONTAINS_TAG",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "to": "asset_P_205",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_AH_100",
+      "to": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "to": "asset_AH_100",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_EP_2",
+      "to": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-205_P205_Slurry_Pump_Datasheet",
+      "to": "asset_EP_2",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_F_01",
+      "to": "doc_F-01_1736421689_bf2c01e78c6a523ee694",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_F-01_1736421689_bf2c01e78c6a523ee694",
+      "to": "asset_F_01",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_F_01",
+      "to": "fail_FAIL-F01",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_FINAL_001",
+      "to": "doc_TEST-FINAL-001_failure_report",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-FINAL-001_failure_report",
+      "to": "asset_TEST_FINAL_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_FINAL_001",
+      "to": "comp_TEST_COMP_FINAL_001",
+      "type": "HAS_COMPONENT",
+      "properties": {
+        "source_document_id": "TEST-FINAL-001_failure_report",
+        "condition": "Normal"
+      }
+    },
+    {
+      "from": "doc_TEST-FINAL-001_failure_report",
+      "to": "comp_TEST_COMP_FINAL_001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "TEST-COMP-FINAL-001",
+        "component_type": "Drive-End Bearing"
+      }
+    },
+    {
+      "from": "asset_TEST_FINAL_001",
+      "to": "fail_FAIL-TESTFINAL001",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "doc_TEST-AG-NEW-001_test_failure_report",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_test_failure_report",
+      "to": "asset_TEST_AG_NEW_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_BRG_001",
+      "to": "doc_TEST-AG-NEW-001_test_failure_report",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_test_failure_report",
+      "to": "asset_TEST_BRG_001",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "comp_TEST_BRG_001",
+      "type": "HAS_COMPONENT",
+      "properties": {
+        "source_document_id": "TEST-AG-NEW-001_test_failure_report",
+        "condition": "Normal"
+      }
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_test_failure_report",
+      "to": "comp_TEST_BRG_001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "TEST-BRG-001",
+        "component_type": "Drive-End Bearing"
+      }
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "fail_FAIL-TESTAGNEW001",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "doc_TEST-AG-NEW-001_test_new_machine",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_test_new_machine",
+      "to": "asset_TEST_AG_NEW_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_BRG_001",
+      "to": "doc_TEST-AG-NEW-001_test_new_machine",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_test_new_machine",
+      "to": "asset_TEST_BRG_001",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_test_new_machine",
+      "to": "comp_TEST_BRG_001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "TEST-BRG-001",
+        "component_type": "Drive-End Bearing"
+      }
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "wo_WO-1789639818",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "doc_TEST-AG-NEW-001_graph_test",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_graph_test",
+      "to": "asset_TEST_AG_NEW_001",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_BRG_001",
+      "to": "doc_TEST-AG-NEW-001_graph_test",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_graph_test",
+      "to": "asset_TEST_BRG_001",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-001_graph_test",
+      "to": "comp_TEST_BRG_001",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {
+        "component_tag": "TEST-BRG-001",
+        "component_type": "Drive-End Bearing"
+      }
+    },
+    {
+      "from": "asset_TEST_AG_NEW_002",
+      "to": "doc_TEST-AG-NEW-002_new_asset_doc",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-002_new_asset_doc",
+      "to": "asset_TEST_AG_NEW_002",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_002",
+      "to": "fail_FAIL-TESTAGNEW002",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_003",
+      "to": "doc_TEST-AG-NEW-003_nameerror_test",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-AG-NEW-003_nameerror_test",
+      "to": "asset_TEST_AG_NEW_003",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "wo_WO-1789639926",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    }
+  ]
+}
