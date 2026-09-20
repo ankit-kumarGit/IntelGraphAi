@@ -8,6 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 from app.models.document import DocumentChunk
+from app.rag.provenance import validate_asset_provenance
 
 logger = logging.getLogger("intelgraph.qdrant")
 
@@ -44,6 +45,7 @@ class QdrantVectorStore(VectorStoreBase):
         self.local_qdrant_dir.mkdir(parents=True, exist_ok=True)
         
         self.qdrant_url = os.getenv("QDRANT_URL", "")
+        self.qdrant_api_key = os.getenv("QDRANT_API_KEY", None)
         self.client = None
         self.initialize_client()
         self.ensure_collection()
@@ -51,7 +53,7 @@ class QdrantVectorStore(VectorStoreBase):
     def initialize_client(self):
         if self.qdrant_url:
             try:
-                self.client = QdrantClient(url=self.qdrant_url, timeout=5)
+                self.client = QdrantClient(url=self.qdrant_url, api_key=self.qdrant_api_key, timeout=10)
                 self.client.get_collections()
                 logger.info("Connected to remote Qdrant cluster at %s", self.qdrant_url)
                 return
@@ -207,14 +209,7 @@ class QdrantVectorStore(VectorStoreBase):
             for res in search_result:
                 payload = res.payload or {}
                 if asset_tag:
-                    t_u = asset_tag.upper()
-                    chunk_asset = (payload.get("asset_tag") or "").upper()
-                    primaries = [p.upper() for p in payload.get("primary_asset_tags", [])]
-                    related = [r.upper() for r in payload.get("related_asset_tags", [])]
-                    scope = payload.get("document_scope", "ASSET")
-
-                    is_match = (chunk_asset == t_u) or (chunk_asset.startswith(t_u) and not chunk_asset[len(t_u):len(t_u)+1].isdigit()) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
-                    if not is_match:
+                    if not validate_asset_provenance(payload, asset_tag):
                         continue
                 results.append((payload, float(res.score)))
                 if len(results) >= top_k:

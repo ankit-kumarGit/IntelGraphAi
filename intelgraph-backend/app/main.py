@@ -67,6 +67,11 @@ app.add_middleware(
 @app.on_event("startup")
 def startup_event():
     db_manager.connect()
+    try:
+        from scripts.remediate_data_provenance import remediate
+        remediate()
+    except Exception as e:
+        logger.warning("Provenance auto-remediation notice: %s", e)
     vector_store.load()
     if vector_store.is_fitted:
         qdrant_store.vectorizer = vector_store.vectorizer

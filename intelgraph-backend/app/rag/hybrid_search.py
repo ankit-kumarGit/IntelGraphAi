@@ -3,6 +3,7 @@ from typing import List, Dict, Any, Optional
 from app.config import settings
 from app.rag.vector_store import vector_store
 from app.rag.qdrant_store import qdrant_store
+from app.rag.provenance import validate_asset_provenance, get_clean_document_title
 
 class HybridSearchEngine:
     @staticmethod
@@ -35,23 +36,23 @@ class HybridSearchEngine:
            any(k in section for k in ["inspection", "survey", "checklist"]):
             return "INSPECTION"
 
-        # 4. OEM Technical Manual / Datasheet / Specification
+        # 4. Maintenance Report / Work Order / PM Schedule / Overhaul Procedures
+        if any(k in cat for k in ["maintenance", "work order", "wo"]) or \
+           any(k in doc_id for k in ["maintenance", "work_order", "wo_", "wo-", "pm_schedule"]) or \
+           any(k in section for k in ["maintenance", "work order", "pm schedule", "preventive maintenance", "overhaul", "service"]):
+            return "MAINTENANCE"
+
+        # 5. OEM Technical Manual / Datasheet / Specification
         if any(k in doc_id for k in ["oem", "technical_manual", "datasheet", "specification"]) or \
            any(k in cat for k in ["oem", "datasheet", "specification"]) or \
            any(k in section for k in ["general description", "technical data", "specifications", "operating limits"]):
             return "PROFILE_ENGINEERING"
 
-        # 5. P&ID / Flowsheet / Engineering Drawing
+        # 6. P&ID / Flowsheet / Engineering Drawing
         if any(k in cat for k in ["p&id", "pid", "drawing", "flowsheet"]) or \
            any(k in doc_id for k in ["p&id", "pid", "drawing", "flowsheet"]) or \
            any(k in section for k in ["piping and instrumentation", "flowsheet", "p&id"]):
             return "PROFILE_ENGINEERING"
-
-        # 6. Maintenance Report / Work Order / PM Schedule
-        if any(k in cat for k in ["maintenance", "work order", "wo"]) or \
-           any(k in doc_id for k in ["maintenance_report", "work_order", "wo_", "wo-", "maintenance_schedule"]) or \
-           any(k in section for k in ["maintenance report", "work order", "pm schedule", "preventive maintenance"]):
-            return "MAINTENANCE"
 
         # 7. Standard Operating Procedure
         if any(k in cat for k in ["sop", "operating procedure", "procedure"]) or \
@@ -154,19 +155,16 @@ class HybridSearchEngine:
             if tenant_id and chunk_tenant != tenant_id and chunk_tenant != "global":
                 continue
 
-            # Asset tag filtering
+            # Asset tag filtering via Strict Provenance
             asset_match_score = 0.0
             if asset_tag:
+                if not validate_asset_provenance(chunk, asset_tag):
+                    continue
+                # Bounded score: asset presence is normalized, NOT multiplied by tag frequency
                 t_u = asset_tag.upper()
                 c_tag = (chunk.get("asset_tag") or "").upper()
                 primaries = [p.upper() for p in chunk.get("primary_asset_tags", [])]
-                related = [r.upper() for r in chunk.get("related_asset_tags", [])]
-                scope = chunk.get("document_scope", "ASSET")
-                is_match = (c_tag == t_u) or (c_tag.startswith(t_u) and not c_tag[len(t_u):len(t_u)+1].isdigit()) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
-                if not is_match:
-                    continue
-                # Bounded score: asset presence is normalized, NOT multiplied by tag frequency
-                asset_match_score = 2.0 if (c_tag == t_u or t_u in primaries or c_tag.startswith(t_u)) else 1.2
+                asset_match_score = 2.0 if (c_tag == t_u or t_u in primaries) else 1.2
 
             # Governance filtering
             gov_status = chunk.get("governance_status", "Approved")

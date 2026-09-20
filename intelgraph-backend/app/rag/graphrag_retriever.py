@@ -5,6 +5,7 @@ from app.rag.hybrid_search import hybrid_search
 from app.rag.qdrant_store import qdrant_store
 from app.services.neo4j_service import neo4j_graph
 from app.services.entity_resolution import entity_resolution
+from app.rag.provenance import validate_asset_provenance, get_clean_document_title
 
 logger = logging.getLogger("intelgraph.graphrag")
 
@@ -137,11 +138,11 @@ class GraphRAGRetriever:
             source_name = from_props.get("name") or from_props.get("tag") or from_props.get("title") or edge_from
             target_name = to_props.get("name") or to_props.get("tag") or to_props.get("title") or edge_to
 
-            # Determine associated asset tag
+            # Determine associated asset tag without blindly stamping detected_asset
             hop_asset_tag = (
                 from_props.get("tag") if from_type == "Asset"
                 else (to_props.get("tag") if to_type == "Asset"
-                else (from_props.get("asset_tag") or to_props.get("asset_tag") or edge_props.get("asset_tag") or detected_asset))
+                else (from_props.get("asset_tag") or to_props.get("asset_tag") or edge_props.get("asset_tag") or None))
             )
 
             # Determine associated document ID
@@ -153,6 +154,34 @@ class GraphRAGRetriever:
                 or edge_props.get("source_document_id")
                 or (edge_from[4:] if edge_from.startswith("doc_") else (edge_to[4:] if edge_to.startswith("doc_") else None))
             )
+
+            # Strict Graph Evidence Provenance Filter:
+            # If detected_asset is specified, reject any hop that belongs to or connects an unrelated asset
+            if detected_asset:
+                t_u = detected_asset.upper()
+                t_norm = t_u.replace("-", "_")
+                asset_node_ids = {f"asset_{t_norm}", f"asset_{t_u}", t_u}
+
+                is_hop_valid = False
+                if edge_from in asset_node_ids or edge_to in asset_node_ids:
+                    is_hop_valid = True
+                elif (from_props.get("tag") or "").upper() == t_u or (to_props.get("tag") or "").upper() == t_u:
+                    is_hop_valid = True
+                elif (from_props.get("asset_tag") or "").upper() == t_u or (to_props.get("asset_tag") or "").upper() == t_u:
+                    is_hop_valid = True
+                elif hop_doc_id:
+                    doc_check = {
+                        "document_id": hop_doc_id,
+                        "asset_tag": from_props.get("asset_tag") or to_props.get("asset_tag"),
+                        "primary_asset_tags": from_props.get("primary_asset_tags", []) or to_props.get("primary_asset_tags", []),
+                        "related_asset_tags": from_props.get("related_asset_tags", []) or to_props.get("related_asset_tags", []),
+                        "document_scope": from_props.get("document_scope") or to_props.get("document_scope") or "ASSET"
+                    }
+                    if validate_asset_provenance(doc_check, t_u):
+                        is_hop_valid = True
+
+                if not is_hop_valid:
+                    continue
 
             merged_props = {}
             if to_type == "Component":
@@ -196,15 +225,18 @@ class GraphRAGRetriever:
         }
         graph_hops.sort(key=lambda h: rel_priority.get(h.get("relationship", ""), 20))
 
-        # 5. Extract Citations & Evidence Payload
+        # 5. Extract Citations & Evidence Payload with strict provenance and clean titles
         citations = []
         seen_docs = set()
         for item in hybrid_candidates[:top_k]:
             chk = item["chunk"]
+            if detected_asset and not validate_asset_provenance(chk, detected_asset):
+                continue
             doc_id = chk.get("document_id", "DOC")
+            doc_name = get_clean_document_title(chk)
             if doc_id not in seen_docs:
                 citations.append({
-                    "document_name": doc_id.replace("_", " "),
+                    "document_name": doc_name,
                     "document_id": doc_id,
                     "page_number": chk.get("page_number", 1),
                     "section_title": chk.get("section_title", "General"),

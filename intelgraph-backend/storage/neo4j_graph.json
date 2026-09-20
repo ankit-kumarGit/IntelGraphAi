@@ -2069,6 +2069,24 @@
         "asset_type": "Cooling Water Circulation Pump",
         "tenant_id": "tenant_default"
       }
+    },
+    "wo_WO-1789927727": {
+      "id": "wo_WO-1789927727",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-1789927727",
+        "asset_tag": "TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO-1789927755": {
+      "id": "wo_WO-1789927755",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-1789927755",
+        "asset_tag": "TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
     }
   },
   "relationships": [
@@ -5635,42 +5653,6 @@
       "properties": {}
     },
     {
-      "from": "asset_T_200",
-      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
-      "type": "ASSET_HAS_DOCUMENT",
-      "properties": {}
-    },
-    {
-      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
-      "to": "asset_T_200",
-      "type": "REFERENCES",
-      "properties": {}
-    },
-    {
-      "from": "asset_P_194A",
-      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
-      "type": "ASSET_HAS_DOCUMENT",
-      "properties": {}
-    },
-    {
-      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
-      "to": "asset_P_194A",
-      "type": "REFERENCES",
-      "properties": {}
-    },
-    {
-      "from": "asset_P_194B",
-      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
-      "type": "ASSET_HAS_DOCUMENT",
-      "properties": {}
-    },
-    {
-      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
-      "to": "asset_P_194B",
-      "type": "REFERENCES",
-      "properties": {}
-    },
-    {
       "from": "asset_E_201",
       "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
       "type": "ASSET_HAS_DOCUMENT",
@@ -5860,6 +5842,18 @@
       "from": "doc_P-194B_P-194_Maintenance_Schedule",
       "to": "asset_P_194B",
       "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "wo_WO-1789927727",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_AG_NEW_001",
+      "to": "wo_WO-1789927755",
+      "type": "HAS_WORK_ORDER",
       "properties": {}
     }
   ]

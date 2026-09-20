@@ -6,6 +6,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from app.config import settings, FAISS_DIR
 from app.models.document import DocumentChunk
+from app.rag.provenance import validate_asset_provenance
 
 class FaissVectorStore:
     def __init__(self, dimension: int = 256):
@@ -79,13 +80,7 @@ class FaissVectorStore:
                     continue
                 meta = self.chunks_metadata[idx]
                 if asset_tag:
-                    t_u = asset_tag.upper()
-                    meta_tag = (meta.get("asset_tag") or "").upper()
-                    primaries = [p.upper() for p in meta.get("primary_asset_tags", [])]
-                    related = [r.upper() for r in meta.get("related_asset_tags", [])]
-                    scope = meta.get("document_scope", "ASSET")
-                    is_match = (meta_tag == t_u) or (meta_tag.startswith(t_u) and not meta_tag[len(t_u):len(t_u)+1].isdigit()) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
-                    if not is_match:
+                    if not validate_asset_provenance(meta, asset_tag):
                         continue
                 results.append((meta, float(score)))
                 if len(results) >= top_k:

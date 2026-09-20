@@ -130,6 +130,7 @@ def test_citations_not_invented_when_not_retrieved():
     single_chunk = [{
         "chunk": {
             "document_id": "Genuine_Retrieved_Doc_001",
+            "asset_tag": "P-101",
             "page_number": 3,
             "section_title": "Field Notes",
             "content": "Vibration levels on pump shaft were measured at 1.8 mm/s RMS.",

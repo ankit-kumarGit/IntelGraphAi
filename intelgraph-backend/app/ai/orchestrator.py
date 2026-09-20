@@ -1,5 +1,6 @@
 import time
 import logging
+import re
 from typing import Dict, Any, Optional, List
 from app.rag.graphrag_retriever import graphrag_retriever
 from app.ai.llm_service import LLMService
@@ -7,6 +8,8 @@ from app.ai.query_understanding import query_understanding, KnowledgeScope
 from app.services.observability_service import observability_service
 from app.config import settings
 from app.models.chat import ChatRequest, ChatResponse, Citation
+from app.rag.provenance import validate_asset_provenance
+from app.database import db_manager
 
 logger = logging.getLogger("intelgraph.orchestrator")
 
@@ -195,21 +198,25 @@ class AIOrchestrator:
             # LLM Safety Guardrail: If an explicit asset was requested, verify evidence is strictly scoped
             if effective_tag:
                 eff_tag_u = effective_tag.upper()
-                valid_chunks = []
-                for item in retrieved_chunks:
-                    chk = item.get("chunk", {})
-                    c_tag = (chk.get("asset_tag") or "").upper()
-                    primaries = [p.upper() for p in chk.get("primary_asset_tags", [])]
-                    related = [r.upper() for r in chk.get("related_asset_tags", [])]
-                    scope = chk.get("document_scope", "ASSET")
-                    if (c_tag == eff_tag_u) or (eff_tag_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and eff_tag_u in related):
-                        valid_chunks.append(item)
+                valid_chunks = [
+                    item for item in retrieved_chunks
+                    if validate_asset_provenance(item.get("chunk", {}), eff_tag_u)
+                ]
 
-                # Check if evidence belongs to another unrelated asset while none matches effective_tag
-                if not valid_chunks and retrieved_chunks:
+                # Strict Graph Evidence Provenance Filter:
+                t_norm = eff_tag_u.replace("-", "_")
+                asset_node_ids = {f"asset_{t_norm}", f"asset_{eff_tag_u}", eff_tag_u}
+                traversal_hops = [
+                    h for h in (traversal_hops or [])
+                    if h.get("from") in asset_node_ids or h.get("to") in asset_node_ids
+                    or (h.get("asset_tag") or "").upper() == eff_tag_u
+                ]
+
+                # If no valid chunks and asset does NOT exist in tenant registry: enforce grounded refusal
+                if not valid_chunks and not asset_in_tenant and not asset_context:
                     logger.warning(
-                        "LLM SAFETY TRIGGERED: Requested asset '%s' but retrieved evidence belongs to other assets %s. Enforcing grounded refusal.",
-                        effective_tag, retrieved_asset_tags
+                        "LLM SAFETY TRIGGERED: Requested asset '%s' has no verified documents or registry record. Enforcing grounded refusal.",
+                        effective_tag
                     )
                     total_latency_ms = round((time.time() - t_start) * 1000, 2)
                     return ChatResponse(
@@ -217,7 +224,7 @@ class AIOrchestrator:
                         scope="UNSUPPORTED_CUSTOMER",
                         response_format="REFUSAL",
                         confidence="Low",
-                        evidence_summary=[f"Safety guardrail: Retrieved chunks belong to unrelated assets ({retrieved_asset_tags}), refusing cross-asset contamination."],
+                        evidence_summary=[f"Safety guardrail: Zero verified records for machine {effective_tag}."],
                         citations=[],
                         refused=True,
                         query_latency_ms=total_latency_ms,
@@ -250,8 +257,57 @@ class AIOrchestrator:
         total_latency_ms = round((time.time() - t_start) * 1000, 2)
         orchestration_latency_ms = max(0.0, round(total_latency_ms - (retrieval_latency_ms + llm_latency_ms), 2))
 
-        # 4. Formulate Response with Clean, Human Evidence
-        citations = [Citation(**c) for c in result.get("citations", [])]
+        # 4. Final Citation Provenance Gate (Strict Non-Negotiable Enforcement)
+        verified_citations = []
+        for c in result.get("citations", []):
+            c_dict = {
+                "document_id": c.get("document_id") if isinstance(c, dict) else getattr(c, "document_id", ""),
+                "title": c.get("document_name") if isinstance(c, dict) else getattr(c, "document_name", ""),
+                "asset_tag": c.get("asset_tag") if isinstance(c, dict) else getattr(c, "asset_tag", None),
+                "primary_asset_tags": c.get("primary_asset_tags", []) if isinstance(c, dict) else getattr(c, "primary_asset_tags", []),
+                "related_asset_tags": c.get("related_asset_tags", []) if isinstance(c, dict) else getattr(c, "related_asset_tags", []),
+                "document_scope": c.get("document_scope", "ASSET") if isinstance(c, dict) else getattr(c, "document_scope", "ASSET"),
+                "content": (c.get("content") if isinstance(c, dict) else getattr(c, "content", "")) or (c.get("excerpt", "") if isinstance(c, dict) else getattr(c, "excerpt", ""))
+            }
+            if db_manager.db is not None and c_dict["document_id"]:
+                doc_record = db_manager.db.documents.find_one({"document_id": c_dict["document_id"]})
+                if doc_record:
+                    c_dict.update({
+                        "asset_tag": doc_record.get("asset_tag"),
+                        "primary_asset_tags": doc_record.get("primary_asset_tags", []),
+                        "related_asset_tags": doc_record.get("related_asset_tags", []),
+                        "document_scope": doc_record.get("document_scope", "ASSET"),
+                        "title": doc_record.get("title") or c_dict["title"]
+                    })
+                # Check for chunk content support if effective_tag is present
+                if effective_tag and not re.search(r"\b" + re.escape(effective_tag) + r"\b", c_dict["content"], re.IGNORECASE):
+                    chunk_rec = db_manager.db.document_chunks.find_one({
+                        "document_id": c_dict["document_id"],
+                        "content": {"$regex": re.escape(effective_tag), "$options": "i"}
+                    })
+                    if chunk_rec:
+                        c_dict["content"] = chunk_rec.get("content", "")
+            clean_cit_obj = Citation(
+                document_name=c_dict.get("title") or (c.get("document_name") if isinstance(c, dict) else getattr(c, "document_name", "")),
+                document_id=c_dict.get("document_id", ""),
+                page_number=c.get("page_number", 1) if isinstance(c, dict) else getattr(c, "page_number", 1),
+                section_title=c.get("section_title", "General") if isinstance(c, dict) else getattr(c, "section_title", "General"),
+                record_date=c.get("record_date") if isinstance(c, dict) else getattr(c, "record_date", None),
+                version=c.get("version", "v1.0") if isinstance(c, dict) else getattr(c, "version", "v1.0"),
+                governance_status=c.get("governance_status", "Approved") if isinstance(c, dict) else getattr(c, "governance_status", "Approved"),
+                excerpt=c.get("excerpt", "") if isinstance(c, dict) else getattr(c, "excerpt", "")
+            )
+            if effective_tag:
+                if validate_asset_provenance(c_dict, effective_tag):
+                    verified_citations.append(clean_cit_obj)
+                else:
+                    logger.warning(
+                        f"CITATION PROVENANCE REJECTED: document '{c_dict['document_id']}' rejected for asset '{effective_tag}'."
+                    )
+            else:
+                verified_citations.append(clean_cit_obj)
+
+        citations = verified_citations
         evidence_summary = result.get("evidence_summary", [])
 
         # 5. Log Observability Telemetry Exclusively to Platform Observability

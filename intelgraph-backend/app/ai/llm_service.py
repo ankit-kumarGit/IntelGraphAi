@@ -5,6 +5,7 @@ from typing import List, Dict, Any, Optional
 from app.config import settings
 from app.ai.query_understanding import QueryAnalysis, KnowledgeScope
 from app.models.chat import DependencyType
+from app.rag.provenance import validate_asset_provenance, get_clean_document_title
 
 class LLMService:
     @staticmethod
@@ -317,21 +318,32 @@ class LLMService:
                 doc_cat = item.get("canonical_category", "") or chk.get("category", "")
                 if penalized_cats_lower and any(pc in doc_cat.lower() or pc in doc_id.lower() for pc in penalized_cats_lower):
                     is_penalized_doc = True
+                
+                # Verify strict asset provenance for citation
+                if referenced_tag and not validate_asset_provenance(chk, referenced_tag):
+                    is_penalized_doc = True
+
                 if not is_penalized_doc:
                     first_clean = ""
                     for rl in raw_lines:
                         if not LLMService._is_raw_table_header(rl):
                             first_clean = LLMService._clean_fact_line(rl)
                             break
+                    doc_title = get_clean_document_title(chk)
                     citations.append({
-                        "document_name": doc_id.replace("_", " "),
+                        "document_name": doc_title,
                         "document_id": doc_id,
                         "page_number": page_num,
                         "section_title": section,
                         "record_date": chk.get("record_date") or "2024-2026",
                         "version": version,
                         "governance_status": gov_status,
-                        "excerpt": (first_clean or f"Operational record for {doc_id.replace('_', ' ')}")[:140]
+                        "excerpt": (first_clean or f"Operational record for {doc_title}")[:140],
+                        "asset_tag": chk.get("asset_tag"),
+                        "primary_asset_tags": chk.get("primary_asset_tags", []),
+                        "related_asset_tags": chk.get("related_asset_tags", []),
+                        "document_scope": chk.get("document_scope", "ASSET"),
+                        "content": chk.get("content", "")
                     })
                     seen_docs.add(doc_id)
 
@@ -700,10 +712,13 @@ class LLMService:
             for gf in verified_graph_facts[:3]:
                 lines.append(f"- {gf}")
 
-        # Source Records
-        doc_names = list(dict.fromkeys([c["document_name"] for c in citations if c.get("document_name")]))
+        # Source Records with Strict Provenance
+        clean_citations = [c for c in citations if validate_asset_provenance(c, clean_tag)]
+        doc_names = list(dict.fromkeys([c["document_name"] for c in clean_citations if c.get("document_name")]))
         if doc_names:
             lines.append(f"\n*Source Documentation: {', '.join(doc_names[:3])}*")
+        elif asset_context:
+            lines.append("\n*Source Documentation: Verified Enterprise Asset Registry*")
 
         answer_text = "\n".join(lines)
         evidence_summary = [f"Asset Profile for {clean_tag}: Verified identification, specifications, and components."]
@@ -712,11 +727,11 @@ class LLMService:
 
         return {
             "answer": answer_text,
-            "confidence": "High" if citations or asset_context else "Medium",
+            "confidence": "High" if clean_citations or asset_context else "Medium",
             "scope": "CUSTOMER",
             "response_format": "CUSTOMER_GROUNDED",
             "evidence_summary": evidence_summary,
-            "citations": citations,
+            "citations": clean_citations,
             "refused": False
         }
 

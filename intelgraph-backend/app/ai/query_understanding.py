@@ -495,9 +495,15 @@ class QueryUnderstandingEngine:
         is_pure_general_concept = is_standalone_general and not found_tags
 
         if found_tags and not is_pure_general_concept:
-            # Detect generic fact type
+            # Detect generic fact type: Only trigger DATE if specifically requesting a date or time
             fact_type = None
-            if any(w in q_lower for w in ["date", "when", "timestamp", "occurred on", "performed on", "last serviced"]):
+            is_date_query = any(w in q_lower for w in [
+                "when was", "what date", "which date", "what time", "last serviced on",
+                "service date", "inspection date", "maintenance date", "event date", "incident date", "when did"
+            ]) or (
+                any(w in q_lower for w in ["when", "timestamp"]) and not any(w in q_lower for w in ["what", "which", "describe", "detail", "tell me about"])
+            )
+            if is_date_query:
                 fact_type = "DATE"
 
             target_categories: List[str] = []
