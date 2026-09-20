@@ -213,7 +213,7 @@ class QdrantVectorStore(VectorStoreBase):
                     related = [r.upper() for r in payload.get("related_asset_tags", [])]
                     scope = payload.get("document_scope", "ASSET")
 
-                    is_match = (chunk_asset == t_u) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
+                    is_match = (chunk_asset == t_u) or (chunk_asset.startswith(t_u) and not chunk_asset[len(t_u):len(t_u)+1].isdigit()) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
                     if not is_match:
                         continue
                 results.append((payload, float(res.score)))

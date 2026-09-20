@@ -129,7 +129,10 @@ class AssetService:
         
         query = {"tag": tag.upper()}
         if tenant_id:
-            query["tenant_id"] = tenant_id
+            if tenant_id == "tenant_default":
+                query["$or"] = [{"tenant_id": "tenant_default"}, {"tenant_id": {"$exists": False}}]
+            else:
+                query["tenant_id"] = tenant_id
         asset = db.assets.find_one(query)
         if not asset:
             return None

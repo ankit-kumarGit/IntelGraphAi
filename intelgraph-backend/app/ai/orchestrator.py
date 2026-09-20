@@ -23,11 +23,20 @@ class AIOrchestrator:
     def __init__(self):
         self._internal_agent_map = {
             "CUSTOMER_FAILURE_RCA": "Internal RCA Engine",
+            "CUSTOMER_FAILURE": "Internal RCA Engine",
             "CUSTOMER_MAINTENANCE_HISTORY": "Internal Maintenance Engine",
+            "CUSTOMER_MAINTENANCE": "Internal Maintenance Engine",
             "CUSTOMER_INSPECTION_RECORD": "Internal Inspection Engine",
+            "CUSTOMER_INSPECTION": "Internal Inspection Engine",
             "CUSTOMER_SHIFT_HANDOVER": "Internal Operations Engine",
             "CUSTOMER_COMPLIANCE_STATUS": "Internal Compliance Engine",
+            "CUSTOMER_COMPLIANCE": "Internal Compliance Engine",
+            "CUSTOMER_TELEMETRY": "Internal Telemetry & Sensor Engine",
+            "CUSTOMER_DOCUMENT": "Internal Document Engine",
+            "CUSTOMER_COMPONENT": "Internal Component Engine",
+            "CUSTOMER_OPERATING_PROCEDURE": "Internal Procedure Engine",
             "CROSS_ASSET_COMPARISON": "Internal Lessons Learned & Cross-Asset Engine",
+            "CROSS_ASSET": "Internal Lessons Learned & Cross-Asset Engine",
             "CUSTOMER_ASSET_PROFILE": "Internal Asset Profiler",
             "HYBRID_REASONING": "Internal Hybrid Synthesis Engine",
             "UNSUPPORTED_CUSTOMER_FACT": "Internal Safety Guardrail Engine",
@@ -37,7 +46,8 @@ class AIOrchestrator:
             "COMPARISON_ANALYSIS": "Internal Comparative Engine",
             "SUMMARIZATION": "Internal Summarization Engine",
             "DRAFTING_ASSISTANCE": "Internal Drafting Engine",
-            "GENERAL_ENGINEERING_REASONING": "Internal General Reasoning Engine"
+            "GENERAL_ENGINEERING_REASONING": "Internal General Reasoning Engine",
+            "GREETING": "Internal Conversational Agent"
         }
 
     def route_and_execute(
@@ -48,16 +58,9 @@ class AIOrchestrator:
         t_start = time.time()
 
         # 1. Semantic Query Understanding & Scope Arbitration
-        #
-        # ASSET PRECEDENCE:
-        #  - active_asset_context is built from context_asset_tag (non-authoritative, for pronoun resolution)
-        #    NOT from req.asset_tag (which is the hard retrieval scope when explicitly set)
-        #  - QUE detects explicit assets from the query text (e.g. "What is P-194?" → P-194)
-        #  - The orchestrator then resolves: query_explicit_asset > req.asset_tag > context fallback
         t_classify_start = time.time()
 
-        # Build context for QUE — use context_asset_tag (UI selected machine) for pronoun/coreference
-        # resolution, but do NOT use it as an authoritative retrieval scope
+        # Build context for QUE — use context_asset_tag for pronoun resolution only
         que_context = None
         if req.context_asset_tag:
             que_context = {"tag": req.context_asset_tag}
@@ -72,6 +75,31 @@ class AIOrchestrator:
         )
         classify_latency_ms = round((time.time() - t_classify_start) * 1000, 2)
 
+        # Zero Industrial Retrieval Guardrail for Greetings / Small Talk
+        if analysis.scope == KnowledgeScope.GREETING:
+            total_latency_ms = round((time.time() - t_start) * 1000, 2)
+            return ChatResponse(
+                answer="Hello! I am **IntelGraph AI**, your industrial operations and equipment intelligence assistant. How can I assist you with equipment reliability, maintenance procedures, root cause analysis, or plant operations today?",
+                scope="GREETING",
+                response_format="CONVERSATIONAL",
+                confidence=None,
+                evidence_summary=[],
+                citations=[],
+                refused=False,
+                query_latency_ms=total_latency_ms,
+                agent_name="IntelGraph AI",
+                traversal_hops=[],
+                dependency_type="GREETING",
+                resolved_query=req.query,
+                latency_breakdown={
+                    "total_ms": total_latency_ms,
+                    "llm_ms": 0.0,
+                    "qdrant_ms": 0.0,
+                    "neo4j_ms": 0.0,
+                    "orchestration_ms": total_latency_ms
+                }
+            )
+
         internal_agent = self._internal_agent_map.get(analysis.intent, "Internal General Reasoning Engine")
         logger.info(
             "IntelGraph AI routed query '%s' to Scope: %s (Intent: %s, Internal Specialist: %s)",
@@ -83,19 +111,12 @@ class AIOrchestrator:
         retrieval_latency_ms = 0.0
         qdrant_latency_ms = 0.0
         neo4j_latency_ms = 0.0
+        asset_in_tenant = None
 
         # 2. GraphRAG Evidence Retrieval (Only when customer-specific or hybrid knowledge is required)
         if analysis.requires_customer_evidence:
             t_retrieval_start = time.time()
 
-            # =========================================================================
-            # ASSET PRECEDENCE FOR RETRIEVAL:
-            #   1. QUE explicit asset detected from current query (highest priority)
-            #      e.g. "What is P-194?" while TEST-FINAL-001 is selected → use P-194
-            #   2. req.asset_tag — only used when QUE found NO explicit asset in query
-            #      (this handles 'Current Machine' hard-scope mode from the UI)
-            #   3. Never use context_asset_tag for retrieval scoping
-            # =========================================================================
             que_detected_tag = analysis.referenced_asset_tags[0] if analysis.referenced_asset_tags else None
             effective_tag = que_detected_tag or req.asset_tag
 
@@ -103,15 +124,6 @@ class AIOrchestrator:
                 "Asset resolution: query='%s' | QUE detected='%s' | req.asset_tag='%s' | effective='%s' | scope_filter='%s'",
                 req.query[:60], que_detected_tag, req.asset_tag, effective_tag, req.scope_filter
             )
-
-            # Guard: if QUE detected an explicit asset from the query AND req.asset_tag is a different
-            # (non-selected) machine, log the override so it's traceable
-            if que_detected_tag and req.asset_tag and que_detected_tag != req.asset_tag:
-                logger.warning(
-                    "ASSET OVERRIDE: query explicitly references '%s' but req.asset_tag='%s' was sent. "
-                    "Using QUE-detected '%s'. req.asset_tag will NOT scope retrieval.",
-                    que_detected_tag, req.asset_tag, que_detected_tag
-                )
 
             effective_query = analysis.resolved_query or req.query
             default_tenant = getattr(settings, "DEFAULT_TENANT_ID", "tenant_default")
@@ -153,6 +165,8 @@ class AIOrchestrator:
                 top_k=6,
                 tenant_id=effective_tenant,
                 target_document_categories=getattr(analysis, "target_document_categories", []),
+                penalized_document_categories=getattr(analysis, "penalized_document_categories", []),
+                query_intent=analysis.intent,
                 fact_type=getattr(analysis, "fact_type", None)
             )
             retrieval_latency_ms = round((time.time() - t_retrieval_start) * 1000, 2)
@@ -227,7 +241,7 @@ class AIOrchestrator:
             query=analysis.resolved_query or req.query,
             retrieved_chunks=retrieved_chunks,
             query_analysis=analysis,
-            asset_context=asset_context or req.active_asset_context,
+            asset_context=asset_in_tenant or asset_context or req.active_asset_context,
             conversation_history=req.conversation_history,
             trusted_sources_only=req.trusted_sources_only,
             graph_evidence=traversal_hops

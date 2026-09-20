@@ -6,13 +6,99 @@ from app.rag.qdrant_store import qdrant_store
 
 class HybridSearchEngine:
     @staticmethod
+    def _categorize_chunk(chunk: Dict[str, Any]) -> str:
+        """
+        Classifies a chunk into canonical industrial categories using metadata,
+        document_id, section_title, and content signals.
+        """
+        cat = (chunk.get("category") or "").lower()
+        doc_id = (chunk.get("document_id") or "").lower()
+        section = (chunk.get("section_title") or "").lower()
+        content_sample = (chunk.get("content") or "")[:300].lower()
+
+        # 1. Telemetry / Time Series (CSVs, sensor tables, vibration logs)
+        if any(k in cat for k in ["telemetry", "time series"]) or \
+           any(k in doc_id for k in ["telemetry", "vibration_monitoring_log", "sensor"]) or \
+           any(k in section for k in ["telemetry"]) or \
+           any(k in content_sample for k in ["vibration_de_mm_s_rms", "bearing_temp_de", "vibration_rms_mm_s", "timestamp | equipment"]):
+            return "TELEMETRY"
+
+        # 2. Failure / Incident Report / RCA
+        if any(k in cat for k in ["failure", "incident", "rca"]) or \
+           any(k in doc_id for k in ["failure", "incident", "emergency_trip", "rca"]) or \
+           any(k in section for k in ["failure", "incident", "root cause"]):
+            return "FAILURE"
+
+        # 3. Inspection / Condition Monitoring / NDT / Checklist
+        if any(k in cat for k in ["inspection", "condition monitoring", "ndt", "survey", "checklist"]) or \
+           any(k in doc_id for k in ["inspection", "ndt", "survey", "checklist", "condition_monitoring"]) or \
+           any(k in section for k in ["inspection", "survey", "checklist"]):
+            return "INSPECTION"
+
+        # 4. OEM Technical Manual / Datasheet / Specification
+        if any(k in doc_id for k in ["oem", "technical_manual", "datasheet", "specification"]) or \
+           any(k in cat for k in ["oem", "datasheet", "specification"]) or \
+           any(k in section for k in ["general description", "technical data", "specifications", "operating limits"]):
+            return "PROFILE_ENGINEERING"
+
+        # 5. P&ID / Flowsheet / Engineering Drawing
+        if any(k in cat for k in ["p&id", "pid", "drawing", "flowsheet"]) or \
+           any(k in doc_id for k in ["p&id", "pid", "drawing", "flowsheet"]) or \
+           any(k in section for k in ["piping and instrumentation", "flowsheet", "p&id"]):
+            return "PROFILE_ENGINEERING"
+
+        # 6. Maintenance Report / Work Order / PM Schedule
+        if any(k in cat for k in ["maintenance", "work order", "wo"]) or \
+           any(k in doc_id for k in ["maintenance_report", "work_order", "wo_", "wo-", "maintenance_schedule"]) or \
+           any(k in section for k in ["maintenance report", "work order", "pm schedule", "preventive maintenance"]):
+            return "MAINTENANCE"
+
+        # 7. Standard Operating Procedure
+        if any(k in cat for k in ["sop", "operating procedure", "procedure"]) or \
+           any(k in doc_id for k in ["sop", "procedure", "startup_shutdown"]):
+            return "SOP"
+
+        # 8. Operations & Shift Logs
+        if any(k in cat for k in ["operations", "shift"]) or \
+           any(k in doc_id for k in ["shift", "handover", "logbook"]):
+            return "OPERATIONS"
+
+        return "OTHER"
+
+    @classmethod
+    def _map_to_canonical(cls, category_list: Optional[List[str]]) -> set:
+        if not category_list:
+            return set()
+        res = set()
+        for c in category_list:
+            cl = c.lower()
+            if any(k in cl for k in ["telemetry", "time series", "sensor"]):
+                res.add("TELEMETRY")
+            if any(k in cl for k in ["failure", "incident", "rca"]):
+                res.add("FAILURE")
+            if any(k in cl for k in ["inspection", "condition monitoring", "ndt", "survey", "checklist"]):
+                res.add("INSPECTION")
+            if any(k in cl for k in ["maintenance", "work order", "wo", "schedule"]):
+                res.add("MAINTENANCE")
+            if any(k in cl for k in ["oem", "datasheet", "drawing", "p&id", "pid", "engineering", "manual", "specification"]):
+                res.add("PROFILE_ENGINEERING")
+            if any(k in cl for k in ["sop", "procedure"]):
+                res.add("SOP")
+            if any(k in cl for k in ["shift", "operations", "handover"]):
+                res.add("OPERATIONS")
+        return res
+
+    @classmethod
     def search(
+        cls,
         query: str,
         asset_tag: Optional[str] = None,
         trusted_sources_only: bool = True,
         top_k: int = 6,
         tenant_id: Optional[str] = None,
         target_categories: Optional[List[str]] = None,
+        penalized_categories: Optional[List[str]] = None,
+        intent: Optional[str] = None,
         fact_type: Optional[str] = None
     ) -> List[Dict[str, Any]]:
         """
@@ -51,8 +137,12 @@ class HybridSearchEngine:
             vector_results = vector_store.search(effective_query, top_k=top_k * 3, asset_tag=asset_tag)
         vector_scores = {res[0]["chunk_id"]: res[1] for res in vector_results}
 
-        # Normalize target categories for matching
-        target_cats_lower = [c.lower() for c in (target_categories or [])]
+        canonical_targets = cls._map_to_canonical(target_categories)
+        canonical_penalties = cls._map_to_canonical(penalized_categories)
+
+        stopwords = {"what", "is", "the", "a", "an", "for", "of", "and", "in", "to", "on", "was", "did", "how", "why", "are", "does", "with", "from", "its", "it"}
+        clean_asset_tag = (asset_tag or "").lower().replace("-", "")
+        query_concept_words = {w for w in query_words if len(w) > 2 and w not in stopwords and w != clean_asset_tag}
 
         # 2. Score calculation with hybrid boost
         scored_candidates = []
@@ -65,15 +155,18 @@ class HybridSearchEngine:
                 continue
 
             # Asset tag filtering
+            asset_match_score = 0.0
             if asset_tag:
                 t_u = asset_tag.upper()
                 c_tag = (chunk.get("asset_tag") or "").upper()
                 primaries = [p.upper() for p in chunk.get("primary_asset_tags", [])]
                 related = [r.upper() for r in chunk.get("related_asset_tags", [])]
                 scope = chunk.get("document_scope", "ASSET")
-                is_match = (c_tag == t_u) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
+                is_match = (c_tag == t_u) or (c_tag.startswith(t_u) and not c_tag[len(t_u):len(t_u)+1].isdigit()) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
                 if not is_match:
                     continue
+                # Bounded score: asset presence is normalized, NOT multiplied by tag frequency
+                asset_match_score = 2.0 if (c_tag == t_u or t_u in primaries or c_tag.startswith(t_u)) else 1.2
 
             # Governance filtering
             gov_status = chunk.get("governance_status", "Approved")
@@ -86,42 +179,55 @@ class HybridSearchEngine:
             chunk_id = chunk["chunk_id"]
             content = chunk.get("content", "").lower()
             section = chunk.get("section_title", "").lower()
-            tag = chunk.get("asset_tag", "").lower()
-            category = chunk.get("category", "").lower()
             doc_id = chunk.get("document_id", "").lower()
 
-            # Lexical score: exact match of query words + tag boosts
-            lexical_hits = sum(1 for w in query_words if w in content or w in section)
-            if has_generic_noun and (asset_tag and tag == asset_tag.lower()):
-                lexical_hits += 2
+            # Lexical score: bounded match of conceptual query words (asset tag frequency capped!)
+            lexical_hits = sum(1 for w in query_concept_words if w in content or w in section)
+            capped_lexical_score = min(lexical_hits * 0.4, 2.0)
 
             # Technical domain concept boosts
             if ("non-drive" in query_lower or "nde" in query_lower) and ("non-drive" in content or "nde" in content or "nu 312" in content):
-                lexical_hits += 6
+                capped_lexical_score += 2.0
             if ("power" in query_lower or "motor" in query_lower) and ("power" in content or "kw" in content) and "oem" in doc_id:
-                lexical_hits += 5
+                capped_lexical_score += 1.5
             if ("part" in query_lower or "bearing" in query_lower) and "oem" in doc_id and ("skf 6312" in content or "nu 312" in content or "skf-6314" in content):
-                lexical_hits += 5
+                capped_lexical_score += 1.5
             if "alignment" in query_lower and ("misalignment" in content or "0.05" in content):
-                lexical_hits += 4
+                capped_lexical_score += 1.5
 
-            tag_hit = 1.5 if (tag and tag in query_lower) else 0.0
-            
-            # Exact phrase match boost
-            phrase_hit = 2.0 if (len(query_words) > 1 and query_lower in content) else 0.0
-
+            phrase_hit = 1.5 if (len(query_concept_words) > 1 and query_lower in content) else 0.0
             sem_score = vector_scores.get(chunk_id, 0.0)
-            asset_presence = 0.5 if (asset_tag and tag == asset_tag.lower()) else 0.0
 
             # Document Category Matching & Down-ranking
-            category_boost = 0.0
-            if target_cats_lower:
-                matches_cat = any(tc in category for tc in target_cats_lower) or any(tc in doc_id for tc in target_cats_lower)
-                if matches_cat:
-                    category_boost = 6.0
+            chunk_canonical = cls._categorize_chunk(chunk)
+            category_score = 0.0
+
+            if canonical_targets:
+                if chunk_canonical in canonical_targets:
+                    if intent == "CUSTOMER_ASSET_PROFILE":
+                        if chunk_canonical == "PROFILE_ENGINEERING":
+                            category_score += 6.5
+                        elif chunk_canonical in ["MAINTENANCE", "INSPECTION"]:
+                            category_score += 1.0
+                        else:
+                            category_score += 3.5
+                    else:
+                        category_score += 5.0
+                elif chunk_canonical in canonical_penalties:
+                    category_score -= 8.0
                 else:
-                    # Strongly down-rank irrelevant categories when an explicit category is targeted
-                    category_boost = -4.0
+                    category_score -= 3.5
+            elif canonical_penalties and chunk_canonical in canonical_penalties:
+                category_score -= 8.0
+
+            # Irrelevant Raw Data / Repetitive Table Penalty
+            is_raw_tabular = (content.count("|") > 8) or (content.count(",") > 15 and any(c.isdigit() for c in content))
+            raw_data_penalty = 0.0
+            if is_raw_tabular:
+                if "TELEMETRY" in canonical_targets or intent == "CUSTOMER_TELEMETRY":
+                    raw_data_penalty = 1.0  # Relevant for telemetry
+                else:
+                    raw_data_penalty = -4.5  # Penalize raw tabular dumps for profile / maintenance / RCA
 
             # Fact Type (DATE) Prioritization
             date_boost = 0.0
@@ -131,16 +237,16 @@ class HybridSearchEngine:
                     "maintenance date", "incident date", "failure date", "event date", "date:"
                 ])
                 if has_labeled_date:
-                    date_boost = 4.0
+                    date_boost = 3.5
                 elif any(m in content for m in ["2024", "2025", "2026", "2027"]):
                     date_boost = 1.5
                 else:
-                    date_boost = -1.0
+                    date_boost = -1.5
 
             # Boost Approved documents
             gov_multiplier = 1.2 if gov_status == "Approved" else (0.8 if gov_status == "Draft" else 0.4)
 
-            total_score = ((sem_score * 1.5) + (lexical_hits * 0.4) + tag_hit + phrase_hit + asset_presence + category_boost + date_boost) * gov_multiplier
+            total_score = ((sem_score * 1.5) + asset_match_score + capped_lexical_score + phrase_hit + category_score + raw_data_penalty + date_boost) * gov_multiplier
 
             if total_score > 0.01:
                 scored_candidates.append({
@@ -148,7 +254,8 @@ class HybridSearchEngine:
                     "score": total_score,
                     "semantic_score": sem_score,
                     "lexical_hits": lexical_hits,
-                    "category": chunk.get("category", "Other")
+                    "category": chunk.get("category", "Other"),
+                    "canonical_category": chunk_canonical
                 })
 
         # Sort descending by total score

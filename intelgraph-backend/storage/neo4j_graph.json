@@ -1293,8 +1293,8 @@
       "label": "Asset",
       "properties": {
         "tag": "P-194B",
-        "name": "P-194B Cooling Water Process Pump",
-        "asset_type": "Centrifugal Pump",
+        "name": "P-194B Cooling Water Circulation Pump",
+        "asset_type": "Cooling Water Circulation Pump",
         "tenant_id": "tenant_default"
       }
     },
@@ -1936,6 +1936,137 @@
       "properties": {
         "wo_number": "WO-1789641711",
         "asset_tag": "TEST-AG-NEW-001",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_TEST_GENERIC_94721": {
+      "id": "asset_TEST_GENERIC_94721",
+      "label": "Asset",
+      "properties": {
+        "tag": "TEST-GENERIC-94721",
+        "name": "TEST-GENERIC-94721 Asset",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-GENERIC-94721_Datasheet": {
+      "id": "doc_TEST-GENERIC-94721_Datasheet",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-GENERIC-94721_Datasheet",
+        "title": "TEST-GENERIC-94721 Datasheet",
+        "category": "OEM Manual",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "comp_FT_500": {
+      "id": "comp_FT_500",
+      "label": "Component",
+      "properties": {
+        "tag": "FT-500",
+        "type": "Instrument",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "fail_FAIL-TESTGENERIC94721": {
+      "id": "fail_FAIL-TESTGENERIC94721",
+      "label": "Failure",
+      "properties": {
+        "failure_id": "FAIL-TESTGENERIC94721",
+        "title": "Incident TEST-GENERIC-94721",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-GENERIC-94721_Inspection": {
+      "id": "doc_TEST-GENERIC-94721_Inspection",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-GENERIC-94721_Inspection",
+        "title": "TEST-GENERIC-94721 Inspection",
+        "category": "Inspection",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "insp_INSP-TESTGENERIC94721": {
+      "id": "insp_INSP-TESTGENERIC94721",
+      "label": "Inspection",
+      "properties": {
+        "inspection_id": "INSP-TESTGENERIC94721",
+        "asset_tag": "TEST-GENERIC-94721",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-GENERIC-94721_Maintenance": {
+      "id": "doc_TEST-GENERIC-94721_Maintenance",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-GENERIC-94721_Maintenance",
+        "title": "TEST-GENERIC-94721 Maintenance",
+        "category": "Maintenance",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "wo_WO-94721": {
+      "id": "wo_WO-94721",
+      "label": "WorkOrder",
+      "properties": {
+        "wo_number": "WO-94721",
+        "asset_tag": "TEST-GENERIC-94721",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-GENERIC-94721_Failure": {
+      "id": "doc_TEST-GENERIC-94721_Failure",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-GENERIC-94721_Failure",
+        "title": "TEST-GENERIC-94721 Failure",
+        "category": "Incident",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "doc_TEST-GENERIC-94721_Telemetry": {
+      "id": "doc_TEST-GENERIC-94721_Telemetry",
+      "label": "Document",
+      "properties": {
+        "document_id": "TEST-GENERIC-94721_Telemetry",
+        "title": "TEST-GENERIC-94721 Telemetry",
+        "category": "Telemetry",
+        "version": "v1.0",
+        "governance_status": "Approved",
+        "document_scope": "ASSET",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_T_200": {
+      "id": "asset_T_200",
+      "label": "Asset",
+      "properties": {
+        "tag": "T-200",
+        "name": "T-200 Induced Draft Cooling Tower",
+        "asset_type": "Cooling Tower",
+        "criticality": "High",
+        "tenant_id": "tenant_default"
+      }
+    },
+    "asset_P_194A": {
+      "id": "asset_P_194A",
+      "label": "Asset",
+      "properties": {
+        "tag": "P-194A",
+        "name": "P-194A Cooling Water Circulation Pump",
+        "asset_type": "Cooling Water Circulation Pump",
         "tenant_id": "tenant_default"
       }
     }
@@ -5405,6 +5536,330 @@
       "from": "asset_TEST_AG_NEW_001",
       "to": "wo_WO-1789641711",
       "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "doc_TEST-GENERIC-94721_Datasheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Datasheet",
+      "to": "asset_TEST_GENERIC_94721",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Datasheet",
+      "to": "comp_FT_500",
+      "type": "CONTAINS_COMPONENT",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "fail_FAIL-TESTGENERIC94721",
+      "type": "HAD_FAILURE",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "doc_TEST-GENERIC-94721_Inspection",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Inspection",
+      "to": "asset_TEST_GENERIC_94721",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "insp_INSP-TESTGENERIC94721",
+      "type": "HAS_INSPECTION",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "doc_TEST-GENERIC-94721_Maintenance",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Maintenance",
+      "to": "asset_TEST_GENERIC_94721",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "wo_WO-94721",
+      "type": "HAS_WORK_ORDER",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "doc_TEST-GENERIC-94721_Failure",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Failure",
+      "to": "asset_TEST_GENERIC_94721",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_RCA_94721",
+      "to": "doc_TEST-GENERIC-94721_Failure",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Failure",
+      "to": "asset_RCA_94721",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_TEST_GENERIC_94721",
+      "to": "doc_TEST-GENERIC-94721_Telemetry",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-GENERIC-94721_Telemetry",
+      "to": "asset_TEST_GENERIC_94721",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_200",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_T_200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194A",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_P_194A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_P_194B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_201",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_201",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_202",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_202",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_203",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_203",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_204",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_204",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_205",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_205",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_E_206",
+      "to": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_TEST-PUMP-REAL-001_TPREAL001_Process_Flowsheet",
+      "to": "asset_E_206",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_200",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_T_200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194A",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_P_194A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "doc_V-194A_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_V-194A_P-194_PID_Diagram",
+      "to": "asset_P_194B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_T_200",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_T_200",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194A",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_P_194A",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "doc_P-194_PID_Diagram",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_PID_Diagram",
+      "to": "asset_P_194B",
+      "type": "REFERENCES",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194A",
+      "to": "doc_P-194_Maintenance_Schedule",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Maintenance_Schedule",
+      "to": "asset_P_194A",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "doc_P-194_Maintenance_Schedule",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194_Maintenance_Schedule",
+      "to": "asset_P_194B",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194A",
+      "to": "doc_P-194B_P-194_Maintenance_Schedule",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194B_P-194_Maintenance_Schedule",
+      "to": "asset_P_194A",
+      "type": "APPLIES_TO",
+      "properties": {}
+    },
+    {
+      "from": "asset_P_194B",
+      "to": "doc_P-194B_P-194_Maintenance_Schedule",
+      "type": "ASSET_HAS_DOCUMENT",
+      "properties": {}
+    },
+    {
+      "from": "doc_P-194B_P-194_Maintenance_Schedule",
+      "to": "asset_P_194B",
+      "type": "APPLIES_TO",
       "properties": {}
     }
   ]

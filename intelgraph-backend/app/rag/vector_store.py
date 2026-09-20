@@ -84,7 +84,7 @@ class FaissVectorStore:
                     primaries = [p.upper() for p in meta.get("primary_asset_tags", [])]
                     related = [r.upper() for r in meta.get("related_asset_tags", [])]
                     scope = meta.get("document_scope", "ASSET")
-                    is_match = (meta_tag == t_u) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
+                    is_match = (meta_tag == t_u) or (meta_tag.startswith(t_u) and not meta_tag[len(t_u):len(t_u)+1].isdigit()) or (t_u in primaries) or (scope in ["SYSTEM", "MULTI_ASSET"] and t_u in related)
                     if not is_match:
                         continue
                 results.append((meta, float(score)))

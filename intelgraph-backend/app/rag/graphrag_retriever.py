@@ -23,6 +23,8 @@ class GraphRAGRetriever:
         top_k: int = 6,
         tenant_id: Optional[str] = None,
         target_document_categories: Optional[List[str]] = None,
+        penalized_document_categories: Optional[List[str]] = None,
+        query_intent: Optional[str] = None,
         fact_type: Optional[str] = None
     ) -> Dict[str, Any]:
         q_lower = query.lower()
@@ -41,17 +43,20 @@ class GraphRAGRetriever:
                         detected_asset = f"{detected_asset[0]}-{detected_asset[1:]}"
 
         # 2. Dynamic Traversal Strategy Classification
-        intent = "GENERAL_EXPERT"
-        if any(w in q_lower for w in ["inspection", "condition monitoring", "ndt", "survey", "vibration inspection", "inspection date"]):
-            intent = "INSPECTION_RECORD"
-        elif any(w in q_lower for w in ["failure", "fail", "broke", "seizure", "why did", "root cause", "trip"]):
-            intent = "FAILURE_RCA"
-        elif any(w in q_lower for w in ["maintenance", "overhaul", "wo-", "work order", "interval", "history"]):
-            intent = "MAINTENANCE_HISTORY"
-        elif any(w in q_lower for w in ["compliance", "regulation", "osha", "api", "iso", "audit", "gap", "valid"]):
-            intent = "COMPLIANCE_AUDIT"
-        elif any(w in q_lower for w in ["other asset", "elsewhere", "across fleet", "similar issue", "recurring pattern"]):
-            intent = "FLEET_ANOMALY"
+        intent = query_intent or "GENERAL_EXPERT"
+        if not query_intent:
+            if any(w in q_lower for w in ["inspection", "condition monitoring", "ndt", "survey", "vibration inspection", "inspection date"]):
+                intent = "INSPECTION_RECORD"
+            elif any(w in q_lower for w in ["failure", "fail", "broke", "seizure", "why did", "root cause", "trip"]):
+                intent = "FAILURE_RCA"
+            elif any(w in q_lower for w in ["maintenance", "overhaul", "wo-", "work order", "interval", "history"]):
+                intent = "MAINTENANCE_HISTORY"
+            elif any(w in q_lower for w in ["compliance", "regulation", "osha", "api", "iso", "audit", "gap", "valid"]):
+                intent = "COMPLIANCE_AUDIT"
+            elif any(w in q_lower for w in ["component", "bearing", "impeller", "seal"]):
+                intent = "CUSTOMER_COMPONENT"
+            elif any(w in q_lower for w in ["other asset", "elsewhere", "across fleet", "similar issue", "recurring pattern"]):
+                intent = "FLEET_ANOMALY"
 
         # 3. Hybrid Semantic & Lexical Vector Retrieval (Qdrant & FAISS backed)
         hybrid_candidates = hybrid_search.search(
@@ -61,6 +66,8 @@ class GraphRAGRetriever:
             top_k=top_k,
             tenant_id=tenant_id,
             target_categories=target_document_categories,
+            penalized_categories=penalized_document_categories,
+            intent=intent,
             fact_type=fact_type
         )
 
@@ -86,6 +93,12 @@ class GraphRAGRetriever:
                 sub = neo4j_graph.get_subgraph(target_tag, max_depth=2, tenant_id=tenant_id)
                 for edge in sub.get("edges", []):
                     if "COMPLIANCE" in edge.get("type", "") or "GOVERN" in edge.get("type", ""):
+                        raw_graph_hops.append(edge)
+                connected_entities.extend(sub.get("nodes", []))
+            elif intent in ["CUSTOMER_COMPONENT", "COMPONENT"]:
+                sub = neo4j_graph.get_subgraph(target_tag, max_depth=2, tenant_id=tenant_id)
+                for edge in sub.get("edges", []):
+                    if "COMPONENT" in edge.get("type", "") or "HAS_COMPONENT" in edge.get("type", "") or "PART" in edge.get("type", ""):
                         raw_graph_hops.append(edge)
                 connected_entities.extend(sub.get("nodes", []))
             elif intent == "FLEET_ANOMALY":

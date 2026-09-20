@@ -17,6 +17,7 @@ class KnowledgeScope(str, Enum):
     MAINTENANCE = "MAINTENANCE"
     INSPECTION = "INSPECTION"
     RCA = "RCA"
+    TELEMETRY = "TELEMETRY"
 
 class QueryAnalysis(BaseModel):
     raw_query: str
@@ -33,6 +34,7 @@ class QueryAnalysis(BaseModel):
     typo_correction: Optional[Dict[str, str]] = None
     resolved_references: Optional[Dict[str, str]] = None
     target_document_categories: List[str] = Field(default_factory=list)
+    penalized_document_categories: List[str] = Field(default_factory=list)
     fact_type: Optional[str] = None
 
 class QueryUnderstandingEngine:
@@ -75,9 +77,10 @@ class QueryUnderstandingEngine:
     UNRECORDED_OR_SPECULATIVE_TAGS = {"X-99", "P-999", "T-999", "FIT-999"}
 
     GREETING_PATTERNS = [
-        r"^(hey+|hi+|hello+|heya+|howdy|sup|greetings)[\s!.,?]*$",
+        r"^(hey+|hi+|hello+|heya+|howdy|sup|whatup|whats\s*up|what's\s*up|greetings)[\s!.,?]*$",
         r"^(good\s+(morning|afternoon|evening|day))[\s!.,?]*$",
-        r"^(hi|hello)\s+(there|intelgraph)[\s!.,?]*$"
+        r"^(hi|hello|hey)\s+(there|intelgraph|assistant|bot)[\s!.,?]*$",
+        r"^(how\s+are\s+you(\s+doing)?|how's\s+it\s+going|hows\s+it\s+going)[\s!.,?]*$"
     ]
     GRATITUDE_PATTERNS = [
         r"^(thanks+|thank\s+you|thx|ty|much\s+appreciated)[\s!.,?]*$"
@@ -85,6 +88,20 @@ class QueryUnderstandingEngine:
     ACKNOWLEDGEMENT_PATTERNS = [
         r"^(ok|okay|cool|great|got\s+it|alright|fine|understood|sure)[\s!.,?]*$"
     ]
+
+    @classmethod
+    def _get_known_tags(cls) -> set:
+        tags = set(cls.KNOWN_ASSET_TAGS)
+        try:
+            from app.database import get_db
+            db = get_db()
+            if db is not None:
+                for t in db.assets.distinct("tag"):
+                    if t:
+                        tags.add(t.upper())
+        except Exception:
+            pass
+        return tags
 
     COMMON_TYPO_MAP = {
         "gearing pump": "gear pump",
@@ -124,13 +141,13 @@ class QueryUnderstandingEngine:
 
             # Extract verified asset tags mentioned in this user turn (longer tags first e.g. P-194B before P-194)
             turn_matched_tags = []
-            for tag in sorted(cls.KNOWN_ASSET_TAGS, key=len, reverse=True):
+            for tag in sorted(cls._get_known_tags(), key=len, reverse=True):
                 if re.search(rf"\b{re.escape(tag)}\b", u_clean, re.IGNORECASE):
                     if not any(tag in existing for existing in turn_matched_tags):
                         turn_matched_tags.append(tag)
 
             # Also extract generic dynamic industrial asset tags from user messages
-            generic_tag_matches = re.findall(r"\b([A-Z0-9]{1,12}(?:-[A-Z0-9]{1,12})+)\b", u_clean, re.IGNORECASE)
+            generic_tag_matches = re.findall(r"\b([A-Z0-9]{1,12}(?:-[A-Z0-9]{1,12})+|[A-Z]-\d{2,4}[A-Z0-9]*)\b", u_clean, re.IGNORECASE)
             for t in generic_tag_matches:
                 tag_upper = t.upper()
                 if tag_upper not in turn_matched_tags and not any(tag_upper.startswith(p) for p in ["API-", "ISO-", "ASME-", "WO-", "INSP-", "FAIL-"]):
@@ -247,16 +264,16 @@ class QueryUnderstandingEngine:
         # 4. EXPLICIT ASSET TAG EXTRACTION FROM CURRENT QUERY (PRIORITIZED OVER CONTEXT)
         # =========================================================================
         query_explicit_tags: List[str] = []
-        for tag in sorted(cls.KNOWN_ASSET_TAGS, key=len, reverse=True):
+        for tag in sorted(cls._get_known_tags(), key=len, reverse=True):
             pattern = rf"\b{re.escape(tag)}\b|\b{re.escape(tag.replace('-', ''))}\b"
             if re.search(pattern, q_clean, re.IGNORECASE):
                 if not any(tag in existing for existing in query_explicit_tags):
                     query_explicit_tags.append(tag)
 
-        generic_tag_matches = re.findall(r"\b([A-Z0-9]{1,12}(?:-[A-Z0-9]{1,12})+)\b", q_clean, re.IGNORECASE)
+        generic_tag_matches = re.findall(r"\b([A-Z0-9]{1,12}(?:-[A-Z0-9]{1,12})+|[A-Z]-\d{2,4}[A-Z0-9]*)\b", q_clean, re.IGNORECASE)
         for t in generic_tag_matches:
             tag_upper = t.upper()
-            if tag_upper not in query_explicit_tags and not any(tag_upper.startswith(p) for p in ["API-", "ISO-", "ASME-"]):
+            if tag_upper not in query_explicit_tags and not any(tag_upper.startswith(p) for p in ["API-", "ISO-", "ASME-", "WO-", "INSP-", "FAIL-"]):
                 query_explicit_tags.append(tag_upper)
 
         if ("standby booster" in q_lower or ("standby" in q_lower and "booster" in q_lower)) and "P-102" not in query_explicit_tags:
@@ -480,39 +497,164 @@ class QueryUnderstandingEngine:
         if found_tags and not is_pure_general_concept:
             # Detect generic fact type
             fact_type = None
-            if any(w in q_lower for w in ["date", "when", "timestamp", "occurred on", "performed on"]):
+            if any(w in q_lower for w in ["date", "when", "timestamp", "occurred on", "performed on", "last serviced"]):
                 fact_type = "DATE"
 
             target_categories: List[str] = []
+            penalized_categories: List[str] = []
 
             # Operational sub-intents & document category preferences
-            if any(w in q_lower for w in ["inspection", "condition monitoring", "ndt", "vibration inspection", "inspection finding", "inspection date", "inspected", "survey"]):
+            is_explicit_inspection = any(w in q_lower for w in [
+                "last inspection", "inspection report", "inspection findings", "inspection condition",
+                "inspection date", "inspected", "visual inspection", "inspection checklist"
+            ])
+
+            # 1. Telemetry / Sensor Readings / Time Series
+            is_telemetry_query = any(w in q_lower for w in [
+                "vibration", "vibrations", "bearing temp", "bearing temperature", "temperature",
+                "telemetry", "sensor", "readings", "reading", "discharge pressure", "suction pressure",
+                "pressure", "motor current", "current", "flow rate", "rpm", "time series", "time-series",
+                "trend", "trends", "measurement", "measurements", "vibration_rms", "raw telemetry"
+            ]) and not is_explicit_inspection
+
+            # 2. Inspection / Condition Monitoring / NDT
+            is_inspection_query = is_explicit_inspection or any(w in q_lower for w in [
+                "inspection", "condition monitoring", "ndt", "survey", "checklist", "field checklist",
+                "survey findings", "baseline survey"
+            ])
+
+            # 3. Failure / RCA / Emergency Trip
+            is_failure_query = any(w in q_lower for w in [
+                "why did", "failure", "fail", "failed", "broke", "broken", "trip", "tripped",
+                "emergency trip", "rca", "root cause", "breakdown", "what happened to", "cause of",
+                "failure modes", "failure mode", "incident", "incident report"
+            ])
+
+            # 4. Maintenance / Work Orders / Servicing
+            is_maintenance_query = any(w in q_lower for w in [
+                "service", "serviced", "overhaul", "maintenance", "work order", "wo-", "repair",
+                "repaired", "bearing replacement", "maintenance date", "maintenance history",
+                "work done", "last serviced", "serviced date", "pm schedule", "preventive maintenance"
+            ])
+
+            # 5. Documents / Operating Procedures
+            is_doc_query = any(w in q_lower for w in [
+                "sop", "operating procedure", "procedure", "work instruction", "oem manual",
+                "technical manual", "drawing", "flowsheet", "show the manual", "which document", "show the sop"
+            ])
+
+            # 6. Component Queries
+            is_component_query = any(w in q_lower for w in [
+                "component", "components", "bearing", "impeller", "seal", "sub-component", "parts",
+                "part", "drive-end", "non-drive", "nde", "coupling"
+            ]) and not is_telemetry_query
+
+            # 7. Compliance Queries
+            is_compliance_query = any(w in q_lower for w in [
+                "compliant", "compliance", "standard", "regulation", "api 610", "iso", "audit"
+            ])
+
+            if is_telemetry_query:
+                scope = KnowledgeScope.CUSTOMER
+                intent = "CUSTOMER_TELEMETRY"
+                target_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry",
+                    "Condition Monitoring / NDT",
+                    "Inspection Report"
+                ]
+                penalized_categories = [
+                    "OEM Technical Manual",
+                    "OEM Manual",
+                    "Engineering Drawing / P&ID",
+                    "Standard Operating Procedure"
+                ]
+                response_structure = "CUSTOMER_GROUNDED"
+            elif is_inspection_query:
                 scope = KnowledgeScope.INSPECTION
-                intent = "CUSTOMER_INSPECTION_RECORD"
+                intent = "CUSTOMER_INSPECTION"
                 target_categories = [
                     "Condition Monitoring / NDT",
                     "Inspection Report",
-                    "Inspection"
+                    "Inspection",
+                    "Field Checklist"
+                ]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
                 ]
                 response_structure = "CUSTOMER_GROUNDED"
-            elif any(w in q_lower for w in ["why did", "failure", "fail", "trip", "rca", "root cause", "breakdown"]):
+            elif is_failure_query:
                 scope = KnowledgeScope.RCA
-                intent = "CUSTOMER_FAILURE_RCA"
+                intent = "CUSTOMER_FAILURE"
                 target_categories = [
                     "Failure / Incident Report",
                     "Incident Report",
-                    "Failure"
+                    "Root Cause Analysis",
+                    "Failure",
+                    "Maintenance Report / WO"
+                ]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
                 ]
                 response_structure = "RCA_INVESTIGATION"
-            elif any(w in q_lower for w in ["service", "serviced", "overhaul", "maintenance", "work order", "wo-", "repair", "bearing replacement", "maintenance date"]):
+            elif is_maintenance_query:
                 scope = KnowledgeScope.MAINTENANCE
-                intent = "CUSTOMER_MAINTENANCE_HISTORY"
+                intent = "CUSTOMER_MAINTENANCE"
                 target_categories = [
                     "Maintenance Report / WO",
                     "Maintenance Schedule",
+                    "Preventive Maintenance",
                     "Maintenance"
                 ]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
+                ]
                 response_structure = "CUSTOMER_GROUNDED"
+            elif is_doc_query:
+                scope = KnowledgeScope.CUSTOMER
+                intent = "CUSTOMER_DOCUMENT"
+                if any(w in q_lower for w in ["sop", "procedure", "operating procedure", "work instruction"]):
+                    target_categories = ["Standard Operating Procedure", "SOP", "Operations & Shift Logs"]
+                elif any(w in q_lower for w in ["drawing", "p&id", "pid", "flowsheet"]):
+                    target_categories = ["Engineering Drawing / P&ID", "P&ID"]
+                else:
+                    target_categories = ["OEM Technical Manual", "OEM Manual", "Datasheet", "Engineering"]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
+                ]
+                response_structure = "CUSTOMER_GROUNDED"
+            elif is_component_query:
+                scope = KnowledgeScope.CUSTOMER
+                intent = "CUSTOMER_COMPONENT"
+                target_categories = [
+                    "OEM Technical Manual",
+                    "OEM Manual",
+                    "Engineering Drawing / P&ID",
+                    "Condition Monitoring / NDT",
+                    "Maintenance Report / WO"
+                ]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
+                ]
+                response_structure = "CUSTOMER_GROUNDED"
+            elif is_compliance_query:
+                scope = KnowledgeScope.COMPLIANCE
+                intent = "CUSTOMER_COMPLIANCE"
+                target_categories = [
+                    "Regulatory / Compliance",
+                    "Standard Operating Procedure",
+                    "SOP"
+                ]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
+                ]
+                response_structure = "COMPLIANCE_REVIEW"
             elif any(w in q_lower for w in ["shift handover", "shift log", "operator note", "operator notes", "handover", "shift"]):
                 scope = KnowledgeScope.CUSTOMER
                 intent = "CUSTOMER_SHIFT_HANDOVER"
@@ -520,16 +662,11 @@ class QueryUnderstandingEngine:
                     "Operations & Shift Logs",
                     "Shift Handover"
                 ]
-                response_structure = "CUSTOMER_GROUNDED"
-            elif any(w in q_lower for w in ["compliant", "compliance", "standard", "regulation", "api 610", "iso", "audit"]):
-                scope = KnowledgeScope.COMPLIANCE
-                intent = "CUSTOMER_COMPLIANCE_STATUS"
-                target_categories = [
-                    "Regulatory / Compliance",
-                    "Standard Operating Procedure",
-                    "SOP"
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry"
                 ]
-                response_structure = "COMPLIANCE_REVIEW"
+                response_structure = "CUSTOMER_GROUNDED"
             elif any(w in q_lower for w in ["action", "corrective", "work item", "assign", "prioritize", "task"]):
                 scope = KnowledgeScope.ACTION_OPERATIONAL
                 intent = "CUSTOMER_OPERATIONAL_ACTION"
@@ -537,6 +674,20 @@ class QueryUnderstandingEngine:
             else:
                 scope = KnowledgeScope.CUSTOMER
                 intent = "CUSTOMER_ASSET_PROFILE"
+                target_categories = [
+                    "Engineering Drawing / P&ID",
+                    "OEM Technical Manual",
+                    "OEM Manual",
+                    "Datasheet",
+                    "Engineering",
+                    "Standard Operating Procedure",
+                    "Maintenance Report / WO"
+                ]
+                penalized_categories = [
+                    "Sensor Telemetry & Time Series",
+                    "Telemetry",
+                    "Sensor Telemetry"
+                ]
                 response_structure = "CUSTOMER_GROUNDED"
 
             return QueryAnalysis(
@@ -553,6 +704,7 @@ class QueryUnderstandingEngine:
                 response_structure=response_structure,
                 typo_correction=detected_typo,
                 target_document_categories=target_categories,
+                penalized_document_categories=penalized_categories,
                 fact_type=fact_type
             )
 
